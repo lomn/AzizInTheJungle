@@ -23,11 +23,17 @@ private :
    static int              next;
 
 private :
-   int               identite;
-   int               x, y;
+   int               identite; // id
+   int               x, y; // position
+   double            size; // taille
+   double            lifeSpan; // duree de vie
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   bool              isSchizo; // Indication de l'état mental de la bestiole...
+   double            pDeath; // Proba de mort par collision
+   double            pClone; // Proba de clonage
+   std::unique_ptr<std::vector<Bestiole>>   listBestiole;
 
    T               * couleur;
 
@@ -47,6 +53,25 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   int               getIdentite(); // id
+   int               getCoordonne(); // position
+   double            getSize(); // taille
+   double            getLifeSpan(); // duree de vie
+   double            getOrientation();
+   double            getVitesse();
+   bool              isSchizo(); // Indication de l'état mental de la bestiole...
+   double            getPDeath(); // Proba de mort par collision
+   double            getPClone(); // Proba de clonage
+
+   int               setCoordonne(); // position
+   double            setSize(); // taille
+   double            setLifeSpan(); // duree de vie
+   double            setOrientation();
+   double            setVitesse();
+   bool              setSchizo(); // Indication de l'état mental de la bestiole...
+   double            setPDeath(); // Proba de mort par collision
+   double            setPClone(); // Proba de clonage
 
 };
 
