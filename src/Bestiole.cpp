@@ -145,3 +145,79 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+
+int Bestiole::getIdentite() const {
+    return identite;
+}
+
+int Bestiole::getX() const {
+    return x;
+}
+
+void Bestiole::setX(int x) {
+    Bestiole::x = x;
+}
+
+int Bestiole::getY() const {
+    return y;
+}
+
+void Bestiole::setY(int y) {
+    Bestiole::y = y;
+}
+
+double Bestiole::getSize() const {
+    return size;
+}
+
+
+double Bestiole::getLifeSpan() const {
+    return lifeSpan;
+}
+
+
+double Bestiole::getOrientation() const {
+    return orientation;
+}
+
+void Bestiole::setOrientation(double orientation) {
+    Bestiole::orientation = orientation;
+}
+
+double Bestiole::getVitessePolaire() const {
+    return vitesse;
+}
+
+void Bestiole::setVitessePolaire(double vitesse) {
+    Bestiole::vitesse = vitesse;
+}
+
+bool Bestiole::getIsSchizo() const {
+    return isSchizo;
+}
+
+double Bestiole::getPDeath() const {
+    return pDeath;
+}
+
+void Bestiole::setPDeath(double pDeath) {
+    Bestiole::pDeath = pDeath;
+}
+
+double Bestiole::getPClone() const {
+    return pClone;
+}
+
+void Bestiole::setPClone(double pClone) {
+    Bestiole::pClone = pClone;
+}
+
+void Bestiole::setVitesseCartesien(double x, double y) {
+    this->setVitessePolaire(sqrt(x * x + y * y));
+}
+
+double *Bestiole::getVitesseCartesien() {
+    double coord[2];
+    return coord;
+}
+

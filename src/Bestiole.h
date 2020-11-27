@@ -5,8 +5,9 @@
 #include "UImg.h"
 
 #include <iostream>
+#include <vector>
 
-using namespace std;
+//using namespace std;
 
 
 class Milieu;
@@ -33,7 +34,7 @@ private :
    bool              isSchizo; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
-   std::unique_ptr<std::vector<Bestiole>>   listBestiole;
+   std::vector<Bestiole> *   listBestiole;
 
    T               * couleur;
 
@@ -54,25 +55,24 @@ public :                                           // Forme canonique :
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
-   int               getIdentite(); // id
-   int               getCoordonne(); // position
-   double            getSize(); // taille
-   double            getLifeSpan(); // duree de vie
-   double            getOrientation();
-   double            getVitesse();
-   bool              isSchizo(); // Indication de l'état mental de la bestiole...
-   double            getPDeath(); // Proba de mort par collision
-   double            getPClone(); // Proba de clonage
-
-   int               setCoordonne(); // position
-   double            setSize(); // taille
-   double            setLifeSpan(); // duree de vie
-   double            setOrientation();
-   double            setVitesse();
-   bool              setSchizo(); // Indication de l'état mental de la bestiole...
-   double            setPDeath(); // Proba de mort par collision
-   double            setPClone(); // Proba de clonage
-
+    int getIdentite() const;
+    int getX() const;
+    void setX(int x);
+    int getY() const;
+    void setY(int y);
+    double getSize() const;
+    double getLifeSpan() const;
+    double getOrientation() const;
+    void setOrientation(double orientation);
+    double getVitessePolaire() const;
+    void setVitessePolaire(double vitesse);
+    bool getIsSchizo() const;
+    double getPDeath() const;
+    void setPDeath(double pDeath);
+    double getPClone() const;
+    void setPClone(double pClone);
+    void setVitesseCartesien(double x, double y);
+    double * getVitesseCartesien();
 };
 
 
