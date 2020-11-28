@@ -1,4 +1,5 @@
 #include<math.h>
+#include "Bestiole.h"
 
 double distanceBestioles(const Bestiole a, const Bestile b){
     double x =(float)(a.getX()-b.getX());
