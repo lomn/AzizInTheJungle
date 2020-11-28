@@ -1,8 +1,13 @@
 #ifndef _BESTIOLES_H_
 #define _BESTIOLES_H_
+#include <vector>
 
-#include "bestiole.h"
+class Bestiole;
+class Accessoire;
 
-double distanceBestioles(const Bestiole a, const Bestile b);
+double distance(const Bestiole a, const Bestiole b);
+double getCarapvalue(std::vector<Accessoire> list);
+double getCamvalue(std::vector<Accessoire> list);
+double getNagvalue(std::vector<Accessoire> list);
 
 #endif
