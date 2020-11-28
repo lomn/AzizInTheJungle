@@ -5,8 +5,8 @@
 #ifndef AZIZINTHEJUNGLE_LIFEMANAGER_H
 #define AZIZINTHEJUNGLE_LIFEMANAGER_H
 #include <vector>
+#include "Bestiole.h"
 
-class Bestiole;
 
 class LifeManager {
 private:

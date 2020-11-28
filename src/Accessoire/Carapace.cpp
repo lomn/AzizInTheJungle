@@ -11,7 +11,7 @@ Carapace::Carapace(const Carapace & copieCarapace){
 
 //-_-_-
 
-char* Carapace::getType() const {
+const char* Carapace::getType() const {
     return "Carapace";
 }
 

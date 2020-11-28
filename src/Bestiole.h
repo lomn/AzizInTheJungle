@@ -6,12 +6,11 @@
 
 #include <iostream>
 #include <vector>
-
+#include "Accessoire/Accessoire.h"
 //using namespace std;
 
 
 class Milieu;
-
 
 class Bestiole
 {
@@ -34,7 +33,7 @@ private :
    bool              isSchizo; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
-   std::vector<Bestiole> *   listBestiole;
+   std::vector<Accessoire>   listAccessoire;
 
    T               * couleur;
 
@@ -73,6 +72,7 @@ public :                                           // Forme canonique :
     void setPClone(double pClone);
     void setVitesseCartesien(double x, double y);
     double * getVitesseCartesien();
+    std::vector<Accessoire>   getAccessoires();
 };
 
 

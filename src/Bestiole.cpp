@@ -1,7 +1,7 @@
 #include "Bestiole.h"
 
 #include "Milieu.h"
-
+#include "Accessoire/Accessoire.h"
 #include <cstdlib>
 #include <cmath>
 
@@ -217,7 +217,11 @@ void Bestiole::setVitesseCartesien(double x, double y) {
 }
 
 double *Bestiole::getVitesseCartesien() {
-    double coord[2];
+    double coord[2]={0,0};
     return coord;
+}
+
+std::vector<Accessoire> Bestiole::getAccessoires() {
+    return this->listAccessoire;
 }
 

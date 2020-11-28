@@ -1,6 +1,8 @@
 #include<cmath>
 #include "Bestiole.h"
 #include "Accessoire/Accessoire.h"
+
+
 double distance(const Bestiole a, const Bestiole b){
     double x =(float)(a.getX()-b.getX());
     double y =(float)(a.getY()-b.getY());

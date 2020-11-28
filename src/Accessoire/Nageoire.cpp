@@ -11,7 +11,7 @@ Nageoire::Nageoire(const Nageoire & copieNageoire){
 
 //-_-_-
 
-char* Nageoire::getType() const {
+const char* Nageoire::getType() const {
     return "Nageoire";
 }
 

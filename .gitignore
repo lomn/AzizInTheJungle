@@ -1,3 +1,5 @@
 *.o
 /src/CMakeLists.txt
 /src/cmake-build-debug/
+/src/Accessoire/CMakeLists.txt
+main

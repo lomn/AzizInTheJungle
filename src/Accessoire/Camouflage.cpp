@@ -11,7 +11,7 @@ Camouflage::Camouflage(const Camouflage & copieCamouflage){
 
 //-_-_-
 
-char* Camouflage::getType() const {
+const char* Camouflage::getType() const {
     return "Camouflage";
 }
 

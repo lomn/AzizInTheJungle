@@ -1,9 +1,11 @@
-#ifndef _BESTIOLES_H_
-#define _BESTIOLES_H_
+#ifndef _BESTIOLES_UTIL_H_
+#define _BESTIOLES_UTIL_H_
+
 #include <vector>
 
 class Bestiole;
 class Accessoire;
+
 
 double distance(const Bestiole a, const Bestiole b);
 double getCarapvalue(std::vector<Accessoire> list);
