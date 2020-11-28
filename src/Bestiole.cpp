@@ -171,7 +171,7 @@ double Bestiole::getSize() const {
 }
 
 
-double Bestiole::getLifeSpan() const {
+int Bestiole::getLifeSpan() const {
     return lifeSpan;
 }
 

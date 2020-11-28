@@ -27,7 +27,7 @@ private :
    int               identite; // id
    int               x, y; // position
    double            size; // taille
-   double            lifeSpan; // duree de vie
+   int            lifeSpan; // duree de vie
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
@@ -61,7 +61,7 @@ public :                                           // Forme canonique :
     int getY() const;
     void setY(int y);
     double getSize() const;
-    double getLifeSpan() const;
+    int getLifeSpan() const;
     double getOrientation() const;
     void setOrientation(double orientation);
     double getVitessePolaire() const;
