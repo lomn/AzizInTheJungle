@@ -2,8 +2,6 @@
 #define _CARAPACE_H_
 
 #include "Accessoire.h"
-#include <iostream>
-#include <vector>
 
 
 class Carapace : public Accessoire
