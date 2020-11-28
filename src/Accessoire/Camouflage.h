@@ -16,7 +16,7 @@ public:
     Camouflage(double coefCamouflage);
     ~Camouflage();
 
-    virtual char* getType() const;
+    virtual const char* getType() const;
     virtual double getCoefCamouflage() const;
     void setCoefCamouflage(double coefCarapace);
 };

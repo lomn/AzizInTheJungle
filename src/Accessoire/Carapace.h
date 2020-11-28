@@ -14,7 +14,7 @@ public:
     Carapace(double coefCarapace);
     ~Carapace();
 
-    virtual char* getType() const;
+    virtual const char* getType() const;
     virtual double getCoefCarapace() const;
     void setCoefCarapace(double coefCarapace);
 };
