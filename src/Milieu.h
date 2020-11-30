@@ -4,22 +4,24 @@
 
 #include "UImg.h"
 #include "Bestiole.h"
+#include "LifeManager.h"
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
+class LifeManager;
 
 class Milieu : public UImg
 {
 
 private :
    static const T          white[];
-
+   static int stepcount;
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
-
+   LifeManager            lifeMana;
 public :
    Milieu( int _width, int _height );
    ~Milieu( void );
