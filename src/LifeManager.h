@@ -13,7 +13,7 @@ private:
     //noparam
     static bool intersect(Bestiole& b1, Bestiole& b2);
 public:
-    static void step(std::vector<Bestiole> list);
+    static void step(std::vector<Bestiole> & list);
 };
 
 
