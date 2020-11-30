@@ -26,7 +26,7 @@ private :
    int               identite; // id
    int               x, y; // position
    double            size; // taille
-   int            lifeSpan; // duree de vie
+   int               lifeSpan; // duree de vie
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;

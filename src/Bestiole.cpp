@@ -30,6 +30,11 @@ Bestiole::Bestiole( void )
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
+    size=10 ; // taille
+    lifeSpan=100; // duree de vie
+    pDeath=0.3; // Proba de mort par collision
+    pClone=0.1; // Proba de clonage
+
 }
 
 
@@ -48,6 +53,10 @@ Bestiole::Bestiole( const Bestiole & b )
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
+    size=10 ; // taille
+    lifeSpan=100; // duree de vie
+    pDeath=0.3; // Proba de mort par collision
+    pClone=0.1; // Proba de clonage
 }
 
 
@@ -102,7 +111,7 @@ void Bestiole::bouge( int xLim, int yLim )
       y = static_cast<int>( ny );
       cumulY += ny - y;
    }
-
+    this->lifeSpan--;
 }
 
 
