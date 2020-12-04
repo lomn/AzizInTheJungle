@@ -5,9 +5,14 @@
 #ifndef AZIZINTHEJUNGLE_COMPORTEMENT_H
 #define AZIZINTHEJUNGLE_COMPORTEMENT_H
 
+class Bestiole;
 
 class Comportement {
-
+private:
+    const char * nom;
+public:
+    Comportement();
+    virtual float * calculVitesse(const Bestiole &b);
 };
 
 
