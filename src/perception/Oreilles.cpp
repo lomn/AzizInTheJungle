@@ -2,35 +2,31 @@
 #include "../Bestiole.h"
 
 
-Oreilles::Oreilles(double distance, const Bestiole & bestiole)
+Oreilles::Oreilles(double distance, Bestiole & bestiole)
 {
-    thisBestiole = bestiole;
+    thisBestiole = static_cast<Bestiole*>(&bestiole);
     m_distance = distance;
-    return;
 }
 
 
-Oreilles::Oreilles(Oreilles oreillesOrigine)
+Oreilles::Oreilles(const Oreilles & oreillesOrigine)
 {
     m_distance = oreillesOrigine.getDistance();
-    return;
 }
 
 
 Oreilles::~Oreilles()
 {
-    return;
 }
 
-double Oreilles::getDistance()
-{
+double Oreilles::getDistance() const {
     return m_distance;
 }
 
 bool Oreilles::jeTeVois(const Bestiole & bestiole)
 {
-    double thisX = thisBestiole.getX();
-    double thisY = thisBestiole.getY();
+    double thisX = thisBestiole->getX();
+    double thisY = thisBestiole->getY();
 
     //Déroule le code
 
