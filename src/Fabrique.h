@@ -18,6 +18,8 @@ private:
 
 public:
     Fabrique(int width, int height, unsigned float kamikaze, unsigned float prevoyant, unsigned float gregaire, unsigned float peureux); // Les paramètres en floatindique les proportions de chaques comportement
+    ~Fabrique();
+    Bestiole & addMember();
 
 };
 

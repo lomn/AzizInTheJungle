@@ -9,8 +9,17 @@ Fabrique::Fabrique(int width, int height, unsigned float kamikaze, unsigned floa
     float normalize = 1/(kamikaze + prevoyant + gregaire + peureux);
 
     //On s'assure que la somme des probas est égale a 1
-    pourcentageComportement[KAMIKAZE_IND] = kamikaze*normalize;
+    pourcentageComportement[KAMIKAZE_IND]  = kamikaze*normalize;
     pourcentageComportement[PREVOYANT_IND] = prevoyant*normalize;
-    pourcentageComportement[GREGAIRE_IND] = gregaire*normalize;
-    pourcentageComportement[PEUREUX_IND] = peureux*normalize;
+    pourcentageComportement[GREGAIRE_IND]  = gregaire*normalize;
+    pourcentageComportement[PEUREUX_IND]   = peureux*normalize;
+}
+
+Fabrique::~Fabrique()
+{
+    return;
+}
+
+Fabrique::Bestiole & addMember(){
+    return Bestiole();
 }
