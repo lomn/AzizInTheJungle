@@ -7,7 +7,9 @@
 #include "Comportement.h"
 
 class Kamikaze : Comportement {
-
+public:
+    Kamikaze();
+    double * calculVitesse(const Bestiole &b, std::vector<Bestiole> & list);
 };
 
 

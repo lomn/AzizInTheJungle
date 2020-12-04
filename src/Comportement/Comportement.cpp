@@ -1,14 +1,14 @@
-//
-// Created by sella on 04/12/2020.
-//
-
 #include "Comportement.h"
 
-float * Comportement::calculVitesse(const Bestiole &b) {
-    float* vitesse[2];
-    return reinterpret_cast<float *>(vitesse);
+double * Comportement::calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) {
+    double vitesse[2];
+    return static_cast<double *>(vitesse);
 }
 
 Comportement::Comportement() {
     this->nom="Comportement";
+}
+
+Comportement::Comportement(const char *nom) {
+    this->nom = nom;
 }

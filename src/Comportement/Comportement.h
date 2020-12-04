@@ -4,15 +4,17 @@
 
 #ifndef AZIZINTHEJUNGLE_COMPORTEMENT_H
 #define AZIZINTHEJUNGLE_COMPORTEMENT_H
-
-class Bestiole;
+#include <vector>
+#include "../Bestiole.h"
 
 class Comportement {
 private:
     const char * nom;
 public:
     Comportement();
-    virtual float * calculVitesse(const Bestiole &b);
+    Comportement(const char * nom);
+    virtual double * calculVitesse(const Bestiole &b, std::vector<Bestiole> & list);
+    virtual const char* getNom(){return nom;};
 };
 
 
