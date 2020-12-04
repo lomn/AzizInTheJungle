@@ -28,13 +28,14 @@ void LifeManager::step(std::vector<Bestiole> & list) {
                                     double p_m1=p_m, p_m2=p_m;
 //                                    double p_m1 = p_m * getCarapvalue(b->getAccessoires());
 //                                    double p_m2 = p_m * getCarapvalue(otherB->getAccessoires());
-                                    if (p_m1<b->getPDeath()) {
+                                    if (p_m1<b->getPDeath()) { //Destruction bestiole b
                                         list.erase(list.begin()+i);
                                         std::cout << "Mort de collision"<<std::endl;
                                     }
-                                    if (p_m2<otherB->getPDeath()) {
+                                    if (p_m2<otherB->getPDeath()) { //Destruction otherB
                                         list.erase(list.begin()+j);
                                         std::cout << "Mort de collision"<<std::endl;
+                                        otherB = nullptr;
                                     }
 
                                 }
