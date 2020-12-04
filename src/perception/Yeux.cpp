@@ -11,7 +11,7 @@ Yeux::Yeux(double angle, double distance, const Bestiole & bestiole)
 }
 
 
-Yeux::Yeux(Yeux yeuxOrigine)
+Yeux::Yeux(Yeux & yeuxOrigine)
 {
     m_angle = yeuxOrigine.getAngle();
     m_distance = yeuxOrigine.getDistance();

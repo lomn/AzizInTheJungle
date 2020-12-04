@@ -1,4 +1,4 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Accessoire.o
+main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Accessoire.o Fabrique.o
 	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o BestioleUtil.o Accessoire.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp
@@ -16,5 +16,18 @@ BestioleUtil.o : BestioleUtil.h BestioleUtil.cpp Bestiole.o Accessoire.o
 LifeManager.o : LifeManager.h LifeManager.cpp BestioleUtil.o Accessoire.o
 	g++ -Wall -std=c++11 -c LifeManager.cpp -I .
 
+Fabrique.o	: Fabrique.h Fabrique.cpp Accessoire.o Camouflage.o Carapace.o Nageoire.o
+	g++ -Wall -std=c++11 -c Fabrique.cpp -I .
+
+# Accessoires
 Accessoire.o : ./Accessoire/Accessoire.h ./Accessoire/Accessoire.h
 	g++ -Wall -std=c++11 -c ./Accessoire/Accessoire.cpp -I .
+
+Camouflage.o : ./Accessoire/Camouflage.h ./Accessoire/Camouflage.h
+	g++ -Wall -std=c++11 -c ./Accessoire/Camouflage.cpp -I .
+
+Carapace.o : ./Accessoire/Carapace.h ./Accessoire/Carapace.h
+	g++ -Wall -std=c++11 -c ./Accessoire/Carapace.cpp -I .
+
+Nageoire.o : ./Accessoire/Nageoire.h ./Accessoire/Nageoire.h
+	g++ -Wall -std=c++11 -c ./Accessoire/Nageoire.cpp -I .

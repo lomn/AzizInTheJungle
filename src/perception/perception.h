@@ -3,15 +3,17 @@
 
 #include "../Bestiole.h"
 #include<stdlib.h>
+#include "Oreilles.h"
+#include "Yeux.h"
 
 class Perception{
 private: 
     Bestiole * bestioleMaitre;
     std::vector<Yeux> yeuxVect;
-    std::Vector<Oreille> oreilleVect;
+    std::vector<Oreilles> oreilleVect;
 
 public:
-    virtual jeTeVois(const Bestiole & bestiole);
+    bool jeTeVois(const Bestiole & bestiole);
 };
 
 #endif
