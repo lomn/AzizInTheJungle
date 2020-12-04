@@ -8,7 +8,9 @@
 
 
 class Gregaire : Comportement{
-
+public:
+    Gregaire();
+    double * calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
 };
 
 
