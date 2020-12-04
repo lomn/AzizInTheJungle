@@ -5,3 +5,4 @@
 /src/perception/CMakeLists.txt
 /src/Comportement/CMakeLists.txt
 main
+*.json
