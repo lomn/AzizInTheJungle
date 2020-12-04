@@ -3,7 +3,7 @@
 #include "Accessoire/Accessoire.h"
 
 
-double distanceBestiole(const Bestiole a, const Bestiole b){
+double distanceBestiole(const Bestiole & a, const Bestiole & b){
     double x =(float)(a.getX()-b.getX());
     double y =(float)(a.getY()-b.getY());
     return sqrt(x*x+y*y);
