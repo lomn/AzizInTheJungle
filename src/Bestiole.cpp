@@ -31,9 +31,9 @@ Bestiole::Bestiole( void )
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
     size=10 ; // taille
-    lifeSpan=100; // duree de vie
-    pDeath=0.3; // Proba de mort par collision
-    pClone=0.1; // Proba de clonage
+    lifeSpan=1000; // duree de vie
+    pDeath=0.01; // Proba de mort par collision
+    pClone=0.01; // Proba de clonage
 
 }
 
@@ -54,9 +54,9 @@ Bestiole::Bestiole( const Bestiole & b )
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
     size=10 ; // taille
-    lifeSpan=100; // duree de vie
-    pDeath=0.3; // Proba de mort par collision
-    pClone=0.1; // Proba de clonage
+    lifeSpan=1000; // duree de vie
+    pDeath=0.01; // Proba de mort par collision
+    pClone=0.01; // Proba de clonage
 }
 
 
@@ -236,5 +236,9 @@ std::vector<Accessoire> Bestiole::getAccessoires() {
 
 void Bestiole::addAccessoires(Accessoire &acc) {
     this->listAccessoire.push_back(acc);
+}
+
+void Bestiole::collide() {
+    orientation=-orientation;
 }
 

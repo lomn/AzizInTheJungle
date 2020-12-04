@@ -82,6 +82,7 @@ public :                                           // Forme canonique :
     // Methodes accessoires
     std::vector<Accessoire>   getAccessoires();
     void   addAccessoires(Accessoire &acc);
+    void collide();
 };
 
 
