@@ -55,7 +55,7 @@ void LifeManager::step(std::vector<Bestiole> & list) {
 
 }
 
-bool LifeManager::intersect(Bestiole &b1, Bestiole &b2) {
+bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
     if (not (b1==b2)){
         double dist1 =  distanceBestiole(b1, b2);
         double v2 =  b1.getSize() + b2.getSize();
