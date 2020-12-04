@@ -16,6 +16,7 @@ private:
     //char* Type;
 
 public:
+    virtual ~Accessoire();
     virtual const char* getType(){return "None";};
     virtual double getCoefCarapace(){return 0;};
     virtual double getCoefCamouflage(){return 0;};
