@@ -10,14 +10,22 @@
 #define GREGAIRE_IND 2
 #define PEUREUX_IND 3
 
+#define CARAPACE_IND 0
+#define CAMOUFLAGE_IND 1
+#define NAGEOIRE_IND 2
+
 class Fabrique {
 private: 
-    float[] pourcentageComportement;
+    float[4] probaComportement;
+    float[3] probaAccessoires;
     int m_width;
     int m_height;
 
 public:
-    Fabrique(int width, int height, unsigned float kamikaze, unsigned float prevoyant, unsigned float gregaire, unsigned float peureux); // Les paramètres en floatindique les proportions de chaques comportement
+    // Les paramètres en floatindique les proportions de chaques comportement/accessoires etc dans la population.
+    Fabrique(int width, int height, 
+        unsigned float kamikaze, unsigned float prevoyant, unsigned float gregaire, unsigned float peureux, 
+        unsigned float carapace, unsigned float camouflage, unsigned float nageoire); 
     ~Fabrique();
     Bestiole & addMember();
 
