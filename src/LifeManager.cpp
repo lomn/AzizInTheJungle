@@ -8,14 +8,9 @@
 
 void LifeManager::step(std::vector<Bestiole> & list) {
     std::cout << "dans le mana"<<std::endl;
-//    std::cout << "---"<<std::endl;
-//    std::vector<Bestiole> list = *listBest;
-//    std::cout << "---"<<std::endl;
     for (int i=0; i<list.size(); i++){
             auto b=static_cast<Bestiole*>(&(list[i]));
             if (b) { // si la bestiole existe (si elle n’a pas été tué avant)
-//                std::cout << "Mort dans : "<< b->getLifeSpan()<<std::endl;
-
                 if (b->getLifeSpan() <= 0) {
                     list.erase(list.begin() + i);
                     std::cout << "Mort de vieillesse"<<std::endl;
@@ -24,18 +19,10 @@ void LifeManager::step(std::vector<Bestiole> & list) {
                     // Verification colision
                     for (int j=0; j<list.size(); j++){
                         auto otherB=static_cast<Bestiole*>(&(list[j]));
-//                        std::cout << i<<" , "<< j << std::endl; // il faut combinaisons uniques
                         if (otherB!=nullptr){ // si elle a été tué au tour d’avant
-//                            std::cout << "Collision time! " << std::endl;
                             bool cond= (not (*b==*otherB));
-//                            std::cout << b->getIdentite() <<" < "  << otherB->getIdentite()<< std::endl;
-//                            std::cout << " cond:::" << cond << std::endl;
-                            if (cond) std::cout << " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< " << std::endl;
                             if (cond){
                                 // Définition d’une hitbox
-//                                double dist = distanceBestiole(*b, *otherB);
-//                                std::cout << "Collision de dist: " << dist << std::endl;
-//                                std::cout << "x::: "<< (*b).getX() << std::endl;
                                 if (intersect(*b, *otherB)) {
                                     std::cout << "Collision de dist: " << distanceBestiole(*b, *otherB) << std::endl;
                                     double p_m=((double) rand() / (RAND_MAX));
@@ -57,7 +44,6 @@ void LifeManager::step(std::vector<Bestiole> & list) {
                     }
                     // Clonage
                     double p_c=((double) rand() / (RAND_MAX));
-//                    std::cout << p_c << std::endl;
                     if (p_c < b->getPClone()){
                         std::cout << "Clonning"  << std::endl;
                         Bestiole bc = Bestiole(static_cast<Bestiole>(*b));
