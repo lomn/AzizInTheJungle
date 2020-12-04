@@ -16,16 +16,16 @@
 
 class Fabrique {
 private: 
-    float[4] probaComportement;
-    float[3] probaAccessoires;
+    float probaComportement[4];
+    float probaAccessoires[3];
     int m_width;
     int m_height;
 
 public:
     // Les paramètres en floatindique les proportions de chaques comportement/accessoires etc dans la population.
     Fabrique(int width, int height, 
-        unsigned float kamikaze, unsigned float prevoyant, unsigned float gregaire, unsigned float peureux, 
-        unsigned float carapace, unsigned float camouflage, unsigned float nageoire); 
+        float kamikaze, float prevoyant, float gregaire, float peureux, 
+        float carapace, float camouflage, float nageoire); 
     ~Fabrique();
     Bestiole & addMember();
 
