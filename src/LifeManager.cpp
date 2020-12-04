@@ -8,9 +8,9 @@ void quickDelete( int idx , std::vector<Bestiole> & list)
     list.pop_back();
 }
 
-void LifeManager::step(std::vector<Bestiole> & list) {
+void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
     std::cout << "Dans le manager"<<std::endl;
-    int nb_test=0;
+//    int nb_test=0;
     std::cout << "taille liste " << list.size() <<std::endl;
     int i=0;
     while ( i<list.size()){
@@ -20,6 +20,7 @@ void LifeManager::step(std::vector<Bestiole> & list) {
 //                    list.erase(list.begin() + i);
                     quickDelete(i, list);
                     std::cout << "Mort de vieillesse"<<std::endl;
+                    nb_mort++;
                 }
                 else {
                     // Verification colision
@@ -40,12 +41,16 @@ void LifeManager::step(std::vector<Bestiole> & list) {
 //                                        list.erase(list.begin()+i);
                                         quickDelete(i, list);
                                         std::cout << "Mort de collision"<<std::endl;
+                                        nb_mort++;
                                     }
+                                    else b->collide();
                                     if (p_m2<otherB->getPDeath()) { //Destruction otherB
 //                                        list.erase(list.begin()+j);
                                         quickDelete(j, list);
                                         std::cout << "Mort de collision"<<std::endl;
+                                        nb_mort++;
                                     }
+                                    else otherB->collide();
 
                                 }
                             }
@@ -57,14 +62,15 @@ void LifeManager::step(std::vector<Bestiole> & list) {
                     if (p_c < b->getPClone()){
                         std::cout << "Clonning"  << std::endl;
                         Bestiole bc = Bestiole(static_cast<Bestiole>(*b));
-                        bc.initCoords(300, 300);
+                        bc.initCoords(xLim, yLim);
                         list.push_back(bc);
+                        nb_clon++;
                     }
                 }
             }
             i++;
     }
-    std::cout << "Nombre d'intersection " << nb_test << std::endl;
+//    std::cout << "Nombre d'intersections testées" << nb_test << std::endl;
 }
 
 bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
@@ -77,4 +83,8 @@ bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
     else {
         return false;
     }
+}
+
+void LifeManager::getStat() {
+    std::cout << "Nombre de morts : " << nb_mort << " Nombre de clonages : " << nb_clon << std::endl;
 }
