@@ -3,4 +3,5 @@
 /src/cmake-build-debug/
 /src/Accessoire/CMakeLists.txt
 /src/perception/CMakeLists.txt
+/src/Comportement/CMakeLists.txt
 main
