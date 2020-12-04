@@ -31,7 +31,7 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
                             bool cond= (not (*b==*otherB));
                             if (cond){
                                 // Définition d’une hitbox
-                                nb_test++;
+//                                nb_test++;
                                 if (intersect(*b, *otherB)) {
                                     double p_m=((double) rand() / (RAND_MAX));
                                     double p_m1=p_m, p_m2=p_m;
