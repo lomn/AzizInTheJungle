@@ -44,6 +44,17 @@ Bestiole & Fabrique::addMember(){
     if(p < probaAccessoires[CARAPACE_IND]){
             b->addAccessoires(*new Carapace((double)rand()/(double)RAND_MAX));
     }
+
+    p = rand() % 101;
+    if(p < probaAccessoires[CAMOUFLAGE_IND]){
+            b->addAccessoires(*new Camouflage((double)rand()/(double)RAND_MAX));
+    }
+
+    p = rand() % 101;
+    if(p < probaAccessoires[NAGEOIRE_IND]){
+            b->addAccessoires(*new Nageoire((double)rand()/(double)RAND_MAX));
+    }
+
     // Assignation de la personnalité ici :
 
     // Ajout des attributs de perception ici :
