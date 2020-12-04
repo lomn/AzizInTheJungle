@@ -1,8 +1,8 @@
 #include "Comportement.h"
 
-double * Comportement::calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) {
-    double vitesse[2];
-    return static_cast<double *>(vitesse);
+std::array<double, 2> Comportement::calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) {
+    std::array<double, 2> vitesse{0,0};
+    return vitesse;
 }
 
 Comportement::Comportement() {

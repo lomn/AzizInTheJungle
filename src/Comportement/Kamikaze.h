@@ -5,11 +5,12 @@
 #ifndef AZIZINTHEJUNGLE_KAMIKAZE_H
 #define AZIZINTHEJUNGLE_KAMIKAZE_H
 #include "Comportement.h"
+#include <array>
 
 class Kamikaze : Comportement {
 public:
     Kamikaze();
-    double * calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
+    std::array<double, 2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
 };
 
 

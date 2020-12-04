@@ -5,12 +5,12 @@
 #ifndef AZIZINTHEJUNGLE_GREGAIRE_H
 #define AZIZINTHEJUNGLE_GREGAIRE_H
 #include "Comportement.h"
-
+#include <array>
 
 class Gregaire : Comportement{
 public:
     Gregaire();
-    double * calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
+    std::array<double,2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
 };
 
 

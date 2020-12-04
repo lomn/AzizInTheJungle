@@ -225,8 +225,10 @@ void Bestiole::setVitesseCartesien(double x, double y) {
     this->setVitessePolaire(sqrt(x * x + y * y));
 }
 
-double *Bestiole::getVitesseCartesien() {
-    double coord[2]={0,0};
+std::array<double, 2> Bestiole::getVitesseCartesien() {
+    std::array<double,2> coord{};
+    coord[0] = vitesse*cos(orientation);
+    coord[1] = vitesse*sin(orientation);
     return coord;
 }
 

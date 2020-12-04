@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
 #include "Accessoire/Accessoire.h"
 //using namespace std;
 
@@ -77,7 +78,7 @@ public :                                           // Forme canonique :
     double getVitessePolaire() const;
     void setVitessePolaire(double vitesse);
     void setVitesseCartesien(double x, double y);
-    double * getVitesseCartesien();
+    std::array<double, 2> getVitesseCartesien();
 
     // Methodes accessoires
     std::vector<Accessoire>   getAccessoires();

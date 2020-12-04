@@ -7,8 +7,8 @@
 
 Kamikaze::Kamikaze(): Comportement("Kamikaze") {}
 
-double *Kamikaze::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) {
-    double vitesse[2];
+std::array<double, 2> Kamikaze::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) {
+    std::array<double, 2> vitesse{};
     double vx, vy;
     double dx, dy;
     for ( auto it = list.begin() ; it != list.end() ; ++it ){ // fonce sur la première bestiole
@@ -19,7 +19,7 @@ double *Kamikaze::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) 
             vy = dy*b.getVitessePolaire()/sqrt(dx*dx+dy*dy);
             vitesse[0]=vx;
             vitesse[1]=vy;
-            return static_cast<double *>(vitesse);
+            return CartesienToPolaire(vitesse);
         }
     }
     /* Recherche de la bestiole la plus proche
@@ -40,7 +40,7 @@ double *Kamikaze::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) 
     vy = dy*b.getVitessePolaire()/sqrt(dx*dx+dy*dy);
     vitesse[0]=vx;
     vitesse[1]=vy;
-    return static_cast<double *>(vitesse);
+    return CartesienToPolaire(vitesse);
      */
 
 }
