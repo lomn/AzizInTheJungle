@@ -5,27 +5,27 @@
 #include "Accessoire/Nageoire.h"
 
 Fabrique::Fabrique(int width, int height, 
-        unsigned float kamikaze, unsigned float prevoyant, unsigned float gregaire, unsigned float peureux, 
-        unsigned float carapace, unsigned float camouflage, unsigned float nageoire)
+        float kamikaze, float prevoyant, float gregaire, float peureux, 
+        float carapace, float camouflage, float nageoire)
 {
     this->m_height = height;
     this->m_width  = width;
-    this->probaComportement = {0., 0., 0., 0.};
-    this->probaAccessoires  = {0., 0., 0.};
+    //this->probaComportement = {0., 0., 0., 0.};
+    //this->probaAccessoires  = {0., 0., 0.};
 
     // Proba pour le comportement.
-    unsigned float normalize = 1/(kamikaze + prevoyant + gregaire + peureux);
+    float normalize = 1/(kamikaze + prevoyant + gregaire + peureux);
     //On s'assure que la somme des probas est égale a 1
-    probaComportement[KAMIKAZE_IND]  = kamikaze*normalize;
-    probaComportement[PREVOYANT_IND] = prevoyant*normalize;
-    probaComportement[GREGAIRE_IND]  = gregaire*normalize;
-    probaComportement[PEUREUX_IND]   = peureux*normalize;
+    this->probaComportement[KAMIKAZE_IND]  = kamikaze*normalize;
+    this->probaComportement[PREVOYANT_IND] = prevoyant*normalize;
+    this->probaComportement[GREGAIRE_IND]  = gregaire*normalize;
+    this->probaComportement[PEUREUX_IND]   = peureux*normalize;
 
     // Proba accessoires.
     normalize = 1/(carapace + camouflage + nageoire);
-    porbaAccessoires[CARAPACE_IND]   = carapace*normalize;
-    porbaAccessoires[CAMOUFLAGE_IND] = camouflage*normalize;
-    porbaAccessoires[NAGEOIRE_IND]   = nageoire*normalize;
+    this->probaAccessoires[CARAPACE_IND]   = carapace*normalize;
+    this->probaAccessoires[CAMOUFLAGE_IND] = camouflage*normalize;
+    this->probaAccessoires[NAGEOIRE_IND]   = nageoire*normalize;
 }
 
 Fabrique::~Fabrique()
@@ -33,20 +33,31 @@ Fabrique::~Fabrique()
     return;
 }
 
-Fabrique::Bestiole & addMember(){
+Bestiole & Fabrique::addMember(){
     int p;
-    Bestiole & b = new Bestiole();
-    b.initCoords(300,300);
+    Bestiole * b = new Bestiole();
+    b->initCoords(300,300);
 
     
     // Ajout d'accessoirres ici :
     p = rand() % 101;
     if(p < probaAccessoires[CARAPACE_IND]){
-            b.addAccessoires(new Carapace((double)rand()/(double)RAND_MAX));
+            b->addAccessoires(*new Carapace((double)rand()/(double)RAND_MAX));
     }
+
+    p = rand() % 101;
+    if(p < probaAccessoires[CAMOUFLAGE_IND]){
+            b->addAccessoires(*new Camouflage((double)rand()/(double)RAND_MAX));
+    }
+
+    p = rand() % 101;
+    if(p < probaAccessoires[NAGEOIRE_IND]){
+            b->addAccessoires(*new Nageoire((double)rand()/(double)RAND_MAX));
+    }
+
     // Assignation de la personnalité ici :
 
     // Ajout des attributs de perception ici :
 
-    return b;
+    return *b;
 }
