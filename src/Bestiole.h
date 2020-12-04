@@ -53,25 +53,33 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+   friend bool operator!=( const Bestiole & b1, const Bestiole & b2 ){return not(b1 == b2);};
 
+    // Méthode de personalité / identité
     int getIdentite() const;
-    int getX() const;
-    void setX(int x);
-    int getY() const;
-    void setY(int y);
     double getSize() const;
-    int getLifeSpan() const;
-    double getOrientation() const;
-    void setOrientation(double orientation);
-    double getVitessePolaire() const;
-    void setVitessePolaire(double vitesse);
     bool getIsSchizo() const;
+
+    // Méthodes relative aux propriété de vie/mort
+    int getLifeSpan() const;
     double getPDeath() const;
     void setPDeath(double pDeath);
     double getPClone() const;
     void setPClone(double pClone);
+
+    // Methodes de localisation / vitesse
+    int getX() const;
+    void setX(int x);
+    int getY() const;
+    void setY(int y);
+    double getOrientation() const;
+    void setOrientation(double orientation);
+    double getVitessePolaire() const;
+    void setVitessePolaire(double vitesse);
     void setVitesseCartesien(double x, double y);
     double * getVitesseCartesien();
+
+    // Methodes accessoires
     std::vector<Accessoire>   getAccessoires();
     void   addAccessoires(Accessoire &acc);
 };
