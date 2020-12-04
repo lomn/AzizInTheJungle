@@ -8,6 +8,7 @@ class Accessoire;
 
 
 double distanceBestiole(const Bestiole & a, const Bestiole & b);
+double * CartesienToPolaire(double v[2]);
 double getCarapvalue(std::vector<Accessoire> list);
 double getCamvalue(std::vector<Accessoire> list);
 double getNagvalue(std::vector<Accessoire> list);
