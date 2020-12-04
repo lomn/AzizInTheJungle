@@ -1,6 +1,6 @@
-//
-// Created by sella on 28/11/2020.
-//
+/*
+ * Très peu optimisé ...
+ */
 
 #include "LifeManager.h"
 #include "Bestiole.h"
@@ -24,7 +24,6 @@ void LifeManager::step(std::vector<Bestiole> & list) {
                             if (cond){
                                 // Définition d’une hitbox
                                 if (intersect(*b, *otherB)) {
-                                    std::cout << "Collision de dist: " << distanceBestiole(*b, *otherB) << std::endl;
                                     double p_m=((double) rand() / (RAND_MAX));
                                     double p_m1=p_m, p_m2=p_m;
 //                                    double p_m1 = p_m * getCarapvalue(b->getAccessoires());
@@ -61,7 +60,7 @@ bool LifeManager::intersect(Bestiole &b1, Bestiole &b2) {
         double dist1 =  distanceBestiole(b1, b2);
         double v2 =  b1.getSize() + b2.getSize();
         std::cout << "intersect :: " << dist1 << " < " << v2 << std::endl;
-        return (distanceBestiole(b1, b2) < b1.getSize() + b2.getSize());
+        return (dist1 < v2);
     }
     else {
         return false;
