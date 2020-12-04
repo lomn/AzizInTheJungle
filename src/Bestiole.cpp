@@ -234,3 +234,7 @@ std::vector<Accessoire> Bestiole::getAccessoires() {
     return this->listAccessoire;
 }
 
+void Bestiole::addAccessoires(Accessoire &acc) {
+    this->listAccessoire.push_back(acc);
+}
+

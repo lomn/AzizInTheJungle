@@ -73,6 +73,7 @@ public :                                           // Forme canonique :
     void setVitesseCartesien(double x, double y);
     double * getVitesseCartesien();
     std::vector<Accessoire>   getAccessoires();
+    void   addAccessoires(Accessoire &acc);
 };
 
 
