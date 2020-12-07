@@ -14,40 +14,36 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
     std::cout << "taille liste " << list.size() <<std::endl;
     int i=0;
     while ( i<list.size()){
-            auto b=static_cast<Bestiole*>(&(list[i]));
+            Bestiole* b = &(list[i]);
             if (b) { // si la bestiole existe (si elle n’a pas été tué avant)
                 if (b->getLifeSpan() <= 0) {
-//                    list.erase(list.begin() + i);
-                    quickDelete(i, list);
                     std::cout << "Mort de vieillesse"<<std::endl;
+                    list.erase(list.begin() + i);
                     nb_mort++;
                 }
                 else {
                     // Verification colision
                     int j=i;
                     while (j<list.size()){
-                        auto otherB=static_cast<Bestiole*>(&(list[j]));
+                        Bestiole* otherB = &(list[j]);
                         if (otherB!=nullptr){ // si elle a été tué au tour d’avant
                             bool cond= (not (*b==*otherB));
                             if (cond){
                                 // Définition d’une hitbox
-//                                nb_test++;
                                 if (intersect(*b, *otherB)) {
                                     double p_m=((double) rand() / (RAND_MAX));
                                     double p_m1=p_m, p_m2=p_m;
 //                                    double p_m1 = p_m * getCarapvalue(b->getAccessoires());
 //                                    double p_m2 = p_m * getCarapvalue(otherB->getAccessoires());
-                                    if (p_m1<b->getPDeath()) { //Destruction bestiole b
-//                                        list.erase(list.begin()+i);
-                                        quickDelete(i, list);
-                                        std::cout << "Mort de collision"<<std::endl;
+                                    if (p_m1 < b->getPDeath()) { //Destruction bestiole b
+                                        std::cout << "Mort de collision 1"<< b <<std::endl;
+                                        list.erase(list.begin()+i);
                                         nb_mort++;
                                     }
                                     else b->collide();
-                                    if (p_m2<otherB->getPDeath()) { //Destruction otherB
-//                                        list.erase(list.begin()+j);
-                                        quickDelete(j, list);
-                                        std::cout << "Mort de collision"<<std::endl;
+                                    if (p_m2 < otherB->getPDeath()) { //Destruction otherB
+                                        std::cout << "Mort de collision 2"<< otherB << std::endl;
+                                        list.erase(list.begin()+j);
                                         nb_mort++;
                                     }
                                     else otherB->collide();
