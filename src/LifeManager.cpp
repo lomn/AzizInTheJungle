@@ -41,13 +41,19 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
                                         list.erase(list.begin()+i);
                                         nb_mort++;
                                     }
-                                    else b->collide();
+                                    else{
+                                        b->collide(); 
+                                        std::cout << "best 1 not dest" << std::endl;
+                                    }
                                     if (p_m2 < otherB->getPDeath()) { //Destruction otherB
                                         std::cout << "Mort de collision 2 : "<< otherB << std::endl;
                                         list.erase(list.begin()+j);
                                         nb_mort++;
                                     }
-                                    else otherB->collide();
+                                    else{
+                                        otherB->collide();
+                                        std::cout << "best 2 not dest" << std::endl;
+                                    }
 
                                 }
                             }
