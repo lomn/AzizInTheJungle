@@ -31,18 +31,19 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
                             if (cond){
                                 // Définition d’une hitbox
                                 if (intersect(*b, *otherB)) {
+                                    std::cout << "Intersection de bestioles" << std::endl;
                                     double p_m=((double) rand() / (RAND_MAX));
                                     double p_m1=p_m, p_m2=p_m;
 //                                    double p_m1 = p_m * getCarapvalue(b->getAccessoires());
 //                                    double p_m2 = p_m * getCarapvalue(otherB->getAccessoires());
                                     if (p_m1 < b->getPDeath()) { //Destruction bestiole b
-                                        std::cout << "Mort de collision 1"<< b <<std::endl;
+                                        std::cout << "Mort de collision 1 : "<< b <<std::endl;
                                         list.erase(list.begin()+i);
                                         nb_mort++;
                                     }
                                     else b->collide();
                                     if (p_m2 < otherB->getPDeath()) { //Destruction otherB
-                                        std::cout << "Mort de collision 2"<< otherB << std::endl;
+                                        std::cout << "Mort de collision 2 : "<< otherB << std::endl;
                                         list.erase(list.begin()+j);
                                         nb_mort++;
                                     }
