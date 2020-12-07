@@ -13,6 +13,10 @@ const double      Bestiole::LIMITE_VUE = 30.;
 int               Bestiole::next = 0;
 
 
+T* Bestiole::getCouleur() const{
+    return this->couleur;
+}
+
 Bestiole::Bestiole( void )
 {
 
@@ -51,7 +55,11 @@ Bestiole::Bestiole( const Bestiole & b )
    orientation = b.orientation;
    vitesse = b.vitesse;
    couleur = new T[ 3 ];
-   memcpy( couleur, b.couleur, 3*sizeof(T) );
+   //memcpy( couleur, b.couleur, 3*sizeof(T) );
+   const T* bcoul = b.getCouleur();
+    couleur[0] = bcoul[0];
+    couleur[1] = bcoul[1];
+    couleur[2] = bcoul[2];
 
     size=10 ; // taille
     lifeSpan=1000; // duree de vie
@@ -63,9 +71,9 @@ Bestiole::Bestiole( const Bestiole & b )
 Bestiole::~Bestiole( void )
 {
 
-   delete[] couleur;
-
-   cout << "dest Bestiole" << endl;
+    std::cout << "Deleteing bestiole\r\n";
+    std::cout << "Couleur : " << std::hex << &couleur << std::endl;
+    delete[] couleur;
 
 }
 
@@ -243,4 +251,3 @@ void Bestiole::addAccessoires(Accessoire &acc) {
 void Bestiole::collide() {
     orientation=-orientation;
 }
-

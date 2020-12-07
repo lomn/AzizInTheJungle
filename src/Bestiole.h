@@ -56,6 +56,8 @@ public :                                           // Forme canonique :
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
    friend bool operator!=( const Bestiole & b1, const Bestiole & b2 ){return not(b1 == b2);};
 
+   T* getCouleur() const;
+
     // Méthode de personalité / identité
     int getIdentite() const;
     double getSize() const;
