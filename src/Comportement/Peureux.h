@@ -9,6 +9,15 @@
 
 class Peureux: Comportement {
 
+private:
+    int scare_count;
+
+public:
+    Peureux();
+    std::array<double,2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
+    void setScare_count(int scare);
+    int getScare_count();
+
 };
 
 
