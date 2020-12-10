@@ -5,22 +5,22 @@
 #include <vector>
 
 
-Perception::Perception(Bestiole *bestiole){
-    bestioleMaitre = bestiole;
+Perception::Perception(){
     yeuxVect = std::vector<Yeux>();
+    oreilleVect = std::vector<Oreilles>();
 }
 
-bool Perception::jeTeVois(const Bestiole & bestiole){
+bool Perception::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole){
     if (!oreilleVect.empty()){
         for (std::vector<Oreilles>::size_type i=0;i<oreilleVect.size();i++){
-            if (oreilleVect[i].jeTeVois(bestiole)){
+            if (oreilleVect[i].jeTeVois(thisBestiole, bestiole)){
                 return true;
             }
         }
     }
     if (!yeuxVect.empty()){
         for (std::vector<Oreilles>::size_type i=0;i<yeuxVect.size();i++){
-            if (yeuxVect[i].jeTeVois(bestiole)){
+            if (yeuxVect[i].jeTeVois(thisBestiole, bestiole)){
                 return true;
             }
         }

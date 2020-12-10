@@ -9,14 +9,12 @@ class Bestiole;
 
 class Perception {
 private:
-    Bestiole * bestioleMaitre;
     std::vector<Yeux> yeuxVect;
     std::vector<Oreilles> oreilleVect;
 
 public:
-    Perception(): Perception(nullptr){};
-    Perception(Bestiole * bestiole);
-    bool jeTeVois(const Bestiole & bestiole);
+    Perception();
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
     void addYeux(Yeux y);
     void addOreille(Oreilles o);
 };

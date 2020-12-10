@@ -8,11 +8,12 @@
 #include <vector>
 #include <array>
 #include "Accessoire/Accessoire.h"
-#include "Perception/Perception.h"
+//#include "Perception/Perception.h"
 //using namespace std;
 
 
 class Milieu;
+class Perception;
 
 class Bestiole
 {
@@ -36,7 +37,7 @@ private :
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    std::vector<Accessoire>   listAccessoire;
-   Perception  percep;
+   Perception * percep;
 
    T               * couleur;
 

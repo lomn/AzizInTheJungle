@@ -39,7 +39,7 @@ Bestiole::Bestiole( void )
     lifeSpan=1000; // duree de vie
     pDeath=0.01; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
-    percep = Perception();
+    percep = new Perception();
 }
 
 
@@ -66,7 +66,7 @@ Bestiole::Bestiole( const Bestiole & b )
     lifeSpan=1000; // duree de vie
     pDeath=0.01; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
-    percep = Perception();
+    percep = new Perception();
 }
 
 
@@ -76,6 +76,7 @@ Bestiole::~Bestiole( void )
     std::cout << "Deleteing bestiole\r\n";
     std::cout << "Couleur : " << std::hex << &couleur << std::endl;
     delete[] couleur;
+    delete percep;
 
 }
 

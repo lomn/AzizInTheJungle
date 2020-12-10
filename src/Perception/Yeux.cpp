@@ -2,9 +2,8 @@
 #include "../Bestiole.h"
 
 
-Yeux::Yeux(double angle, double distance, const Bestiole & bestiole)
+Yeux::Yeux(double angle, double distance)
 {
-    thisBestiole = &bestiole;
     m_angle = angle;
     m_distance = distance;
 }
@@ -12,7 +11,6 @@ Yeux::Yeux(double angle, double distance, const Bestiole & bestiole)
 
 Yeux::Yeux(const Yeux & yeuxOrigine)
 {
-    thisBestiole=yeuxOrigine.getBestiole();
     m_angle = yeuxOrigine.getAngle();
     m_distance = yeuxOrigine.getDistance();
 }
@@ -31,13 +29,13 @@ double Yeux::getDistance() const
     return m_distance;
 }
 
-bool Yeux::jeTeVois(const Bestiole & bestiole)
+bool Yeux::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole)
 {   
     //Récupère la position, vitesse et direction de la bestiole avec les yeux
-    double thisX = thisBestiole->getX();
-    double thisY = thisBestiole->getY();
+    double thisX = thisBestiole.getX();
+    double thisY = thisBestiole.getY();
 
-    double vitesse = thisBestiole->getVitessePolaire();
+    double vitesse = thisBestiole.getVitessePolaire();
 
     double direction = bestiole.getOrientation();
 
@@ -68,6 +66,4 @@ bool Yeux::jeTeVois(const Bestiole & bestiole)
     };
 }
 
-Bestiole *Yeux::getBestiole() const {
-    return const_cast<Bestiole *>(thisBestiole);
-}
+

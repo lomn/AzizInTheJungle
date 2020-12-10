@@ -5,19 +5,17 @@ class Bestiole;
 
 class Yeux{
 private:
-    const Bestiole * thisBestiole;
     double m_angle;
     double m_distance;
 
 public:
-    Yeux(double angle, double distance, const Bestiole & bestiole);
+    Yeux(double angle, double distance);
     Yeux(const Yeux & yeuxOrigine);
     ~Yeux();
 
     double getAngle() const;
     double getDistance() const;
-    Bestiole * getBestiole() const;
-    bool jeTeVois(const Bestiole & bestiole);
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
 };
 
 #endif

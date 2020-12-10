@@ -6,17 +6,16 @@ class Bestiole;
 
 class Oreilles{
 private:
-    const Bestiole * thisBestiole;
     double m_distance;
 
 public:
-    Oreilles(double distance, Bestiole *bestiole);
+    Oreilles(double distance);
     Oreilles(const Oreilles & OreillesOrigine);
-    Oreilles(): Oreilles((double)0, nullptr) {};
+    Oreilles(): Oreilles((double)0) {};
     ~Oreilles();
 
     double getDistance() const;
-    bool jeTeVois(const Bestiole & bestiole);
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
 };
 
 #endif

@@ -2,9 +2,8 @@
 #include "../Bestiole.h"
 
 
-Oreilles::Oreilles(double distance, Bestiole *bestiole)
+Oreilles::Oreilles(double distance)
 {
-    thisBestiole = static_cast<Bestiole*>(bestiole);
     m_distance = distance;
 }
 
@@ -15,18 +14,16 @@ Oreilles::Oreilles(const Oreilles & oreillesOrigine)
 }
 
 
-Oreilles::~Oreilles()
-{
-}
+Oreilles::~Oreilles() {}
 
 double Oreilles::getDistance() const {
     return m_distance;
 }
 
-bool Oreilles::jeTeVois(const Bestiole & bestiole)
+bool Oreilles::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole)
 {
-    double thisX = thisBestiole->getX();
-    double thisY = thisBestiole->getY();
+    double thisX = thisBestiole.getX();
+    double thisY = thisBestiole.getY();
 
     //Déroule le code
 
