@@ -32,6 +32,7 @@ public :
    void step( void );
 
    void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
+   void removeMember(){listeBestioles.erase(listeBestioles.begin());}
    int nbVoisins( const Bestiole & b );
 
 };

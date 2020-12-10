@@ -53,6 +53,7 @@ public :                                           // Forme canonique :
 
    void initCoords( int xLim, int yLim );
 
+//   friend Bestiole operator=( const Bestiole & b1, const Bestiole & b2 ){b1 = Bestiole(b2);}
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
    friend bool operator!=( const Bestiole & b1, const Bestiole & b2 ){return not(b1 == b2);};
 

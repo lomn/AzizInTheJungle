@@ -30,6 +30,7 @@ Bestiole::Bestiole( void )
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
 
    couleur = new T[ 3 ];
+   printf("T (void) : %p\n", couleur);
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -45,36 +46,41 @@ Bestiole::Bestiole( void )
 Bestiole::Bestiole( const Bestiole & b )
 {
 
-   identite = ++next;
+   identite = b.getIdentite();
 
    cout << "const Bestiole (" << identite << ") par copie" << endl;
 
-   x = b.x;
-   y = b.y;
+   x = b.getX();
+   y = b.getY();
    cumulX = cumulY = 0.;
-   orientation = b.orientation;
-   vitesse = b.vitesse;
+   orientation = b.getOrientation();
+   vitesse = b.getVitessePolaire();
    couleur = new T[ 3 ];
+   printf("T (const) : %p\n", couleur);
    //memcpy( couleur, b.couleur, 3*sizeof(T) );
-   const T* bcoul = b.getCouleur();
+   /*const T* bcoul = b.getCouleur();
     couleur[0] = bcoul[0];
     couleur[1] = bcoul[1];
-    couleur[2] = bcoul[2];
+    couleur[2] = bcoul[2];*/
+
+    couleur[0] = 0;
+    couleur[1] = 0;
+    couleur[2] = 0;
 
     size=10 ; // taille
     lifeSpan=1000; // duree de vie
-    pDeath=0.01; // Proba de mort par collision
+    pDeath=1; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
 }
 
 
 Bestiole::~Bestiole( void )
 {
-
-    std::cout << "Deleteing bestiole\r\n";
-    std::cout << "Couleur : " << std::hex << &couleur << std::endl;
+    std::cout << "[D] Deleteing bestiole " << this->getIdentite() << std::endl;
+    printf("[D] Destruction addr : %p\n", this);
+    printf("[D] Destruction couleur : %p\n", couleur);
+    //std::cout << "Couleur : " << std::hex << couleur << std::endl;
     delete[] couleur;
-
 }
 
 
