@@ -1,7 +1,7 @@
 #ifndef _YEUX_H_
 #define _YEUX_H_
 
-#include "../Bestiole.h"
+class Bestiole;
 
 class Yeux{
 private:

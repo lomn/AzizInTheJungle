@@ -1,7 +1,6 @@
 #ifndef _PERCEPTION_H_
 #define _PERCEPTION_H_
 
-#include<cstdlib>
 #include <vector>
 #include "Oreilles.h"
 #include "Yeux.h"

@@ -33,11 +33,11 @@ Nageoire.o : ./Accessoire/Nageoire.h ./Accessoire/Nageoire.cpp
 	g++ -Wall -std=c++11 -c ./Accessoire/Nageoire.cpp -I .
 
 # Perception
-Perception.o : ./Perception/Perception.h ./Perception/Perception.cpp Bestiole.o
+Perception.o : ./Perception/Perception.h ./Perception/Perception.cpp Bestiole.o Oreilles.o Yeux.o
 	g++ -Wall -std=c++11 -c ./Perception/Perception.cpp -I .
 
-Oreilles.o : ./Perception/Oreilles.h ./Perception/Oreilles.cpp
+Oreilles.o : ./Perception/Oreilles.h ./Perception/Oreilles.cpp Bestiole.o
 	g++ -Wall -std=c++11 -c ./Perception/Oreilles.cpp -I .
 
-Yeux.o : ./Perception/Yeux.h ./Perception/Yeux.cpp
+Yeux.o : ./Perception/Yeux.h ./Perception/Yeux.cpp Bestiole.o
 	g++ -Wall -std=c++11 -c ./Perception/Yeux.cpp -I .
