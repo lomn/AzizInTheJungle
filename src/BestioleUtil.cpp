@@ -28,7 +28,7 @@ double distanceBestiole(const Bestiole & a, const Bestiole & b){
 
 double getCarapvalue(std::vector<Accessoire> list){
     double res=0;
-    for (int i=0; i<list.size(); i++){
+    for (std::vector<Accessoire>::size_type i=0; i<list.size(); i++){
         res+=list[i].getCoefCarapace();
     }
     return res;
@@ -36,7 +36,7 @@ double getCarapvalue(std::vector<Accessoire> list){
 
 double getCamvalue(std::vector<Accessoire> list){
     double res=0;
-    for (int i=0; i<list.size(); i++){
+    for (std::vector<Accessoire>::size_type i=0; i<list.size(); i++){
         res+=list[i].getCoefCamouflage();
     }
     return res;
@@ -44,9 +44,15 @@ double getCamvalue(std::vector<Accessoire> list){
 
 double getNagvalue(std::vector<Accessoire> list){
     double res=0;
-    for (int i=0; i<list.size(); i++){
+    for (std::vector<Accessoire>::size_type i=0; i<list.size(); i++){
         res+=list[i].getCoefNageoire();
     }
     return res;
 }
 
+void ShowAllIds(const std::vector<Bestiole> & list){
+    for (std::vector<Bestiole>::size_type i=0; i<list.size();i++){
+        std::cout << list[i].getIdentite() << ", ";
+    }
+    std::cout << std::endl;
+}

@@ -12,7 +12,7 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
     std::cout << "Dans le manager"<<std::endl;
 //    int nb_test=0;
     std::cout << "taille liste " << list.size() <<std::endl;
-    int i=0;
+    std::vector<Bestiole>::size_type i=0;
     while ( i<list.size()){
             Bestiole* b = &(list[i]);
             if (b) { // si la bestiole existe (si elle n’a pas été tué avant)
@@ -23,7 +23,7 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
                 }
                 else {
                     // Verification colision
-                    int j=i;
+                    std::vector<Bestiole>::size_type j=i;
                     while (j<list.size()){
                         Bestiole* otherB = &(list[j]);
                         if (otherB!=nullptr){ // si elle a été tué au tour d’avant

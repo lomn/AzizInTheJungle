@@ -2,6 +2,7 @@
 
 #include "Milieu.h"
 #include "Accessoire/Accessoire.h"
+#include "Perception/Perception.h"
 #include <cstdlib>
 #include <cmath>
 
@@ -22,7 +23,7 @@ Bestiole::Bestiole( void )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   std::cout << "const Bestiole (" << identite << ") par defaut" << std::endl;
 
    x = y = 0;
    cumulX = cumulY = 0.;
@@ -38,7 +39,7 @@ Bestiole::Bestiole( void )
     lifeSpan=1000; // duree de vie
     pDeath=0.01; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
-
+    percep = Perception();
 }
 
 
@@ -47,7 +48,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   std::cout << "const Bestiole (" << identite << ") par copie" << std::endl;
 
    x = b.x;
    y = b.y;
@@ -65,6 +66,7 @@ Bestiole::Bestiole( const Bestiole & b )
     lifeSpan=1000; // duree de vie
     pDeath=0.01; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
+    percep = Perception();
 }
 
 

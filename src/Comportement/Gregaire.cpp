@@ -18,7 +18,7 @@ std::array<double,2> Gregaire::calculVitesse(const Bestiole &b, std::vector<Best
             nb_voisins++;
         }
     }
-    vitesseCartesien[0] += vitesseCartesien[0]/nb_voisins;
+    vitesseCartesien[0] += vitesseCartesien[0]/nb_voisins; //on calcule la vitesse moyenne cartésienne
     vitesseCartesien[1] += vitesseCartesien[1]/nb_voisins;
-    return CartesienToPolaire(vitesseCartesien);
+    return CartesienToPolaire(vitesseCartesien); // on la convertit en polaire et on récupérera la direction
 }
