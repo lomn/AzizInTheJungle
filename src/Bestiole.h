@@ -82,14 +82,11 @@ public :                                           // Forme canonique :
     std::array<double, 2> getVitesseCartesien();
 
     // Methodes accessoires
-    std::vector<Accessoire>   getAccessoires();
-    void   addAccessoires(Accessoire &acc);
+   
     void collide();
 
     // Methodes perception
-    Perception * getPerception() const;
-    void addYeux(Yeux y);
-    void addOreilles(Oreilles o);
+    
 
 };
 
