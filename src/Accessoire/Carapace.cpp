@@ -22,3 +22,7 @@ double Carapace::getCoefCarapace() const {
 void Carapace::setCoefCarapace(double coefCarapace){
     m_coefCarapace = coefCarapace;
 }
+
+Carapace::~Carapace() {
+
+}
