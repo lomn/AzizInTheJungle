@@ -94,8 +94,8 @@ public :                                           // Forme canonique :
 
     // Methodes perception
     Perception * getPerception() const;
-    void addYeux(Yeux & y);
-    void addOreilles(Oreilles & o);
+    void addYeux(Yeux y);
+    void addOreilles(Oreilles o);
 
 };
 

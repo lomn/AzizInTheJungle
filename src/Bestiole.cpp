@@ -184,12 +184,12 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
 
-   double         dist;
-
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
-
+//   double         dist;
+//
+//
+//   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+//   return ( dist <= LIMITE_VUE );
+    return percep->jeTeVois(*this, b);
 }
 
 std::array<double, 2> Bestiole::getVitesseCartesien() {
@@ -205,11 +205,11 @@ void Bestiole::collide() {
     orientation=-orientation;
 }
 
-void Bestiole::addOreilles(Oreilles &o) {
+void Bestiole::addOreilles(Oreilles o) {
     percep->addOreille(o);
 }
 
-void Bestiole::addYeux(Yeux &y) {
+void Bestiole::addYeux(Yeux y) {
     percep->addYeux(y);
 }
 
