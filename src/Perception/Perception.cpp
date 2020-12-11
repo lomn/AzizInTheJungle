@@ -10,7 +10,7 @@ Perception::Perception(){
     oreilleVect = std::vector<Oreilles>();
 }
 
-bool Perception::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole){
+bool Perception::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const {
     if (!oreilleVect.empty()){
         for (std::vector<Oreilles>::size_type i=0;i<oreilleVect.size();i++){
             if (oreilleVect[i].jeTeVois(thisBestiole, bestiole)){

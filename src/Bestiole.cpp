@@ -50,7 +50,7 @@ Bestiole::Bestiole()
     pDeath=INIT_PDEATH; // Proba de mort par collision
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
-    percep = new Perception();
+    percep = Perception();
 }
 
 
@@ -75,7 +75,7 @@ Bestiole::Bestiole( const Bestiole & b )
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
-    percep = b.getPerception();
+    percep = Perception(b.getPerception());
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
@@ -97,7 +97,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
-    percep = b.getPerception();
+    percep = Perception(b.getPerception());
 
     return *this;
 }
@@ -109,7 +109,6 @@ Bestiole::~Bestiole()
     std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
     std::cout << "Couleur : " << std::hex << &couleur << std::endl;
     delete[] couleur;
-    delete percep;
 
 }
 
@@ -194,7 +193,12 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 //
 //   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
 //   return ( dist <= LIMITE_VUE );
-    return percep->jeTeVois(*this, b);
+    if (*this!=b){
+        return percep.jeTeVois(*this, b);
+    }
+    else{
+        return false;
+    }
 }
 
 std::array<double, 2> Bestiole::getVitesseCartesien() {
@@ -211,11 +215,11 @@ void Bestiole::collide() {
 }
 
 void Bestiole::addOreilles(Oreilles o) {
-    percep->addOreille(o);
+    percep.addOreille(o);
 }
 
 void Bestiole::addYeux(Yeux y) {
-    percep->addYeux(y);
+    percep.addYeux(y);
 }
 
 //Getters and Setters
@@ -237,4 +241,4 @@ double Bestiole::getPClone() const {return pClone;}
 void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
 std::vector<Accessoire> Bestiole::getAccessoires() {return this->listAccessoire;}
-Perception *Bestiole::getPerception() const{return percep;}
+Perception Bestiole::getPerception() const{return percep;}

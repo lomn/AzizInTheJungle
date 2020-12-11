@@ -29,7 +29,7 @@ double Yeux::getDistance() const
     return m_distance;
 }
 
-bool Yeux::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole)
+bool Yeux::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const
 {   
     //Récupère la position, vitesse et direction de la bestiole avec les yeux
     double thisX = thisBestiole.getX();

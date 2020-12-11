@@ -8,11 +8,11 @@
 #include <vector>
 #include <array>
 #include "Accessoire/Accessoire.h"
+#include "Perception/Perception.h"
 //using namespace std;
 
 
 class Milieu;
-class Perception;
 class Yeux;
 class Oreilles;
 
@@ -38,7 +38,7 @@ private :
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    std::vector<Accessoire>   listAccessoire;
-   Perception * percep{};
+   Perception percep;
 
    T               * couleur;
 
@@ -93,7 +93,7 @@ public :                                           // Forme canonique :
     void collide();
 
     // Methodes perception
-    Perception * getPerception() const;
+    Perception getPerception() const;
     void addYeux(Yeux y);
     void addOreilles(Oreilles o);
 

@@ -20,7 +20,7 @@ double Oreilles::getDistance() const {
     return m_distance;
 }
 
-bool Oreilles::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole)
+bool Oreilles::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const
 {
     double thisX = thisBestiole.getX();
     double thisY = thisBestiole.getY();

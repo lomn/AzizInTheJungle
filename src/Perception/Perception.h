@@ -14,7 +14,7 @@ private:
 
 public:
     Perception();
-    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const;
     void addYeux(const Yeux& y);
     void addOreille(const Oreilles& o);
 };
