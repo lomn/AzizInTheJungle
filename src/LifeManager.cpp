@@ -8,9 +8,7 @@ void quickDelete( int idx , std::vector<Bestiole> & list)
     list.pop_back();
 }
 
-void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
-    std::cout << "[L] ";
-    showAll(lst);
+void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
     
     for(size_t i = lst.size()-1; ((int)i) >= 0; i--) 
     {
@@ -37,22 +35,28 @@ void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
                         if(pj < bestj->getPDeath())
                         {
                             std::cout << "[L] Mort par colision 2 : " << bestj->getIdentite() << std::endl;
-                            //lst.erase(find(lst.begin(),lst.end(),*bestj));
-                            slowDelete(bestj->getIdentite(), lst);
+                            lst.erase(lst.begin()+j);
                         }
                         else{bestj->collide();}
 
                         if(pi < besti->getPDeath())
                         {
                             std::cout << "[L] Mort par colision 1 : " << besti->getIdentite() << std::endl;
-                            //lst.erase(find(lst.begin(),lst.end(),*besti));//sa call le destructeur de lst.end wtf
-                            slowDelete(besti->getIdentite(), lst);
+                            lst.erase(lst.begin()+i);
                         }
                         else{besti->collide();}
                     }
                 }
-            }
             
+                double p_c=((double) rand() / (RAND_MAX));
+                if (p_c < lst[i].getPClone()){
+                    std::cout << "Clonning"  << std::endl;
+                    Bestiole bc = Bestiole(lst[i]);
+                    bc.initCoords(xLim, yLim);
+                    lst.push_back(bc);
+                    nb_clon++;
+                }
+            }
     }
 }
 //    std::cout << "Nombre d'intersections testées" << nb_test << std::endl;
