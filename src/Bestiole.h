@@ -33,8 +33,6 @@ private :
    bool              isSchizo{}; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
-   std::vector<Accessoire>   listAccessoire;
-   Perception * percep{};
 
    T               * couleur;
 

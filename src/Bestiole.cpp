@@ -43,7 +43,6 @@ Bestiole::Bestiole()
     pDeath=INIT_PDEATH; // Proba de mort par collision
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
-    percep = new Perception();
 }
 
 
@@ -68,7 +67,6 @@ Bestiole::Bestiole( const Bestiole & b )
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
-    percep = b.getPerception();
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
@@ -90,7 +88,6 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
-    percep = b.getPerception();
 
     return *this;
 }
@@ -102,7 +99,6 @@ Bestiole::~Bestiole()
     std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
     std::cout << "Couleur : " << std::hex << &couleur << std::endl;
     delete[] couleur;
-    delete percep;
 
 }
 
@@ -229,5 +225,3 @@ void Bestiole::setPDeath(double pDeath) {Bestiole::pDeath = pDeath;}
 double Bestiole::getPClone() const {return pClone;}
 void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
-std::vector<Accessoire> Bestiole::getAccessoires() {return this->listAccessoire;}
-Perception *Bestiole::getPerception() const{return percep;}
