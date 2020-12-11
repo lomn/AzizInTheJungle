@@ -7,14 +7,10 @@
 #include <iostream>
 #include <vector>
 #include <array>
-#include "Accessoire/Accessoire.h"
 //using namespace std;
 
 
 class Milieu;
-class Perception;
-class Yeux;
-class Oreilles;
 
 class Bestiole
 {

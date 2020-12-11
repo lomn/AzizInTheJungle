@@ -1,13 +1,6 @@
 #include "Bestiole.h"
 
 #include "Milieu.h"
-#include "Accessoire/Accessoire.h"
-#include "Accessoire/Carapace.h"
-#include "Accessoire/Nageoire.h"
-#include "Accessoire/Camouflage.h"
-#include "Perception/Perception.h"
-#include "Perception/Yeux.h"
-#include "Perception/Oreilles.h"
 #include <cstdlib>
 #include <cmath>
 
