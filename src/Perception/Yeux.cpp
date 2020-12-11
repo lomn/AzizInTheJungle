@@ -64,6 +64,7 @@ bool Yeux::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole)
 
 
     };
+    return false;
 }
 
 
