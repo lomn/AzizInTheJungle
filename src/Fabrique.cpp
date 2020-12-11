@@ -40,6 +40,7 @@ Bestiole & Fabrique::addMember(){
 
     
     // Ajout d'accessoirres ici :
+    /*
     p = rand() % 101;
     if(p < probaAccessoires[CARAPACE_IND]){
             b->addAccessoires(*new Carapace((double)rand()/(double)RAND_MAX));
@@ -53,7 +54,7 @@ Bestiole & Fabrique::addMember(){
     p = rand() % 101;
     if(p < probaAccessoires[NAGEOIRE_IND]){
             b->addAccessoires(*new Nageoire((double)rand()/(double)RAND_MAX));
-    }
+    }*/
 
     // Assignation de la personnalité ici :
 
