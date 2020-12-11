@@ -48,25 +48,43 @@ Bestiole::Bestiole( const Bestiole & b )
 
    identite = ++next;
 
-   std::cout << "const Bestiole (" << identite << ") par copie" << std::endl;
+   cout << "const Bestiole (" << identite << ") par copie" << endl;
 
-   x = b.x;
-   y = b.y;
+   x = b.getX();
+   y = b.getY();
    cumulX = cumulY = 0.;
-   orientation = b.orientation;
-   vitesse = b.vitesse;
+   orientation = b.getOrientation();
+   vitesse = b.getVitessePolaire();
    couleur = new T[ 3 ];
-   //memcpy( couleur, b.couleur, 3*sizeof(T) );
-   const T* bcoul = b.getCouleur();
-    couleur[0] = bcoul[0];
-    couleur[1] = bcoul[1];
-    couleur[2] = bcoul[2];
+   printf("T (const) : %p\n", couleur);
+   memcpy( couleur, b.couleur, 3*sizeof(T) );
 
     size=10 ; // taille
     lifeSpan=1000; // duree de vie
-    pDeath=0.01; // Proba de mort par collision
+    pDeath=1; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
-    percep = new Perception();
+}
+
+Bestiole & Bestiole::operator=(const Bestiole & b){
+
+   identite = b.getIdentite();
+
+   x = b.getX();
+   y = b.getY();
+   cumulX = cumulY = 0.;
+   orientation = b.getOrientation();
+   vitesse = b.getVitessePolaire();
+   delete[] couleur;
+   couleur = new T[ 3 ];
+   printf("T (const) : %p\n", couleur);
+   memcpy( couleur, b.couleur, 3*sizeof(T) );
+
+    size=10 ; // taille
+    lifeSpan=1000; // duree de vie
+    pDeath=1; // Proba de mort par collision
+    pClone=0.01; // Proba de clonage
+
+    return *this;
 }
 
 
