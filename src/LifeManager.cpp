@@ -9,7 +9,6 @@ void quickDelete( int idx , std::vector<Bestiole> & list)
 }
 
 void LifeManager::step(std::vector<Bestiole> & list, int xLim, int yLim) {
-    void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
     std::cout << "[L] ";
     showAll(lst);
     
