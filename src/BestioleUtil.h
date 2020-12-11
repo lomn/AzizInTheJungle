@@ -7,7 +7,7 @@
 class Bestiole;
 class Accessoire;
 
-
+void showAll(std::vector<Bestiole> &)
 double distanceBestiole(const Bestiole & a, const Bestiole & b);
 std::array<double, 2> CartesienToPolaire(std::array<double, 2> v);
 double getCarapvalue(std::vector<Accessoire> list);
