@@ -22,3 +22,7 @@ double Nageoire::getCoefNageoire() const {
 void Nageoire::setCoefNageoire(double coefNageoire){
     m_coefNageoire = coefNageoire;
 }
+
+Nageoire::~Nageoire() {
+
+}

@@ -1,11 +1,10 @@
 #include "Camouflage.h"
 
-Camouflage::Camouflage(double coefCamouflage){
+Camouflage::Camouflage(double coefCamouflage): Accessoire(){
     m_coefCamouflage = coefCamouflage;
-    return;
 }
 
-Camouflage::Camouflage(const Camouflage & copieCamouflage){
+Camouflage::Camouflage(const Camouflage & copieCamouflage): Accessoire(copieCamouflage){
     m_coefCamouflage = copieCamouflage.getCoefCamouflage();
 }
 
@@ -22,3 +21,5 @@ double Camouflage::getCoefCamouflage() const {
 void Camouflage::setCoefCamouflage(double coefCamouflage){
     m_coefCamouflage = coefCamouflage;
 }
+
+Camouflage::~Camouflage() {}

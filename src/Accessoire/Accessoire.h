@@ -16,13 +16,13 @@ private:
     //char* Type;
 
 public:
-    Accessoire(){return;};
-    Accessoire(Accessoire const& accessoire){return;};
-    virtual ~Accessoire(){return;};
-    virtual const char* getType(){return "None";};
-    virtual double getCoefCarapace(){return 0;};
-    virtual double getCoefCamouflage(){return 0;};
-    virtual double getCoefNageoire(){return 0;};
+    Accessoire(){};
+    Accessoire(Accessoire const& accessoire){};
+    virtual ~Accessoire(){};
+    virtual const char* getType() const{return "None";};
+    virtual double getCoefCarapace() const{return 0;};
+    virtual double getCoefCamouflage() const{return 0;};
+    virtual double getCoefNageoire() const{return 0;};
 };
 
 

@@ -14,8 +14,8 @@ public:
     Nageoire(double coefNageoire);
     ~Nageoire();
 
-    virtual const char* getType() const;
-    virtual double getCoefNageoire() const;
+    virtual const char* getType() const override;
+    virtual double getCoefNageoire() const override;
     void setCoefNageoire(double coefNageoire);
 };
 
