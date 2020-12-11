@@ -93,6 +93,7 @@ public :                                           // Forme canonique :
     void collide();
 
     // Methodes perception
+    Perception * getPerception() const;
     void addYeux(Yeux & y);
     void addOreilles(Oreilles & o);
 

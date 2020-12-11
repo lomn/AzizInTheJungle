@@ -7,6 +7,12 @@
 #include <cmath>
 
 
+const double INIT_SIZE = 2;
+const int INIT_LIFESPAN = 100;
+const double INIT_PDEATH = 0.01;
+const double INIT_PCLONE = 0.01;
+const bool INIT_ISSCHIZO = false;
+
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
@@ -34,11 +40,11 @@ Bestiole::Bestiole()
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
-    size=10 ; // taille
-    lifeSpan=1000; // duree de vie
-    pDeath=0.01; // Proba de mort par collision
-    pClone=0.01; // Proba de clonage
-    isSchizo=false;
+    size=INIT_SIZE ; // taille
+    lifeSpan=INIT_LIFESPAN; // duree de vie
+    pDeath=INIT_PDEATH; // Proba de mort par collision
+    pClone=INIT_PCLONE; // Proba de clonage
+    isSchizo=INIT_ISSCHIZO;
     percep = new Perception();
 }
 
@@ -46,44 +52,47 @@ Bestiole::Bestiole()
 Bestiole::Bestiole( const Bestiole & b )
 {
 
-   identite = ++next;
+    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+    std::cout << "const Bestiole (" << identite << ") par copie" << std::endl;
 
-   x = b.getX();
-   y = b.getY();
-   cumulX = cumulY = 0.;
-   orientation = b.getOrientation();
-   vitesse = b.getVitessePolaire();
-   couleur = new T[ 3 ];
-   printf("T (const) : %p\n", couleur);
-   memcpy( couleur, b.couleur, 3*sizeof(T) );
+    x = b.getX();
+    y = b.getY();
+    cumulX = cumulY = 0.;
+    orientation = b.getOrientation();
+    vitesse = b.getVitessePolaire();
+    couleur = new T[ 3 ];
+    printf("T (const) : %p\n", couleur);
+    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
-    size=10 ; // taille
-    lifeSpan=1000; // duree de vie
-    pDeath=1; // Proba de mort par collision
-    pClone=0.01; // Proba de clonage
+    size=b.getSize(); // taille
+    lifeSpan=b.getLifeSpan(); // duree de vie
+    pDeath=b.getPDeath(); // Proba de mort par collision
+    pClone=b.getPClone(); // Proba de clonage
+    isSchizo=b.getIsSchizo();
+    percep = b.getPerception();
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
 
-   identite = b.getIdentite();
+    identite = b.getIdentite();
 
-   x = b.getX();
-   y = b.getY();
-   cumulX = cumulY = 0.;
-   orientation = b.getOrientation();
-   vitesse = b.getVitessePolaire();
-   delete[] couleur;
-   couleur = new T[ 3 ];
-   printf("T (const) : %p\n", couleur);
-   memcpy( couleur, b.couleur, 3*sizeof(T) );
+    x = b.getX();
+    y = b.getY();
+    cumulX = cumulY = 0.;
+    orientation = b.getOrientation();
+    vitesse = b.getVitessePolaire();
+    delete[] couleur;
+    couleur = new T[ 3 ];
+    printf("T (const) : %p\n", couleur);
+    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
-    size=10 ; // taille
-    lifeSpan=1000; // duree de vie
-    pDeath=1; // Proba de mort par collision
-    pClone=0.01; // Proba de clonage
+    size=b.getSize(); // taille
+    lifeSpan=b.getLifeSpan(); // duree de vie
+    pDeath=b.getPDeath(); // Proba de mort par collision
+    pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
+    percep = b.getPerception();
 
     return *this;
 }
@@ -102,10 +111,8 @@ Bestiole::~Bestiole()
 
 void Bestiole::initCoords( int xLim, int yLim )
 {
-
    x = rand() % xLim;
    y = rand() % yLim;
-
 }
 
 
@@ -225,3 +232,4 @@ double Bestiole::getPClone() const {return pClone;}
 void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
 std::vector<Accessoire> Bestiole::getAccessoires() {return this->listAccessoire;}
+Perception *Bestiole::getPerception() const{return percep;}
