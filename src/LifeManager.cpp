@@ -51,10 +51,11 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                 double p_c=((double) rand() / (RAND_MAX));
                 if (p_c < lst[i].getPClone()){
                     std::cout << "Clonning"  << std::endl;
-                    Bestiole bc = Bestiole(lst[i]);
-                    bc.initCoords(xLim, yLim);
-                    lst.push_back(bc);
+                    Bestiole * bc = new Bestiole(lst[i]);
+                    bc->initCoords(xLim, yLim);
+                    lst.push_back(*bc);
                     nb_clon++;
+                    std::cout << "End clone" << std::endl;
                 }
             }
     }
