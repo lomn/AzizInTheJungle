@@ -1,8 +1,4 @@
 #include "Fabrique.h"
-#include "Accessoire/Accessoire.h"
-#include "Accessoire/Carapace.h"
-#include "Accessoire/Camouflage.h"
-#include "Accessoire/Nageoire.h"
 
 Fabrique::Fabrique(int width, int height, 
         float kamikaze, float prevoyant, float gregaire, float peureux, 
