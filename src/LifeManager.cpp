@@ -54,7 +54,7 @@ void quickDelete( int idx , std::vector<Bestiole> & lst)
 void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
     std::cout << "[L] ";
     showAll(lst);
-
+    
     for(size_t i = lst.size()-1; ((int)i) >= 0; i--) 
     {
         Bestiole * besti = & lst[i];

@@ -73,6 +73,38 @@ Bestiole::Bestiole( const Bestiole & b )
     pClone=0.01; // Proba de clonage
 }
 
+Bestiole & Bestiole::operator=(const Bestiole & b){
+
+   identite = b.getIdentite();
+
+   cout << "op =  (" << identite << ") par copie" << endl;
+
+   x = b.getX();
+   y = b.getY();
+   cumulX = cumulY = 0.;
+   orientation = b.getOrientation();
+   vitesse = b.getVitessePolaire();
+   delete[] couleur;
+   couleur = new T[ 3 ];
+   printf("T (const) : %p\n", couleur);
+   //memcpy( couleur, b.couleur, 3*sizeof(T) );
+   /*const T* bcoul = b.getCouleur();
+    couleur[0] = bcoul[0];
+    couleur[1] = bcoul[1];
+    couleur[2] = bcoul[2];*/
+
+    couleur[0] = 0;
+    couleur[1] = 0;
+    couleur[2] = 0;
+
+    size=10 ; // taille
+    lifeSpan=1000; // duree de vie
+    pDeath=1; // Proba de mort par collision
+    pClone=0.01; // Proba de clonage
+
+    return *this;
+}
+
 
 Bestiole::~Bestiole( void )
 {
