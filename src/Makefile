@@ -4,8 +4,8 @@ main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Accessoire.o Camouf
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
 
-Bestiole.o : Bestiole.h Bestiole.cpp ./Accessoire/Accessoire.h ./Perception/Perception.h
-	g++ -Wall -std=c++11  -c Bestiole.cpp -I .
+Bestiole.o : Bestiole.h Bestiole.cpp ./Accessoire/Accessoire.h ./Accessoire/Carapace.h ./Accessoire/Camouflage.h ./Accessoire/Nageoire.h ./Perception/Perception.h ./Perception/Yeux.h ./Perception/Oreilles.h
+	g++ -Wall -std=c++11 -c Bestiole.cpp -I .
 
 Milieu.o : Milieu.h Milieu.cpp LifeManager.h
 	g++ -Wall -std=c++11  -c Milieu.cpp -I .
