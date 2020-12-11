@@ -3,6 +3,14 @@
 #include "Accessoire/Accessoire.h"
 #include <array>
 
+void showAll(std::vector<Bestiole> & lst){
+    std::cout << "lst : { ";
+    for (std::vector<Bestiole>::size_type i =0;i<lst.size();i++){
+        std::cout<< lst[i].getIdentite() << ", ";
+    }
+    std::cout << " }" << std::endl;
+}
+
 std::array<double, 2> CartesienToPolaire(std::array<double, 2> v){
     std::array<double, 2>  result{};
     double norm;
