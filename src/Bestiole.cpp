@@ -5,10 +5,10 @@
 #include <cmath>
 
 
-const double INIT_SIZE = 2;
-const int INIT_LIFESPAN = 100;
+const double INIT_SIZE = 4;
+const int INIT_LIFESPAN = 150;
 const double INIT_PDEATH = 0.01;
-const double INIT_PCLONE = 0.01;
+const double INIT_PCLONE = 0.005;
 const bool INIT_ISSCHIZO = false;
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -39,7 +39,7 @@ Bestiole::Bestiole()
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
     size=INIT_SIZE ; // taille
-    lifeSpan=INIT_LIFESPAN; // duree de vie
+    lifeSpan= INIT_LIFESPAN + (int)(((double)rand()/(double)RAND_MAX)*200-100); // duree de vie
     pDeath=INIT_PDEATH; // Proba de mort par collision
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
@@ -63,7 +63,7 @@ Bestiole::Bestiole( const Bestiole & b )
     memcpy( couleur, b.couleur, 3*sizeof(T) );
 
     size=b.getSize(); // taille
-    lifeSpan=b.getLifeSpan(); // duree de vie
+    lifeSpan=INIT_LIFESPAN + (int)(((double)rand()/(double)RAND_MAX)*200-100); // duree de vie
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
@@ -97,7 +97,7 @@ Bestiole::~Bestiole()
 {
 
     std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
-    std::cout << "Couleur : " << std::hex << &couleur << std::endl;
+    std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
     delete[] couleur;
 
 }
