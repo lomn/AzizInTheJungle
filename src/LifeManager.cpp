@@ -59,8 +59,6 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
             }
     }
 }
-//    std::cout << "Nombre d'intersections testées" << nb_test << std::endl;
-}
 
 bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
     if (not (b1==b2)){
