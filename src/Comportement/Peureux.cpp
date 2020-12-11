@@ -9,7 +9,8 @@ const double MAX_VITESSE = 10.0;
 
 Peureux::Peureux(){
     Comportement("Peureux");
-    this->scare_count = 11; //A counter which is reset everytime the beast is scared. While this counter is less than 10, the beast is running faster and doesnt change direction.
+    this->scare_count = 11;
+    this->vitesse_calme = 0; //A counter which is reset everytime the beast is scared. While this counter is less than 10, the beast is running faster and doesnt change direction.
 }
 ;
 //Getters and setters
@@ -21,10 +22,23 @@ void Peureux::setScare_count(int scare){
     this->scare_count = scare;
 };
 
+double Peureux::getVitesseCalme(){
+    return this->vitesse_calme;
+};
+
+void Peureux::setVitesseCalme(double speedCalm){
+    this->vitesse_calme = speedCalm;
+}
+
 
 std::array<double,2> Peureux::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) {
     std::array<double,2>  vitessePolaire{};
     int nb_voisins;
+    vitessePolaire[1] = b.getOrientation();
+
+    if (this->getVitesseCalme()==0){
+        this->setVitesseCalme(b.getVitessePolaire());
+    }
 
     for (auto it = list.begin(); it != list.end(); ++it) {
         if (b.jeTeVois(*it) && not(b == *it)) {
@@ -42,7 +56,7 @@ std::array<double,2> Peureux::calculVitesse(const Bestiole &b, std::vector<Besti
     }
     //else it has a normal speed
     else {
-        vitessePolaire[0] = b.getVitessePolaire();
+        vitessePolaire[0] = this->getVitesseCalme();
     }
     //every turn the scare count is incremented so the beast is calm after 10 rounds
     this->setScare_count(this->getScare_count()+1);
