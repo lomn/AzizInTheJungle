@@ -1,5 +1,5 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Accessoire.o Camouflage.o Carapace.o Nageoire.o Fabrique.o Perception.o Oreilles.o Yeux.o BestioleUtil.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Accessoire.o Camouflage.o Carapace.o Nageoire.o Fabrique.o Perception.o Oreilles.o Yeux.o BestioleUtil.o -I . -lX11 -lpthread
+main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Fabrique.o BestioleUtil.o
+	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Fabrique.o BestioleUtil.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
