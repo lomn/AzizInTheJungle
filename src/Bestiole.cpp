@@ -18,9 +18,8 @@ T* Bestiole::getCouleur() const{
     return this->couleur;
 }
 
-Bestiole::Bestiole( void )
+Bestiole::Bestiole()
 {
-
    identite = ++next;
 
    std::cout << "const Bestiole (" << identite << ") par defaut" << std::endl;
@@ -39,6 +38,7 @@ Bestiole::Bestiole( void )
     lifeSpan=1000; // duree de vie
     pDeath=0.01; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
+    isSchizo=false;
     percep = new Perception();
 }
 
@@ -83,15 +83,16 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     lifeSpan=1000; // duree de vie
     pDeath=1; // Proba de mort par collision
     pClone=0.01; // Proba de clonage
+    isSchizo=b.getIsSchizo();
 
     return *this;
 }
 
 
-Bestiole::~Bestiole( void )
+Bestiole::~Bestiole()
 {
 
-    std::cout << "Deleteing bestiole\r\n";
+    std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
     std::cout << "Couleur : " << std::hex << &couleur << std::endl;
     delete[] couleur;
     delete percep;
@@ -184,76 +185,6 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 }
 
-int Bestiole::getIdentite() const {
-    return identite;
-}
-
-int Bestiole::getX() const {
-    return x;
-}
-
-void Bestiole::setX(int x) {
-    Bestiole::x = x;
-}
-
-int Bestiole::getY() const {
-    return y;
-}
-
-void Bestiole::setY(int y) {
-    Bestiole::y = y;
-}
-
-double Bestiole::getSize() const {
-    return size;
-}
-
-
-int Bestiole::getLifeSpan() const {
-    return lifeSpan;
-}
-
-
-double Bestiole::getOrientation() const {
-    return orientation;
-}
-
-void Bestiole::setOrientation(double orientation) {
-    Bestiole::orientation = orientation;
-}
-
-double Bestiole::getVitessePolaire() const {
-    return vitesse;
-}
-
-void Bestiole::setVitessePolaire(double vitesse) {
-    Bestiole::vitesse = vitesse;
-}
-
-bool Bestiole::getIsSchizo() const {
-    return isSchizo;
-}
-
-double Bestiole::getPDeath() const {
-    return pDeath;
-}
-
-void Bestiole::setPDeath(double pDeath) {
-    Bestiole::pDeath = pDeath;
-}
-
-double Bestiole::getPClone() const {
-    return pClone;
-}
-
-void Bestiole::setPClone(double pClone) {
-    Bestiole::pClone = pClone;
-}
-
-void Bestiole::setVitesseCartesien(double x, double y) {
-    this->setVitessePolaire(sqrt(x * x + y * y));
-}
-
 std::array<double, 2> Bestiole::getVitesseCartesien() {
     std::array<double,2> coord{};
     coord[0] = vitesse*cos(orientation);
@@ -261,14 +192,36 @@ std::array<double, 2> Bestiole::getVitesseCartesien() {
     return coord;
 }
 
-std::vector<Accessoire> Bestiole::getAccessoires() {
-    return this->listAccessoire;
-}
-
-void Bestiole::addAccessoires(Accessoire &acc) {
-    this->listAccessoire.push_back(acc);
-}
+void Bestiole::addAccessoires(Accessoire &acc) {this->listAccessoire.push_back(acc);}
 
 void Bestiole::collide() {
     orientation=-orientation;
 }
+
+void Bestiole::addOreilles(Oreilles &o) {
+    percep->addOreille(o);
+}
+
+void Bestiole::addYeux(Yeux &y) {
+    percep->addYeux(y);
+}
+
+//Getters and Setters
+int Bestiole::getIdentite() const {return identite;}
+int Bestiole::getX() const {return x;}
+void Bestiole::setX(int x) {Bestiole::x = x;}
+int Bestiole::getY() const {return y;}
+void Bestiole::setY(int y) {Bestiole::y = y;}
+double Bestiole::getSize() const {return size;}
+int Bestiole::getLifeSpan() const {return lifeSpan;}
+double Bestiole::getOrientation() const {return orientation;}
+void Bestiole::setOrientation(double orientation) {Bestiole::orientation = orientation;}
+double Bestiole::getVitessePolaire() const {return vitesse;}
+void Bestiole::setVitessePolaire(double vitesse) {Bestiole::vitesse = vitesse;}
+bool Bestiole::getIsSchizo() const {return isSchizo;}
+double Bestiole::getPDeath() const {return pDeath;}
+void Bestiole::setPDeath(double pDeath) {Bestiole::pDeath = pDeath;}
+double Bestiole::getPClone() const {return pClone;}
+void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
+void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
+std::vector<Accessoire> Bestiole::getAccessoires() {return this->listAccessoire;}

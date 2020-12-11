@@ -8,12 +8,13 @@
 #include <vector>
 #include <array>
 #include "Accessoire/Accessoire.h"
-//#include "Perception/Perception.h"
 //using namespace std;
 
 
 class Milieu;
 class Perception;
+class Yeux;
+class Oreilles;
 
 class Bestiole
 {
@@ -33,11 +34,11 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
-   bool              isSchizo; // Indication de l'état mental de la bestiole...
+   bool              isSchizo{}; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    std::vector<Accessoire>   listAccessoire;
-   Perception * percep;
+   Perception * percep{};
 
    T               * couleur;
 
@@ -45,20 +46,20 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole( void );                               // Constructeur par defaut
-   Bestiole( const Bestiole & b );                 // Constructeur de copies
-   ~Bestiole( void );                              // Destructeur
+   Bestiole();                               // Constructeur par defaut
+   Bestiole(const Bestiole & b);                 // Constructeur de copies
+   ~Bestiole();                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
-   void action( Milieu & monMilieu );
-   void draw( UImg & support );
+   void action(Milieu & monMilieu);
+   void draw(UImg & support);
 
-   bool jeTeVois( const Bestiole & b ) const;
+   bool jeTeVois(const Bestiole & b) const;
 
-   void initCoords( int xLim, int yLim );
+   void initCoords(int xLim, int yLim);
 
    Bestiole & operator=(const Bestiole & b);
-   friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
-   friend bool operator!=( const Bestiole & b1, const Bestiole & b2 ){return not(b1 == b2);};
+   friend bool operator==(const Bestiole & b1, const Bestiole & b2);
+   friend bool operator!=(const Bestiole & b1, const Bestiole & b2){return not(b1 == b2);};
 
    T* getCouleur() const;
 
@@ -90,6 +91,11 @@ public :                                           // Forme canonique :
     std::vector<Accessoire>   getAccessoires();
     void   addAccessoires(Accessoire &acc);
     void collide();
+
+    // Methodes perception
+    void addYeux(Yeux & y);
+    void addOreilles(Oreilles & o);
+
 };
 
 
