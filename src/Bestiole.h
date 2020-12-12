@@ -22,6 +22,8 @@ private :
 
    static int              next;
 
+   static std::array<Comportement, 4> comportements;
+
 private :
    int               identite; // id
    int               x, y; // position
