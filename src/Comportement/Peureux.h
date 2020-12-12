@@ -8,7 +8,7 @@
 
 class Bestiole;
 
-class Peureux: Comportement {
+class Peureux: public Comportement {
 
 private:
     int scare_count;

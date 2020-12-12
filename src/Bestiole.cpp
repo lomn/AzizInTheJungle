@@ -3,7 +3,11 @@
 #include "Milieu.h"
 #include <cstdlib>
 #include <cmath>
-
+#include "Comportement/Comportement.h"
+#include "Comportement/Gregaire.h"
+#include "Comportement/Kamikaze.h"
+#include "Comportement/Prevoyant.h"
+#include "Comportement/Peureux.h"
 
 const double INIT_SIZE = 4;
 const int INIT_LIFESPAN = 150;
@@ -219,3 +223,13 @@ void Bestiole::setPDeath(double pDeath) {Bestiole::pDeath = pDeath;}
 double Bestiole::getPClone() const {return pClone;}
 void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
+
+std::array<Comportement, 4> Bestiole::comportementArray() {
+    std::array<Comportement, 4> array;
+    array[0]=Kamikaze();
+    array[1]=Prevoyant();
+    array[2]=Gregaire();
+    array[3]=Peureux();
+    return array;
+//    Prevoyant(), Gregaire(), Peureux()}
+}

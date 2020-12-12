@@ -9,7 +9,7 @@
 
 class Bestiole;
 
-class Gregaire : Comportement{
+class Gregaire : public Comportement{
 public:
     Gregaire();
     std::array<double,2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
