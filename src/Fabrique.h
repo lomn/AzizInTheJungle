@@ -5,16 +5,11 @@
 #include <vector>
 #include "Bestiole.h"
 
-#define KAMIKAZE_IND 0
-#define PREVOYANT_IND 1
-#define GREGAIRE_IND 2
-#define PEUREUX_IND 3
-
 #define CARAPACE_IND 0
 #define CAMOUFLAGE_IND 1
 #define NAGEOIRE_IND 2
 
-class Fabrique {
+class Comportement;class Fabrique {
 private: 
     float probaComportement[4];
     float probaAccessoires[3];

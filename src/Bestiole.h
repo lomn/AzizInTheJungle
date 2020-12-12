@@ -7,9 +7,14 @@
 #include <iostream>
 #include <vector>
 #include <array>
+
+#define KAMIKAZE_IND 0
+#define PREVOYANT_IND 1
+#define GREGAIRE_IND 2
+#define PEUREUX_IND 3
 //using namespace std;
 
-
+class Comportement;
 class Milieu;
 
 class Bestiole
