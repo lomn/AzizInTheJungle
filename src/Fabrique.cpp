@@ -32,7 +32,7 @@ Fabrique::~Fabrique()
 Bestiole & Fabrique::addMember(){
     int p;
     Bestiole * b = new Bestiole();
-    b->initCoords(300,300);
+    b->initCoords(rand()%m_width,rand()%m_height);
 
     
     // Ajout d'accessoirres ici :
@@ -53,6 +53,11 @@ Bestiole & Fabrique::addMember(){
     }*/
 
     // Assignation de la personnalité ici :
+    p = rand() % 101;
+    if(p < probaAccessoires[KAMIKAZE_IND]){
+            //b->;
+    }
+
 
     // Ajout des attributs de perception ici :
 
