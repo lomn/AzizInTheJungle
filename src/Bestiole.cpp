@@ -223,6 +223,8 @@ void Bestiole::setPDeath(double pDeath) {Bestiole::pDeath = pDeath;}
 double Bestiole::getPClone() const {return pClone;}
 void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
+int Bestiole::getComportement() const {return this->comportement;}
+void Bestiole::setComportement(int c){this->comportement = c;}
 
 std::array<Comportement, 4> Bestiole::comportementArray() {
     std::array<Comportement, 4> array;
