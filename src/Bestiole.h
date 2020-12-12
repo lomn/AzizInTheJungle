@@ -74,7 +74,7 @@ public :                                           // Forme canonique :
     double getSize() const;
     bool getIsSchizo() const;
     void setComportement(int comportement);
-    int getComportement();
+    int getComportement() const;
 
     // Méthodes relative aux propriété de vie/mort
     int getLifeSpan() const;
