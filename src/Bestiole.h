@@ -8,10 +8,7 @@
 #include <vector>
 #include <array>
 #include "Comportement/Comportement.h"
-#include "Comportement/Gregaire.h"
-#include "Comportement/Kamikaze.h"
-#include "Comportement/Prevoyant.h"
-#include "Comportement/Peureux.h"
+
 
 #define KAMIKAZE_IND 0
 #define PREVOYANT_IND 1
@@ -31,8 +28,8 @@ private :
 
    static int              next;
 
-   static std::array<Comportement, 4> comportementArray({Kamikaze(), Prevoyant(), Gregaire(), Peureux()});
-
+   static std::array<Comportement, 4> comportementArray();
+//   static std::array<Comportement, 4> initComportements();
 private :
    int               identite; // id
    int               x, y; // position

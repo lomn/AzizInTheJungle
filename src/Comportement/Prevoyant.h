@@ -8,7 +8,7 @@
 
 class Bestiole;
 
-class Prevoyant: Comportement {
+class Prevoyant: public Comportement {
 public:
     Prevoyant();
     std::array<double, 2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
