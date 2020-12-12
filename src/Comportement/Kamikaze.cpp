@@ -24,6 +24,7 @@ std::array<double, 2> Kamikaze::calculVitesse(const Bestiole &b, std::vector<Bes
             return CartesienToPolaire(vitesse);
         }
     }
+    return std::array<double, 2>{b.getVitessePolaire(), b.getOrientation()};
     /* Recherche de la bestiole la plus proche
     std::vector<Bestiole>::iterator tmp_best;
     double tmp_dist = 10000;
