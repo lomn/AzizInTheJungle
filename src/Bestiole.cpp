@@ -42,6 +42,7 @@ Bestiole::Bestiole()
     pDeath=INIT_PDEATH; // Proba de mort par collision
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
+    comportement=PEUREUX_IND;
 }
 
 
@@ -66,6 +67,7 @@ Bestiole::Bestiole( const Bestiole & b )
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
+    comportement = b.getComportement();
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
@@ -87,6 +89,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pDeath=b.getPDeath(); // Proba de mort par collision
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
+    comportement=b.getComportement();
 
     return *this;
 }

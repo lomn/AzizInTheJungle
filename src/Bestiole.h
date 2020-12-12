@@ -12,11 +12,11 @@
 #include "Comportement/Kamikaze.h"
 #include "Comportement/Prevoyant.h"
 #include "Comportement/Peureux.h"
+
 #define KAMIKAZE_IND 0
 #define PREVOYANT_IND 1
 #define GREGAIRE_IND 2
 #define PEUREUX_IND 3
-//using namespace std;
 
 class Comportement;
 class Milieu;
@@ -31,7 +31,7 @@ private :
 
    static int              next;
 
-   static std::array<Comportement, 4> comportements({Kamikaze(), Prevoyant(), Gregaire(), Peureux()});
+   static std::array<Comportement, 4> comportementArray({Kamikaze(), Prevoyant(), Gregaire(), Peureux()});
 
 private :
    int               identite; // id
@@ -44,6 +44,7 @@ private :
    bool              isSchizo{}; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
+   int               comportement;
 
    T               * couleur;
 
@@ -72,6 +73,8 @@ public :                                           // Forme canonique :
     int getIdentite() const;
     double getSize() const;
     bool getIsSchizo() const;
+    void setComportement(int comportement);
+    int getComportement();
 
     // Méthodes relative aux propriété de vie/mort
     int getLifeSpan() const;
