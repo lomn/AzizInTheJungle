@@ -53,11 +53,25 @@ Bestiole & Fabrique::addMember(){
     }*/
 
     // Assignation de la personnalité ici :
-    p = rand() % 101;
-    if(p < probaAccessoires[KAMIKAZE_IND]){
-            //b->;
-    }
+        p = rand() % 101;
+        if(p < probaComportement[KAMIKAZE_IND]){
+                b->setComportement(KAMIKAZE_IND);
+        }
 
+        p = rand() % 101;
+        if(p < probaComportement[GREGAIRE_IND]){
+                b->setComportement(GREGAIRE_IND);
+        }
+
+        p = rand() % 101;
+        if(p < probaComportement[PEUREUX_IND]){
+                b->setComportement(PEUREUX_IND);
+        }
+
+        p = rand() % 101;
+        if(p < probaComportement[PREVOYANT_IND]){
+                b->setComportement(PREVOYANT_IND);
+        }
 
     // Ajout des attributs de perception ici :
 
