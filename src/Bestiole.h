@@ -46,7 +46,7 @@ private :
    T               * couleur;
 
 private :
-   void bouge( int xLim, int yLim );
+   void bouge( int xLim, int yLim, std::vector<Bestiole> & list );
 
 public :                                           // Forme canonique :
    Bestiole();                               // Constructeur par defaut

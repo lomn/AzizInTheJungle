@@ -22,13 +22,12 @@ const double      Bestiole::LIMITE_VUE = 30.;
 int               Bestiole::next = 0;
 
 std::array<Comportement, 4> Bestiole::comportementArray() {
-    std::array<Comportement, 4> array;
+    std::array<Comportement, 4> array{};
     array[0]=Kamikaze();
     array[1]=Prevoyant();
     array[2]=Gregaire();
     array[3]=Peureux();
     return array;
-//    Prevoyant(), Gregaire(), Peureux()}
 }
 
 
@@ -127,9 +126,11 @@ void Bestiole::initCoords( int xLim, int yLim )
 }
 
 
-void Bestiole::bouge( int xLim, int yLim )
+void Bestiole::bouge( int xLim, int yLim, std::vector<Bestiole> & list )
 {
-
+    std::array<double, 2> update_vitesse = comportementArray()[comportement].calculVitesse(*this, list);
+    vitesse= update_vitesse[0];
+    orientation=update_vitesse[1];
    double         nx, ny;
    double         dx = cos( orientation )*vitesse;
    double         dy = -sin( orientation )*vitesse;
@@ -166,7 +167,7 @@ void Bestiole::bouge( int xLim, int yLim )
 void Bestiole::action( Milieu & monMilieu )
 {
 
-   bouge( monMilieu.getWidth(), monMilieu.getHeight() );
+   bouge( monMilieu.getWidth(), monMilieu.getHeight() , monMilieu.getListeBestiole());
 
 }
 
