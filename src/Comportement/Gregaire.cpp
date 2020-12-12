@@ -5,7 +5,7 @@
 #include "Gregaire.h"
 #include "../BestioleUtil.h"
 #include "../Bestiole.h"
-
+#include <iostream>
 
 
 Gregaire::Gregaire(): Comportement("Gregaire") {}
@@ -35,7 +35,10 @@ std::array<double,2> Gregaire::calculVitesse(const Bestiole &b, std::vector<Best
             nb_voisins++;
         }
     }
-    vitessePolaire[1] = vitessePolaire[1]/nb_voisins;
-    return vitessePolaire;
+//    std::cout << " nb vois" << nb_voisins << " vit pol " << vitessePolaire[1] <<std::endl;
+    vitessePolaire[1] = vitessePolaire[1]/(double)nb_voisins;
+//    std::cout << " nb vois" << nb_voisins << " vit pol " << vitessePolaire[1] <<std::endl;
+    if (nb_voisins >0) return vitessePolaire;
+    return std::array<double, 2>{b.getVitessePolaire(), b.getOrientation()};
 
 }
