@@ -4,6 +4,7 @@
 
 #include "Peureux.h"
 #include "../BestioleUtil.h"
+#include "../Bestiole.h"
 
 const double MAX_VITESSE = 10.0;
 

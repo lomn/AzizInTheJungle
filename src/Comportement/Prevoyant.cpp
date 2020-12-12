@@ -3,6 +3,7 @@
 //
 
 #include "Prevoyant.h"
+#include "../Bestiole.h"
 
 Prevoyant::Prevoyant() : Comportement("Prevoyant"){}
 

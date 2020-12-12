@@ -6,7 +6,8 @@
 #define AZIZINTHEJUNGLE_COMPORTEMENT_H
 #include <vector>
 #include <array>
-#include "../Bestiole.h"
+
+class Bestiole;
 
 class Comportement {
 private:

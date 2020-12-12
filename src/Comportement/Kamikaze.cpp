@@ -4,6 +4,8 @@
 
 #include "Kamikaze.h"
 #include "../BestioleUtil.h"
+#include "../Bestiole.h"
+
 
 Kamikaze::Kamikaze(): Comportement("Kamikaze") {}
 

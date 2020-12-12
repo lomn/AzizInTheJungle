@@ -7,6 +7,8 @@
 #include "Comportement.h"
 #include <array>
 
+class Bestiole;
+
 class Kamikaze : Comportement {
 public:
     Kamikaze();

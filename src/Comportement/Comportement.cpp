@@ -1,4 +1,5 @@
 #include "Comportement.h"
+#include "../Bestiole.h"
 
 std::array<double, 2> Comportement::calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) {
     std::array<double, 2> vitesse{0,0};

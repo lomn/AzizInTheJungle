@@ -4,6 +4,8 @@
 
 #include "Gregaire.h"
 #include "../BestioleUtil.h"
+#include "../Bestiole.h"
+
 
 
 Gregaire::Gregaire(): Comportement("Gregaire") {}

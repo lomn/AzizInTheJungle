@@ -6,6 +6,7 @@
 #define AZIZINTHEJUNGLE_PREVOYANT_H
 #include "Comportement.h"
 
+class Bestiole;
 
 class Prevoyant: Comportement {
 public:

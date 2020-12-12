@@ -6,6 +6,7 @@
 #define AZIZINTHEJUNGLE_PEUREUX_H
 #include "Comportement.h"
 
+class Bestiole;
 
 class Peureux: Comportement {
 
