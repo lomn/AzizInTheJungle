@@ -34,7 +34,7 @@ void Peureux::setVitesseCalme(double speedCalm){
 
 std::array<double,2> Peureux::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) {
     std::array<double,2>  vitessePolaire{};
-    int nb_voisins;
+    int nb_voisins=0;
     vitessePolaire[1] = b.getOrientation();
 
     if (this->getVitesseCalme()==0){

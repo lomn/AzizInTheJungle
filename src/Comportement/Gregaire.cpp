@@ -25,7 +25,7 @@ std::array<double,2> Gregaire::calculVitesse(const Bestiole &b, std::vector<Best
     return CartesienToPolaire(vitesseCartesien); // on la convertit en polaire et on récupérera la direction */
     
     std::array<double,2>  vitessePolaire{};
-    int nb_voisins;
+    int nb_voisins = 0;
     vitessePolaire[0] = b.getVitessePolaire();
     vitessePolaire[1] = 0;
 
