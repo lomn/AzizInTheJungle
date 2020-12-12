@@ -20,13 +20,10 @@ const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
 
 int               Bestiole::next = 0;
+std::array<Comportement *, 4>  Bestiole::comportementArray = initComportements();
 
-std::array<Comportement, 4> Bestiole::comportementArray() {
-    std::array<Comportement, 4> array{};
-    array[0]=Kamikaze();
-    array[1]=Prevoyant();
-    array[2]=Gregaire();
-    array[3]=Peureux();
+std::array<Comportement *, 4> Bestiole::initComportements() {
+    std::array<Comportement*, 4> array = {new Kamikaze(), new Prevoyant(), new Gregaire(), new Peureux()};
     return array;
 }
 
@@ -128,7 +125,8 @@ void Bestiole::initCoords( int xLim, int yLim )
 
 void Bestiole::bouge( int xLim, int yLim, std::vector<Bestiole> & list )
 {
-    std::array<double, 2> update_vitesse = comportementArray()[comportement].calculVitesse(*this, list);
+    std::array<double, 2> update_vitesse = comportementArray[comportement]->calculVitesse(*this, list);
+    std::cout << "New v = (" << update_vitesse[0] << ", " << update_vitesse[1] << ")" << std::endl;
     vitesse= update_vitesse[0];
     orientation=update_vitesse[1];
    double         nx, ny;
@@ -237,3 +235,5 @@ void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
 int Bestiole::getComportement() const {return this->comportement;}
 void Bestiole::setComportement(int c){this->comportement = c;}
+
+

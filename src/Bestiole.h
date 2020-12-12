@@ -28,8 +28,8 @@ private :
 
    static int              next;
 
-   static std::array<Comportement, 4> comportementArray();
-//   static std::array<Comportement, 4> initComportements();
+   static std::array<Comportement*, 4> comportementArray;
+   static std::array<Comportement*, 4> initComportements();
 private :
    int               identite; // id
    int               x, y; // position

@@ -12,7 +12,7 @@ class Bestiole;
 class Kamikaze : public Comportement {
 public:
     Kamikaze();
-    std::array<double, 2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
+    virtual std::array<double, 2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
 };
 
 
