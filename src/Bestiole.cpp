@@ -17,7 +17,6 @@ const double      Bestiole::LIMITE_VUE = 30.;
 
 int               Bestiole::next = 0;
 
-
 T* Bestiole::getCouleur() const{
     return this->couleur;
 }
