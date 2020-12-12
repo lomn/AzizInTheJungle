@@ -21,6 +21,17 @@ const double      Bestiole::LIMITE_VUE = 30.;
 
 int               Bestiole::next = 0;
 
+std::array<Comportement, 4> Bestiole::comportementArray() {
+    std::array<Comportement, 4> array;
+    array[0]=Kamikaze();
+    array[1]=Prevoyant();
+    array[2]=Gregaire();
+    array[3]=Peureux();
+    return array;
+//    Prevoyant(), Gregaire(), Peureux()}
+}
+
+
 T* Bestiole::getCouleur() const{
     return this->couleur;
 }
@@ -225,13 +236,3 @@ void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
 int Bestiole::getComportement() const {return this->comportement;}
 void Bestiole::setComportement(int c){this->comportement = c;}
-
-std::array<Comportement, 4> Bestiole::comportementArray() {
-    std::array<Comportement, 4> array;
-    array[0]=Kamikaze();
-    array[1]=Prevoyant();
-    array[2]=Gregaire();
-    array[3]=Peureux();
-    return array;
-//    Prevoyant(), Gregaire(), Peureux()}
-}
