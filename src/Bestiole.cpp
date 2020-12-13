@@ -117,10 +117,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     isSchizo=b.getIsSchizo();
     comportement=b.getComportement();
     
-    std::vector<Accessoire*> acc = b.getAccessoire();
-    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
-        this->addAccessoire(acc[i]);
-    }
+    accessoireArray = b.getAccessoire();
 
     return *this;
 }
