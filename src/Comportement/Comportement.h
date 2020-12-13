@@ -16,7 +16,7 @@ public:
     Comportement();
     Comportement(const char * nom);
     virtual ~Comportement(){};
-    virtual std::array<double, 2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list);
+    virtual std::array<double, 2> calculVitesse(Bestiole &b, std::vector<Bestiole> & list);
     virtual const char* getNom(){return nom;};
 };
 

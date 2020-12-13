@@ -40,12 +40,13 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
-   bool              isSchizo{}; // Indication de l'état mental de la bestiole...
+   bool              isSchizo; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    int               comportement;
-   std::vector<Accessoire*> accessoireArray;
-
+//   std::vector<Accessoire*> accessoireArray;
+   int               scareCount;
+   double            prevSpeed;
    T               * couleur;
 
 private :
@@ -93,12 +94,18 @@ public :                                           // Forme canonique :
     double getVitessePolaire() const;
     void setVitessePolaire(double vitesse);
     void setVitesseCartesien(double x, double y);
-    std::array<double, 2> getVitesseCartesien();
+    std::array<double, 2> getVitesseCartesien() const;
+    int getScareCount() const;
+    void setScareCount(int scareCount);
+    double getPrevSpeed() const;
+    void setPrevSpeed(double prevSpeed);
 
     // Methodes accessoires
-    void addAccessoire(Accessoire * acc);
-    std::vector<Accessoire*> getAccessoire() const;
+//    void addAccessoire(Accessoire * acc);
+//    std::vector<Accessoire*> getAccessoire() const;
     void collide();
+
+
 
     // Methodes perception
     

@@ -57,6 +57,8 @@ Bestiole::Bestiole()
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
     comportement=PEUREUX_IND;
+    scareCount=0;
+    prevSpeed=0.;
     //accessoireArray;
 }
 
@@ -83,17 +85,19 @@ Bestiole::Bestiole( const Bestiole & b )
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement = b.getComportement();
+    scareCount=b.getScareCount();
+    prevSpeed=b.getPrevSpeed();
 
     //Copie des accessoires
-    std::vector<Accessoire*> acc = b.getAccessoire();
-    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
-        if(acc[i]->getCoefCarapace() > 0){
-            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
-        }
-        else if(acc[i]->getCoefNageoire() > 0){
-            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
-        }
-    }
+//    std::vector<Accessoire*> acc = b.getAccessoire();
+//    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
+//        if(acc[i]->getCoefCarapace() > 0){
+//            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
+//        }
+//        else if(acc[i]->getCoefNageoire() > 0){
+//            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
+//        }
+//    }
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
@@ -116,8 +120,10 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement=b.getComportement();
-    
-    accessoireArray = b.getAccessoire();
+    scareCount=b.getScareCount();
+    prevSpeed=b.getPrevSpeed();
+
+//    accessoireArray = b.getAccessoire();
 
     return *this;
 }
@@ -147,9 +153,9 @@ void Bestiole::initCoords( int xLim, int yLim )
 void Bestiole::bouge( int xLim, int yLim, std::vector<Bestiole> & list )
 {
     std::array<double, 2> update_vitesse = comportementArray[comportement]->calculVitesse(*this, list);
-    std::cout << "New v = (" << update_vitesse[0] << ", " << update_vitesse[1] << ")" << std::endl;
-    vitesse= update_vitesse[0];
-    orientation=update_vitesse[1];
+//    std::cout << "New v = (" << update_vitesse[0] << ", " << update_vitesse[1] << ")" << std::endl;
+    this->setVitessePolaire(update_vitesse[0]);
+    this->setOrientation(update_vitesse[1]);
    double         nx, ny;
    double         dx = cos( orientation )*vitesse;
    double         dy = -sin( orientation )*vitesse;
@@ -239,21 +245,24 @@ void Bestiole::collide() {
 //Getters and Setters
 int Bestiole::getIdentite() const {return identite;}
 int Bestiole::getX() const {return x;}
-void Bestiole::setX(int x) {Bestiole::x = x;}
+void Bestiole::setX(int nx) {Bestiole::x = nx;}
 int Bestiole::getY() const {return y;}
-void Bestiole::setY(int y) {Bestiole::y = y;}
+void Bestiole::setY(int ny) {Bestiole::y = ny;}
 double Bestiole::getSize() const {return size;}
 int Bestiole::getLifeSpan() const {return lifeSpan;}
 double Bestiole::getOrientation() const {return orientation;}
-void Bestiole::setOrientation(double orientation) {Bestiole::orientation = orientation;}
+void Bestiole::setOrientation(double o) {Bestiole::orientation = o;}
 double Bestiole::getVitessePolaire() const {return vitesse;}
-void Bestiole::setVitessePolaire(double vitesse) {Bestiole::vitesse = vitesse;}
+void Bestiole::setVitessePolaire(double v) {
+    if (v<MAX_VITESSE) {Bestiole::vitesse = v;}
+    else{Bestiole::vitesse = MAX_VITESSE;}
+}
 bool Bestiole::getIsSchizo() const {return isSchizo;}
 double Bestiole::getPDeath() const {return pDeath;}
-void Bestiole::setPDeath(double pDeath) {Bestiole::pDeath = pDeath;}
+void Bestiole::setPDeath(double probaDeath) {Bestiole::pDeath = probaDeath;}
 double Bestiole::getPClone() const {return pClone;}
-void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
-void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
+void Bestiole::setPClone(double probaClone) {Bestiole::pClone = probaClone;}
+void Bestiole::setVitesseCartesien(double nx, double ny) {this->setVitessePolaire(sqrt(nx * nx + ny * ny));}
 int Bestiole::getComportement() const {return this->comportement;}
 void Bestiole::setComportement(int c){this->comportement = c;}
 std::vector<Accessoire*> Bestiole::getAccessoire() const {return this->accessoireArray;}

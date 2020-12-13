@@ -7,6 +7,6 @@
 
 Prevoyant::Prevoyant() : Comportement("Prevoyant"){}
 
-std::array<double, 2> Prevoyant::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) {
+std::array<double, 2> Prevoyant::calculVitesse(Bestiole &b, std::vector<Bestiole> &list) {
     return Comportement::calculVitesse(b, list);
 }

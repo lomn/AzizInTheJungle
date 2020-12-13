@@ -11,7 +11,7 @@ class Bestiole;
 class Prevoyant: public Comportement {
 public:
     Prevoyant();
-    virtual std::array<double, 2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
+    virtual std::array<double, 2> calculVitesse(Bestiole &b, std::vector<Bestiole> & list) override;
 };
 
 

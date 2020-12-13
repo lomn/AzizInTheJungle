@@ -36,6 +36,7 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                         {
                             std::cout << "[L] Mort par colision 2 : " << bestj->getIdentite() << std::endl;
                             lst.erase(lst.begin()+j);
+                            nb_mort++;
                         }
                         else{bestj->collide();}
 
@@ -43,8 +44,9 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                         {
                             std::cout << "[L] Mort par colision 1 : " << besti->getIdentite() << std::endl;
                             lst.erase(lst.begin()+i);
+                            nb_mort++;
                         }
-                        else{besti->collide();}
+                        else{besti->collide();} //et bestj?
                     }
                 }
             
