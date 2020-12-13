@@ -17,7 +17,7 @@ const bool INIT_ISSCHIZO = false;
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
+const double      Bestiole::LIMITE_VUE = 100.;
 
 int               Bestiole::next = 0;
 std::array<Comportement *, 4>  Bestiole::comportementArray = initComportements();

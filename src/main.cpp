@@ -21,6 +21,10 @@ int main()
       ecosysteme.getMilieu().addMember(createur->addMember());
    ecosysteme.run();
 
+   delete Bestiole::comportementArray[0];
+   delete Bestiole::comportementArray[1];
+   delete Bestiole::comportementArray[2];
+   delete Bestiole::comportementArray[3];
 
    return 0;
 

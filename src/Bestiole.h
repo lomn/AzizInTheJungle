@@ -28,6 +28,7 @@ private :
 
    static int              next;
 
+public:
    static std::array<Comportement*, 4> comportementArray;
    static std::array<Comportement*, 4> initComportements();
 private :
