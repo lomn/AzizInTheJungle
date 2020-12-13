@@ -119,12 +119,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     
     std::vector<Accessoire*> acc = b.getAccessoire();
     for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
-        if(acc[i]->getCoefCarapace() > 0){
-            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
-        }
-        else if(acc[i]->getCoefNageoire() > 0){
-            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
-        }
+        this->addAccessoire(acc[i]);
     }
 
     return *this;
