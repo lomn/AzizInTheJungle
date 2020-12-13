@@ -1,4 +1,7 @@
 #include "Fabrique.h"
+#include "Accessoire/Accessoire.h"
+#include "Accessoire/Carapace.h"
+#include "Accessoire/Nageoire.h"
 
 Fabrique::Fabrique(int width, int height, 
         float kamikaze, float prevoyant, float gregaire, float peureux, 
@@ -36,16 +39,26 @@ Bestiole & Fabrique::addMember(){
 
     
     // Ajout d'accessoirres ici :
-    /*
-    p = rand() % 101;
-    if(p < probaAccessoires[CARAPACE_IND]){
-            b->addAccessoires(*new Carapace((double)rand()/(double)RAND_MAX));
-    }
+        
+        int cara = static_cast<int>(100*probaAccessoires[CARAPACE_IND]);
+        int nage = static_cast<int>(100*probaAccessoires[NAGEOIRE_IND]);
+        std::cout << "[+] Accessoires \r\n";
 
-    p = rand() % 101;
-    if(p < probaAccessoires[NAGEOIRE_IND]){
-            b->addAccessoires(*new Nageoire((double)rand()/(double)RAND_MAX));
-    }*/
+
+        double coefCaraMax = 5;
+        double coefNageMax = 5;
+        p = rand() % 101;
+        if(p < cara){
+                double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
+                std::cout << "ajout carapace coef : " << coef << std::endl;
+                b->addAccessoire(new Carapace(coef));
+        }
+        p = rand() % 101;
+        if(p < nage){
+                double coef = coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
+                std::cout << "ajout nageoire coef : " << coef << std::endl;
+                b->addAccessoire(new Nageoire(coef));
+        }
 
     // Assignation de la personnalité ici :
         p = rand() % 101;
@@ -53,7 +66,7 @@ Bestiole & Fabrique::addMember(){
         int peur = static_cast<int>(100*probaComportement[PEUREUX_IND  ]);
         int greg = static_cast<int>(100*probaComportement[GREGAIRE_IND ]);
         int kami = static_cast<int>(100*probaComportement[KAMIKAZE_IND ]);
-        std::cout << "[+] branching \r\n";
+        std::cout << "[+] Personalité \r\n";
         if(p < prev){
                 std::cout << "[+] Set prevoyant \r\n";
                 b->setComportement(PREVOYANT_IND);

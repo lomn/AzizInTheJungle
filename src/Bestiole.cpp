@@ -8,6 +8,9 @@
 #include "Comportement/Kamikaze.h"
 #include "Comportement/Prevoyant.h"
 #include "Comportement/Peureux.h"
+#include "Accessoire/Accessoire.h"
+#include "Accessoire/Carapace.h"
+#include "Accessoire/Nageoire.h"
 
 const double INIT_SIZE = 4;
 const int INIT_LIFESPAN = 150;
@@ -79,6 +82,17 @@ Bestiole::Bestiole( const Bestiole & b )
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement = b.getComportement();
+
+    //Copie des accessoires
+    std::vector<Accessoire*> acc = b.getAccessoire();
+    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
+        if(acc[i]->getCoefCarapace() > 0){
+            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
+        }
+        else if(acc[i]->getCoefNageoire() > 0){
+            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
+        }
+    }
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
@@ -101,6 +115,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement=b.getComportement();
+    accessoireArray=b.getAccessoire();
 
     return *this;
 }
@@ -112,6 +127,10 @@ Bestiole::~Bestiole()
     std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
     std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
     delete[] couleur;
+    
+    for(size_t i = accessoireArray.size()-1; ((int)i) >= 0; i--) {
+        delete accessoireArray[i];
+    }
 
 }
 
@@ -235,5 +254,5 @@ void Bestiole::setPClone(double pClone) {Bestiole::pClone = pClone;}
 void Bestiole::setVitesseCartesien(double x, double y) {this->setVitessePolaire(sqrt(x * x + y * y));}
 int Bestiole::getComportement() const {return this->comportement;}
 void Bestiole::setComportement(int c){this->comportement = c;}
-
-
+std::vector<Accessoire*> Bestiole::getAccessoire() const {return this->accessoireArray;}
+void Bestiole::addAccessoire(Accessoire* acc){this->accessoireArray.push_back(acc);}

@@ -1,10 +1,10 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Fabrique.o BestioleUtil.o Comportement.o Gregaire.o Kamikaze.o Peureux.o Prevoyant.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Fabrique.o BestioleUtil.o Comportement.o Gregaire.o Kamikaze.o Peureux.o Prevoyant.o -I . -lX11 -lpthread
+main : main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Fabrique.o BestioleUtil.o Comportement.o Gregaire.o Kamikaze.o Peureux.o Prevoyant.o Accessoire.o Carapace.o Nageoire.o
+	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o LifeManager.o Fabrique.o BestioleUtil.o Comportement.o Gregaire.o Kamikaze.o Peureux.o Prevoyant.o Accessoire.o Carapace.o Nageoire.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
 
-Bestiole.o : Bestiole.h Bestiole.cpp ./Perception/Perception.h ./Perception/Yeux.h ./Perception/Oreilles.h
+Bestiole.o : Bestiole.h Bestiole.cpp Accessoire/Accessoire.h Accessoire/Carapace.h Accessoire/Nageoire.h
 	g++ -Wall -std=c++11 -c Bestiole.cpp -I .
 
 Milieu.o : Milieu.h Milieu.cpp LifeManager.h 
@@ -16,7 +16,7 @@ BestioleUtil.o : BestioleUtil.h BestioleUtil.cpp Bestiole.h ./Accessoire/Accesso
 LifeManager.o : LifeManager.h LifeManager.cpp BestioleUtil.h ./Accessoire/Accessoire.h Bestiole.h
 	g++ -Wall -std=c++11 -c LifeManager.cpp -I .
 
-Fabrique.o	: Fabrique.h Fabrique.cpp Bestiole.h
+Fabrique.o	: Fabrique.h Fabrique.cpp Bestiole.h Accessoire/Accessoire.h Accessoire/Carapace.h Accessoire/Nageoire.h
 	g++ -Wall -std=c++11 -c Fabrique.cpp -I .
 
 # Comportements
@@ -35,3 +35,14 @@ Peureux.o : Comportement/Comportement.h Bestiole.h Comportement/Peureux.h Compor
 
 Prevoyant.o : Comportement/Comportement.h Bestiole.h Comportement/Prevoyant.h Comportement/Prevoyant.cpp
 	g++ -Wall -std=c++11 -c Comportement/Prevoyant.cpp -I .
+
+# Accessoires
+
+Accessoire.o : Accessoire/Accessoire.h Accessoire/Accessoire.cpp Bestiole.h
+	g++ -Wall -std=c++11 -c Accessoire/Accessoire.cpp -I .
+
+Carapace.o : Accessoire/Accessoire.h Accessoire/Carapace.h Accessoire/Carapace.cpp Bestiole.h
+	g++ -Wall -std=c++11 -c Accessoire/Carapace.cpp -I .
+
+Nageoire.o : Accessoire/Accessoire.h Accessoire/Nageoire.h Accessoire/Nageoire.cpp Bestiole.h
+	g++ -Wall -std=c++11 -c Accessoire/Nageoire.cpp -I .

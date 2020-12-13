@@ -16,6 +16,7 @@
 #define PEUREUX_IND 3
 
 class Comportement;
+class Accessoire;
 class Milieu;
 
 class Bestiole
@@ -43,6 +44,7 @@ private :
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    int               comportement;
+   std::vector<Accessoire*> accessoireArray;
 
    T               * couleur;
 
@@ -94,7 +96,8 @@ public :                                           // Forme canonique :
     std::array<double, 2> getVitesseCartesien();
 
     // Methodes accessoires
-   
+    void addAccessoire(Accessoire * acc);
+    std::vector<Accessoire*> getAccessoire() const;
     void collide();
 
     // Methodes perception
