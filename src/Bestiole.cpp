@@ -57,6 +57,7 @@ Bestiole::Bestiole()
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
     comportement=PEUREUX_IND;
+    //accessoireArray;
 }
 
 
@@ -115,7 +116,16 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement=b.getComportement();
-    accessoireArray=b.getAccessoire();
+    
+    std::vector<Accessoire*> acc = b.getAccessoire();
+    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
+        if(acc[i]->getCoefCarapace() > 0){
+            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
+        }
+        else if(acc[i]->getCoefNageoire() > 0){
+            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
+        }
+    }
 
     return *this;
 }
