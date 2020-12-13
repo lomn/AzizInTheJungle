@@ -43,37 +43,33 @@ Bestiole & Fabrique::addMember(){
     }
 
     p = rand() % 101;
-    if(p < probaAccessoires[CAMOUFLAGE_IND]){
-            b->addAccessoires(*new Camouflage((double)rand()/(double)RAND_MAX));
-    }
-
-    p = rand() % 101;
     if(p < probaAccessoires[NAGEOIRE_IND]){
             b->addAccessoires(*new Nageoire((double)rand()/(double)RAND_MAX));
     }*/
 
     // Assignation de la personnalité ici :
-//        p = rand() % 101;
-//        if(p < probaComportement[KAMIKAZE_IND]){
-//                b->setComportement(KAMIKAZE_IND);
-//        }
-//
-//        p = rand() % 101;
-//        if(p < probaComportement[GREGAIRE_IND]){
-//                b->setComportement(GREGAIRE_IND);
-//        }
-//
-//        p = rand() % 101;
-//        if(p < probaComportement[PEUREUX_IND]){
-//                b->setComportement(PEUREUX_IND);
-//        }
-//
-//        p = rand() % 101;
-//        if(p < probaComportement[PREVOYANT_IND]){
-//                b->setComportement(PREVOYANT_IND);
-//        }
-        b->setComportement(KAMIKAZE_IND);
-
+        p = rand() % 101;
+        int prev = static_cast<int>(100*probaComportement[PREVOYANT_IND]);
+        int peur = static_cast<int>(100*probaComportement[PEUREUX_IND  ]);
+        int greg = static_cast<int>(100*probaComportement[GREGAIRE_IND ]);
+        int kami = static_cast<int>(100*probaComportement[KAMIKAZE_IND ]);
+        std::cout << "[+] branching \r\n";
+        if(p < prev){
+                std::cout << "[+] Set prevoyant \r\n";
+                b->setComportement(PREVOYANT_IND);
+        }
+        else if((p-=prev) < peur){
+                std::cout << "[+] Set peureux \r\n";
+                b->setComportement(PEUREUX_IND);
+        }
+        else if((p-=peur) < greg){
+                std::cout << "[+] Set gregaire \r\n";
+                b->setComportement(GREGAIRE_IND);
+        }
+        else{
+                std::cout << "[+] Set kamikaze \r\n";
+                b->setComportement(KAMIKAZE_IND);
+        }
     // Ajout des attributs de perception ici :
 
     return *b;
