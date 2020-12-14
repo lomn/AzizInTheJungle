@@ -72,7 +72,7 @@ Bestiole & Fabrique::addMember(){
 //        if(p < probaComportement[PREVOYANT_IND]){
 //                b->setComportement(PREVOYANT_IND);
 //        }
-        b->setComportement(KAMIKAZE_IND);
+        b->setComportement(PEUREUX_IND);
 
     // Ajout des attributs de perception ici :
 

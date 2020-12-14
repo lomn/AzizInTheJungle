@@ -10,7 +10,7 @@
 
 Gregaire::Gregaire(): Comportement("Gregaire") {}
 
-std::array<double,2> Gregaire::calculVitesse(const Bestiole &b, std::vector<Bestiole> &list) {
+std::array<double,2> Gregaire::calculVitesse(Bestiole &b, std::vector<Bestiole> &list) {
     /* std::array<double,2>  vitesseCartesien{};
     int nb_voisins;
     for (auto it = list.begin(); it != list.end(); ++it) {

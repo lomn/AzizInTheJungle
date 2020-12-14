@@ -16,11 +16,7 @@ private:
 
 public:
     Peureux();
-    virtual std::array<double,2> calculVitesse(const Bestiole &b, std::vector<Bestiole> & list) override;
-    void setScare_count(int scare);
-    int getScare_count();
-    double getVitesseCalme();
-    void setVitesseCalme(double speedCalm);
+    virtual std::array<double,2> calculVitesse(Bestiole &b, std::vector<Bestiole> & list) override;
 
 };
 

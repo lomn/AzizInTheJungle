@@ -43,6 +43,8 @@ private :
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    int               comportement;
+   int               scareCount;
+   double            prevSpeed;
 
    T               * couleur;
 
@@ -91,11 +93,20 @@ public :                                           // Forme canonique :
     double getVitessePolaire() const;
     void setVitessePolaire(double vitesse);
     void setVitesseCartesien(double x, double y);
-    std::array<double, 2> getVitesseCartesien();
+    std::array<double, 2> getVitesseCartesien() const;
+
 
     // Methodes accessoires
    
     void collide();
+
+    int getScareCount() const;
+
+    void setScareCount(int scareCount);
+
+    double getPrevSpeed() const;
+
+    void setPrevSpeed(double prevSpeed);
 
     // Methodes perception
     
