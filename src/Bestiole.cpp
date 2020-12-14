@@ -59,7 +59,7 @@ Bestiole::Bestiole()
     comportement=PEUREUX_IND;
     scareCount=0;
     prevSpeed=0.;
-    //accessoireArray;
+    accessoireArray.clear();
 }
 
 
@@ -68,7 +68,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
     identite = ++next;
 
-    std::cout << "const Bestiole (" << identite << ") par copie" << std::endl;
+    std::cout << "const Bestiole (" << identite << ") par copie " << accessoireArray.size() << std::endl;
 
     x = b.getX();
     y = b.getY();
@@ -76,7 +76,6 @@ Bestiole::Bestiole( const Bestiole & b )
     orientation = b.getOrientation();
     vitesse = b.getVitessePolaire();
     couleur = new T[ 3 ];
-    printf("T (const) : %p\n", couleur);
     memcpy( couleur, b.couleur, 3*sizeof(T) );
 
     size=b.getSize(); // taille
@@ -87,6 +86,7 @@ Bestiole::Bestiole( const Bestiole & b )
     comportement = b.getComportement();
     scareCount=b.getScareCount();
     prevSpeed=b.getPrevSpeed();
+    accessoireArray.clear();
 
     //Copie des accessoires
     std::vector<Accessoire*> acc = b.getAccessoire();
@@ -111,7 +111,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     vitesse = b.getVitessePolaire();
     delete[] couleur;
     couleur = new T[ 3 ];
-    printf("T (const) : %p\n", couleur);
+    printf("T (const) : %p      \n", couleur);
     memcpy( couleur, b.couleur, 3*sizeof(T) );
 
     size=b.getSize(); // taille
@@ -123,6 +123,12 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     scareCount=b.getScareCount();
     prevSpeed=b.getPrevSpeed();
 
+    for(size_t i = accessoireArray.size()-1; ((int)i) >= 0; i--) {
+        delete accessoireArray[i];
+    }
+    accessoireArray.clear();
+
+    std::cout << "0 " << this->accessoireArray.size() << std::endl;
     std::vector<Accessoire*> acc = b.getAccessoire();
     for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
         if(acc[i]->getCoefCarapace() > 0){
@@ -132,6 +138,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
             this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
         }
     }
+    std::cout << "0 " << this->accessoireArray.size() << std::endl;
 
     return *this;
 }
@@ -142,6 +149,7 @@ Bestiole::~Bestiole()
 
     std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
     std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
+    std::cout << "Size accessoire : " << accessoireArray.size() << std::endl;
     delete[] couleur;
     
     for(size_t i = accessoireArray.size()-1; ((int)i) >= 0; i--) {
@@ -275,3 +283,7 @@ int Bestiole::getComportement() const {return this->comportement;}
 void Bestiole::setComportement(int c){this->comportement = c;}
 std::vector<Accessoire*> Bestiole::getAccessoire() const {return this->accessoireArray;}
 void Bestiole::addAccessoire(Accessoire* acc){this->accessoireArray.push_back(acc);}
+int Bestiole::getScareCount() const{return this->scareCount;};
+void Bestiole::setScareCount(int scareCount){this->scareCount = scareCount;};
+double Bestiole::getPrevSpeed() const{return this->prevSpeed;};
+void Bestiole::setPrevSpeed(double prevSpeed){this->prevSpeed = prevSpeed;};
