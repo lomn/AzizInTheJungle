@@ -80,6 +80,7 @@ public :                                           // Forme canonique :
     // Méthodes relative aux propriété de vie/mort
     int getLifeSpan() const;
     double getPDeath() const;
+    double getPDeathPondere() const;
     void setPDeath(double pDeath);
     double getPClone() const;
     void setPClone(double pClone);

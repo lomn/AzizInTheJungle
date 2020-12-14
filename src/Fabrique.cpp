@@ -45,8 +45,8 @@ Bestiole & Fabrique::addMember(){
         std::cout << "[+] Accessoires \r\n";
 
 
-        double coefCaraMax = 5;
-        double coefNageMax = 5;
+        double coefCaraMax = 1;
+        double coefNageMax = 1;
         p = rand() % 101;
         if(p < cara){
                 double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
@@ -55,7 +55,7 @@ Bestiole & Fabrique::addMember(){
         }
         p = rand() % 101;
         if(p < nage){
-                double coef = coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
+                double coef = 1+coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
                 std::cout << "ajout nageoire coef : " << coef << std::endl;
                 b->addAccessoire(new Nageoire(coef));
         }

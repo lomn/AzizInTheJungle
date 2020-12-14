@@ -245,17 +245,36 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 std::array<double, 2> Bestiole::getVitesseCartesien() const {
     std::array<double,2> coord{};
-    coord[0] = vitesse*cos(orientation);
-    coord[1] = vitesse*sin(orientation);
+    coord[0] = this->getVitessePolaire()*cos(orientation);
+    coord[1] = this->getVitessePolaire()*sin(orientation);
     return coord;
 }
 
+
+double Bestiole::getVitessePolaire() const {
+    double c = 0;
+    for(size_t i = 0; i != accessoireArray.size(); i++){
+        if(accessoireArray[i]->getCoefNageoire() != 0){
+            c *= accessoireArray[i]->getCoefNageoire();
+        }
+    }
+    return vitesse*c;
+}
 
 
 void Bestiole::collide() {
     orientation=-orientation;
 }
 
+
+double Bestiole::getPDeathPondere() const {
+    double c = 0;
+    for(size_t i = 0; i != accessoireArray.size(); i++){
+        c += accessoireArray[i]->getCoefCarapace();
+    }
+    if(c > 1){c=1;}
+    return pDeath*(1-c);
+}
 
 
 //Getters and Setters
@@ -268,7 +287,6 @@ double Bestiole::getSize() const {return size;}
 int Bestiole::getLifeSpan() const {return lifeSpan;}
 double Bestiole::getOrientation() const {return orientation;}
 void Bestiole::setOrientation(double o) {Bestiole::orientation = o;}
-double Bestiole::getVitessePolaire() const {return vitesse;}
 void Bestiole::setVitessePolaire(double v) {
     if (v<MAX_VITESSE) {Bestiole::vitesse = v;}
     else{Bestiole::vitesse = MAX_VITESSE;}
