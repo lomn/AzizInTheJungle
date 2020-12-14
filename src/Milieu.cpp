@@ -38,9 +38,9 @@ void Milieu::step( void )
     lifeMana.step(this->listeBestioles, width, height);
     for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
-      //std::cout << "[+] Act" << std::endl;
+      std::cout << "[+] Act" << std::endl;
        it->action( *this );
-      //std::cout << "[+] Act" << std::endl;
+      std::cout << "[+] Act" << std::endl;
        it->draw( *this );
    } // for
 }
