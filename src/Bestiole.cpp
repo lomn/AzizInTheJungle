@@ -89,15 +89,15 @@ Bestiole::Bestiole( const Bestiole & b )
     prevSpeed=b.getPrevSpeed();
 
     //Copie des accessoires
-//    std::vector<Accessoire*> acc = b.getAccessoire();
-//    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
-//        if(acc[i]->getCoefCarapace() > 0){
-//            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
-//        }
-//        else if(acc[i]->getCoefNageoire() > 0){
-//            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
-//        }
-//    }
+    std::vector<Accessoire*> acc = b.getAccessoire();
+    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
+        if(acc[i]->getCoefCarapace() > 0){
+            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
+        }
+        else if(acc[i]->getCoefNageoire() > 0){
+            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
+        }
+    }
 }
 
 Bestiole & Bestiole::operator=(const Bestiole & b){
@@ -123,7 +123,15 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     scareCount=b.getScareCount();
     prevSpeed=b.getPrevSpeed();
 
-//    accessoireArray = b.getAccessoire();
+    std::vector<Accessoire*> acc = b.getAccessoire();
+    for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
+        if(acc[i]->getCoefCarapace() > 0){
+            this->addAccessoire(new Carapace(acc[i]->getCoefCarapace()));
+        }
+        else if(acc[i]->getCoefNageoire() > 0){
+            this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
+        }
+    }
 
     return *this;
 }
@@ -227,7 +235,7 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
     return ( dist <= LIMITE_VUE );
 }
 
-std::array<double, 2> Bestiole::getVitesseCartesien() {
+std::array<double, 2> Bestiole::getVitesseCartesien() const {
     std::array<double,2> coord{};
     coord[0] = vitesse*cos(orientation);
     coord[1] = vitesse*sin(orientation);

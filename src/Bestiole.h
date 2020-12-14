@@ -44,7 +44,7 @@ private :
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
    int               comportement;
-//   std::vector<Accessoire*> accessoireArray;
+   std::vector<Accessoire*> accessoireArray;
    int               scareCount;
    double            prevSpeed;
    T               * couleur;
@@ -101,8 +101,8 @@ public :                                           // Forme canonique :
     void setPrevSpeed(double prevSpeed);
 
     // Methodes accessoires
-//    void addAccessoire(Accessoire * acc);
-//    std::vector<Accessoire*> getAccessoire() const;
+    void addAccessoire(Accessoire * acc);
+    std::vector<Accessoire*> getAccessoire() const;
     void collide();
 
 
