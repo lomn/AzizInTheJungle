@@ -28,9 +28,8 @@ std::array<Comportement *, 4> Bestiole::initComportements() {
 }
 
 
-T* Bestiole::getCouleur() const{
-    return this->couleur;
-}
+
+// Constructors
 
 Bestiole::Bestiole()
 {
@@ -81,6 +80,16 @@ Bestiole::Bestiole( const Bestiole & b )
     comportement = b.getComportement();
 }
 
+Bestiole::~Bestiole()
+{
+
+    std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
+    std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
+    delete[] couleur;
+
+}
+
+// Operators
 Bestiole & Bestiole::operator=(const Bestiole & b){
 
     identite = b.getIdentite();
@@ -105,16 +114,12 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     return *this;
 }
 
-
-Bestiole::~Bestiole()
+bool operator==( const Bestiole & b1, const Bestiole & b2 )
 {
 
-    std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
-    std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
-    delete[] couleur;
+    return ( b1.identite == b2.identite );
 
 }
-
 
 void Bestiole::initCoords( int xLim, int yLim )
 {
@@ -122,6 +127,10 @@ void Bestiole::initCoords( int xLim, int yLim )
    y = rand() % yLim;
 }
 
+void Bestiole::action( Milieu & monMilieu )
+{
+    bouge( monMilieu.getWidth(), monMilieu.getHeight() , monMilieu.getListeBestiole());
+}
 
 void Bestiole::bouge( int xLim, int yLim, std::vector<Bestiole> & list )
 {
@@ -162,12 +171,6 @@ void Bestiole::bouge( int xLim, int yLim, std::vector<Bestiole> & list )
 }
 
 
-void Bestiole::action( Milieu & monMilieu )
-{
-
-   bouge( monMilieu.getWidth(), monMilieu.getHeight() , monMilieu.getListeBestiole());
-
-}
 
 
 void Bestiole::draw( UImg & support )
@@ -182,32 +185,13 @@ void Bestiole::draw( UImg & support )
 
 }
 
-
-bool operator==( const Bestiole & b1, const Bestiole & b2 )
-{
-
-   return ( b1.identite == b2.identite );
-
-}
-
-
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
-
     double         dist;
 
     dist = std::sqrt( (x-b.getX())*(x-b.getY()) + (y-b.getY())*(y-b.getY()) );
     return ( dist <= LIMITE_VUE );
 }
-
-std::array<double, 2> Bestiole::getVitesseCartesien() const{
-    std::array<double,2> coord{};
-    coord[0] = vitesse*cos(orientation);
-    coord[1] = vitesse*sin(orientation);
-    return coord;
-}
-
-
 
 void Bestiole::collide() {
     orientation=-orientation;
@@ -237,10 +221,24 @@ double Bestiole::getPClone() const {return pClone;}
 void Bestiole::setPClone(double probaClone) {Bestiole::pClone = probaClone;}
 void Bestiole::setVitesseCartesien(double nx, double ny) {this->setVitessePolaire(sqrt(nx * nx + ny * ny));}
 int Bestiole::getComportement() const {return this->comportement;}
-void Bestiole::setComportement(int c){this->comportement = c;}
+void Bestiole::setComportement(int c){
+    this->comportement = c;
+    if (c==KAMIKAZE_IND)  couleur[ 0 ]=255, couleur[ 1 ]=000, couleur[ 2 ]=000;
+    if (c==GREGAIRE_IND)  couleur[ 0 ]=000, couleur[ 1 ]=255, couleur[ 2 ]=000;
+    if (c==PEUREUX_IND)   couleur[ 0 ]=000, couleur[ 1 ]=000, couleur[ 2 ]=255;
+    if (c==PREVOYANT_IND) couleur[ 0 ]=000, couleur[ 1 ]=000, couleur[ 2 ]=000;
+}
 int Bestiole::getScareCount() const {return scareCount;}
 void Bestiole::setScareCount(int sc) {Bestiole::scareCount = sc;}
 double Bestiole::getPrevSpeed() const {return prevSpeed;}
 void Bestiole::setPrevSpeed(double ps) {Bestiole::prevSpeed = ps;}
-
+std::array<double, 2> Bestiole::getVitesseCartesien() const{
+    std::array<double,2> coord{};
+    coord[0] = vitesse*cos(orientation);
+    coord[1] = vitesse*sin(orientation);
+    return coord;
+}
+T* Bestiole::getCouleur() const{
+    return this->couleur;
+}
 
