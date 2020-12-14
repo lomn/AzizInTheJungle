@@ -10,8 +10,8 @@
 
 class LifeManager {
 private:
-    static int nb_mort;
-    static int nb_clon;
+    static int nb_mort[4];
+    static int nb_clon[4];
     static bool intersect(const Bestiole& b1, const Bestiole& b2);
 public:
     static void step(std::vector<Bestiole> & list, int xLim, int yLim);

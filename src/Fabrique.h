@@ -10,6 +10,8 @@
 #define NAGEOIRE_IND 2
 
 class Comportement;class Fabrique {
+private:
+    static int nb_naiss[4];
 private: 
     float probaComportement[4];
     float probaAccessoires[3];
@@ -23,6 +25,7 @@ public:
         float carapace, float camouflage, float nageoire); 
     ~Fabrique();
     Bestiole & addMember();
+    void getStats();
 
 };
 
