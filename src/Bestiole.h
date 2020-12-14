@@ -93,9 +93,11 @@ public :                                           // Forme canonique :
     double getOrientation() const;
     void setOrientation(double orientation);
     double getVitessePolaire() const;
+    double getVitessePolairePondere() const;
     void setVitessePolaire(double vitesse);
     void setVitesseCartesien(double x, double y);
     std::array<double, 2> getVitesseCartesien() const;
+    std::array<double, 2> getVitesseCartesienPondere() const;
     int getScareCount() const;
     void setScareCount(int scareCount);
     double getPrevSpeed() const;

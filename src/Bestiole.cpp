@@ -243,6 +243,13 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
     return ( dist <= LIMITE_VUE );
 }
 
+std::array<double, 2> Bestiole::getVitesseCartesienPondere() const {
+    std::array<double,2> coord{};
+    coord[0] = this->getVitessePolairePondere()*cos(orientation);
+    coord[1] = this->getVitessePolairePondere()*sin(orientation);
+    return coord;
+}
+
 std::array<double, 2> Bestiole::getVitesseCartesien() const {
     std::array<double,2> coord{};
     coord[0] = this->getVitessePolaire()*cos(orientation);
@@ -250,11 +257,10 @@ std::array<double, 2> Bestiole::getVitesseCartesien() const {
     return coord;
 }
 
-
-double Bestiole::getVitessePolaire() const {
+double Bestiole::getVitessePolairePondere() const {
     double c = 0;
     for(size_t i = 0; i != accessoireArray.size(); i++){
-        if(accessoireArray[i]->getCoefNageoire() != 0){
+        if(accessoireArray[i]->getCoefNageoire() > 0){
             c *= accessoireArray[i]->getCoefNageoire();
         }
     }
@@ -305,3 +311,4 @@ int Bestiole::getScareCount() const{return this->scareCount;};
 void Bestiole::setScareCount(int scareCount){this->scareCount = scareCount;};
 double Bestiole::getPrevSpeed() const{return this->prevSpeed;};
 void Bestiole::setPrevSpeed(double prevSpeed){this->prevSpeed = prevSpeed;};
+double Bestiole::getVitessePolaire() const {return vitesse;}
