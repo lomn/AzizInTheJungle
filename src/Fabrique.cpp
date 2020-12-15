@@ -1,6 +1,12 @@
 #include "Fabrique.h"
 #include <iomanip>
 
+const double MIN_DETEC_VISION = 0.2;
+const double MAX_DETEC_VISION = 0.8;
+const double MIN_DETEC_AUD = 0.2;
+const double MAX_DETEC_AUD = 0.8;
+
+
 Fabrique::Fabrique(int width, int height, 
         float kamikaze, float prevoyant, float gregaire, float peureux, 
         float carapace, float camouflage, float nageoire,
@@ -65,9 +71,9 @@ Bestiole & Fabrique::addMember(){
         nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
     }
 
-    b->addYeux(Yeux(1.57, 100. ));
+    b->addYeux(Yeux(1.57/2, 50.,1 ));
 //    std::cout << "[+] Set oreilles \r\n";
-//    b->addOreilles(Oreilles(100.));
+//    b->addOreilles(Oreilles(100.,1));
 
     return *b;
 }

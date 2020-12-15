@@ -1,6 +1,10 @@
+/**
+* @file Milieu.h
+* @brief Il s'agit d'une classe gérant le Milieu d'évolution des bestioles
+ */
+
 #ifndef _MILIEU_H_
 #define _MILIEU_H_
-
 
 #include "UImg.h"
 #include "Bestiole.h"

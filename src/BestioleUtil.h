@@ -1,3 +1,9 @@
+/**
+* @file BestiolUtil.h
+* @brief Il s'agit d'une ensemble de méthodes utiles à la bestiole
+ */
+
+
 #ifndef _BESTIOLES_UTIL_H_
 #define _BESTIOLES_UTIL_H_
 

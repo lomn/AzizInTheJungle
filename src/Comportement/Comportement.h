@@ -1,6 +1,7 @@
-//
-// Created by sella on 04/12/2020.
-//
+/**
+* @file Comportement.h
+* @brief Il s'agit de la classe comportement ddont hérite tout les comportements
+ */
 
 #ifndef AZIZINTHEJUNGLE_COMPORTEMENT_H
 #define AZIZINTHEJUNGLE_COMPORTEMENT_H

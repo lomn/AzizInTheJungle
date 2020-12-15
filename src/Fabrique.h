@@ -1,3 +1,14 @@
+/** Fabrique a Bestioles
+* Design Pattern : Fabrique
+* @file Fabrique.h
+* @brief Il s'agit d'une fabrique à bestioles
+*
+* Cette Classe permet la fabrique permet la créations de bestioles en prenant en compte :
+* - les Comportements
+* - les Accessoires
+* - les Capteurs
+ */
+
 #ifndef _FABRIQUE_H_
 #define _FABRIQUE_H_
 
@@ -11,7 +22,9 @@
 #define YEUX_IND 0
 #define OREILLES_IND 1
 
-class Comportement;class Fabrique {
+class Comportement;
+
+class Fabrique {
 private:
     static int nb_naiss[4];
 private: 

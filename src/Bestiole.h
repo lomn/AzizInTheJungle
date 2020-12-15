@@ -1,3 +1,9 @@
+/** Bestioles
+* @file Bestiole.h
+* @brief Il s'agit des bestioles à simuler, elles possèdent différentes caractéristiques (comportements, accessoires,
+ * capteurs) et des méthodes d'interactions avec l'environnement (mouvement, vision,...)
+ */
+
 #ifndef _BESTIOLES_H_
 #define _BESTIOLES_H_
 
@@ -30,8 +36,9 @@ private :
    static int              next;
 
 public:
-   static std::array<Comportement*, 4> comportementArray;
+   static std::array<Comportement*, 4> comportementArray; //tableau de comportements
    static std::array<Comportement*, 4> initComportements();
+
 private :
    int               identite; // id
    int               x, y; // position
@@ -43,7 +50,7 @@ private :
    bool              isSchizo{}; // Indication de l'état mental de la bestiole...
    double            pDeath; // Proba de mort par collision
    double            pClone; // Proba de clonage
-   int               comportement;
+   int               comportement; // indice du comportement
    int               scareCount;
    double            prevSpeed;
    Perception        percep;
@@ -107,8 +114,8 @@ public :                                           // Forme canonique :
     // Methodes perception
     void addYeux(const Yeux &y);
     void addOreilles(const Oreilles &o);
-
     const Perception &getPercep() const;
+    double getCapaCamo() const;
 };
 
 

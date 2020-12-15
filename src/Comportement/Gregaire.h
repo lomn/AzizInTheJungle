@@ -1,6 +1,8 @@
-//
-// Created by sella on 04/12/2020.
-//
+/**
+* @file Gregaire.h
+* @brief Il s'agit d'un comportement de bestiole:  une bestiole dite grégaire ajuste sa direction sur la direction moyenne
+* des bestioles environnantes.
+ */
 
 #ifndef AZIZINTHEJUNGLE_GREGAIRE_H
 #define AZIZINTHEJUNGLE_GREGAIRE_H

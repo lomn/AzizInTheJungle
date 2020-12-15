@@ -247,9 +247,9 @@ std::array<double, 2> Bestiole::getVitesseCartesien() const{
     coord[1] = vitesse*sin(orientation);
     return coord;
 }
-T* Bestiole::getCouleur() const{
-    return this->couleur;
-}
+const Perception &Bestiole::getPercep() const {return percep;}
+double Bestiole::getCapaCamo() const {return 0;}
+T* Bestiole::getCouleur() const{return this->couleur;}
 
 void Bestiole::addYeux(const Yeux &y) {
     percep.addYeux(y);
@@ -258,6 +258,4 @@ void Bestiole::addYeux(const Yeux &y) {
 void Bestiole::addOreilles(const Oreilles &o) {
     percep.addOreille(o);
 }
-
-const Perception &Bestiole::getPercep() const {return percep;}
 

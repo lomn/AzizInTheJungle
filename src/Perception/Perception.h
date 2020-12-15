@@ -1,3 +1,9 @@
+/**
+* @file Perception.h
+* @brief Il s'agit de la classe faisant la gestion des capteurs de la Bestiole. Elle détermine si une bestiole est capable
+ * de détecter une autre
+ */
+
 #ifndef _PERCEPTION_H_
 #define _PERCEPTION_H_
 

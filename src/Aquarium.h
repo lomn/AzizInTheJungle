@@ -1,3 +1,8 @@
+/**
+* @file Aquarium.h
+* @brief Il s'agit de la classe gérant le milieu et le lancement de la simulation
+ */
+
 #ifndef _AQUARIUM_H_
 #define _AQUARIUM_H_
 
