@@ -30,6 +30,7 @@ std::array<double,2> Gregaire::calculVitesse(Bestiole &b, std::vector<Bestiole> 
     vitessePolaire[1] = 0;
 
     for (auto it = list.begin(); it != list.end(); ++it) {
+//        std::cout << "[Greg] appel jeTevois" << std::endl;
         if (b.jeTeVois(*it) && not(b == *it)) {
             vitessePolaire[1] += it->getOrientation();
             nb_voisins++;

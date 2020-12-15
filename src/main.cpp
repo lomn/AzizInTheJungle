@@ -11,14 +11,15 @@ int Fabrique::nb_naiss[4]={0,0,0,0};
 
 int main()
 {
-   int width = 640;
-   int height = 480;
+   int width = 100;
+   int height = 100;
    Aquarium       ecosysteme( width, height, 30 );
    Fabrique * createur = new Fabrique(width, height, 
       1.0/3.0, 0.0/3.0, 1.0/3.0, 1.0/3.0, //Personalités
-      1.0/3.0, 1.0/3.0, 1.0/3.0); // Accessoires
+      1.0/3.0, 1.0/3.0, 1.0/3.0, // Accessoires
+      1.0/2.0, 1.0/2.0); // Capteurs
 
-   for ( int i = 1; i <= 20; ++i )
+   for ( int i = 1; i <= 2; ++i )
       ecosysteme.getMilieu().addMember(createur->addMember());
    ecosysteme.run();
 

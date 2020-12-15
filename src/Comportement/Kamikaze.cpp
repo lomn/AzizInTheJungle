@@ -13,6 +13,7 @@ std::array<double, 2> Kamikaze::calculVitesse(Bestiole &b, std::vector<Bestiole>
     double tmp_dist = 10000;
     bool found = false;
     for ( idx=0;idx<list.size();idx++){
+//        std::cout << "[Kami] appel jeTevois" << std::endl;
         if(b.jeTeVois(list[idx]) &&  (b!=list[idx])){
             found = true;
             double curr_dist = distanceBestiole(list[idx], b);

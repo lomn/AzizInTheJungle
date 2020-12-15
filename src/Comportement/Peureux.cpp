@@ -18,6 +18,7 @@ std::array<double,2> Peureux::calculVitesse(Bestiole &b, std::vector<Bestiole> &
     }
 
     for (auto it = list.begin(); it != list.end(); ++it) {
+//        std::cout << "[Peur] appel jeTevois" << std::endl;
         if (b.jeTeVois(*it) && not(b == *it)) {
             nb_voisins++;
         }

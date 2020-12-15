@@ -8,11 +8,15 @@
 #include "Comportement/Kamikaze.h"
 #include "Comportement/Prevoyant.h"
 #include "Comportement/Peureux.h"
+#include "Perception/Perception.h"
+#include "Perception/Yeux.h"
+#include "Perception/Oreilles.h"
 
 const double INIT_SIZE = 4;
-const int INIT_LIFESPAN = 150;
+const int INIT_LIFESPAN = 1500;
 const double INIT_PDEATH = 0.01;
-const double INIT_PCLONE = 0.005;
+//const double INIT_PCLONE = 0.005;
+const double INIT_PCLONE = 0.;
 const bool INIT_ISSCHIZO = false;
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -53,6 +57,7 @@ Bestiole::Bestiole()
     pClone=INIT_PCLONE; // Proba de clonage
     isSchizo=INIT_ISSCHIZO;
     comportement=PEUREUX_IND;
+    percep=Perception();
 }
 
 
@@ -78,6 +83,7 @@ Bestiole::Bestiole( const Bestiole & b )
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement = b.getComportement();
+    percep=Perception(b.getPercep());
 }
 
 Bestiole::~Bestiole()
@@ -110,7 +116,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     pClone=b.getPClone(); // Proba de clonage
     isSchizo=b.getIsSchizo();
     comportement=b.getComportement();
-
+    percep=Perception(b.getPercep());
     return *this;
 }
 
@@ -187,10 +193,13 @@ void Bestiole::draw( UImg & support )
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
-    double         dist;
-
-    dist = std::sqrt( (x-b.getX())*(x-b.getY()) + (y-b.getY())*(y-b.getY()) );
-    return ( dist <= LIMITE_VUE );
+//    double         dist;
+//
+//    dist = std::sqrt( (x-b.getX())*(x-b.getY()) + (y-b.getY())*(y-b.getY()) );
+//    return ( dist <= LIMITE_VUE );
+//    std::cout << "in see " << (b!=*this) << std::endl;
+    if(b!=*this) return percep.jeTeVois(*this, b);
+    return false;
 }
 
 void Bestiole::collide() {
@@ -241,4 +250,14 @@ std::array<double, 2> Bestiole::getVitesseCartesien() const{
 T* Bestiole::getCouleur() const{
     return this->couleur;
 }
+
+void Bestiole::addYeux(const Yeux &y) {
+    percep.addYeux(y);
+}
+
+void Bestiole::addOreilles(const Oreilles &o) {
+    percep.addOreille(o);
+}
+
+const Perception &Bestiole::getPercep() const {return percep;}
 

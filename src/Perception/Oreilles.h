@@ -13,9 +13,9 @@ public:
     Oreilles(const Oreilles & OreillesOrigine);
     Oreilles(): Oreilles((double)0) {};
     ~Oreilles();
-
+    Oreilles & operator=(const Oreilles & o);
     double getDistance() const;
-    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const;
 };
 
 #endif

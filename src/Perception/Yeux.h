@@ -15,7 +15,7 @@ public:
 
     double getAngle() const;
     double getDistance() const;
-    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const;
 };
 
 #endif

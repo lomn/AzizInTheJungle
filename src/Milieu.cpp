@@ -34,7 +34,7 @@ void Milieu::step( void )
 {
 
     cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
-    std::cout << "step nb : " << stepcount++ << std::endl;
+//    std::cout << "step nb : " << stepcount++ << std::endl;
     lifeMana.step(this->listeBestioles, width, height);
     for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
@@ -51,10 +51,11 @@ int Milieu::nbVoisins( const Bestiole & b )
    int         nb = 0;
 
 
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-      if ( !(b == *it) && b.jeTeVois(*it) )
-         ++nb;
-
+   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it ) {
+//       std::cout << "[Milieu] appel jeTevois" << std::endl;
+       if (!(b == *it) && b.jeTeVois(*it))
+           ++nb;
+   }
    return nb;
 
 }

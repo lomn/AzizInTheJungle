@@ -3,7 +3,8 @@
 
 Fabrique::Fabrique(int width, int height, 
         float kamikaze, float prevoyant, float gregaire, float peureux, 
-        float carapace, float camouflage, float nageoire)
+        float carapace, float camouflage, float nageoire,
+        float yeux, float oreilles)
 {
     this->m_height = height;
     this->m_width  = width;
@@ -23,6 +24,10 @@ Fabrique::Fabrique(int width, int height,
     this->probaAccessoires[CARAPACE_IND]   = carapace*normalize;
     this->probaAccessoires[CAMOUFLAGE_IND] = camouflage*normalize;
     this->probaAccessoires[NAGEOIRE_IND]   = nageoire*normalize;
+
+    float normalizec = 1/(yeux + oreilles);
+    this->probaCapteurs[YEUX_IND] = yeux*normalizec;
+    this->probaCapteurs[OREILLES_IND]   = oreilles*normalizec;
 }
 
 Fabrique::~Fabrique(){this->getStats();}
@@ -59,6 +64,10 @@ Bestiole & Fabrique::addMember(){
         b->setComportement(KAMIKAZE_IND);
         nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
     }
+
+    b->addYeux(Yeux(1.57, 100. ));
+//    std::cout << "[+] Set oreilles \r\n";
+//    b->addOreilles(Oreilles(100.));
 
     return *b;
 }

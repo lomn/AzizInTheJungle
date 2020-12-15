@@ -14,9 +14,15 @@ private:
 
 public:
     Perception();
-    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole);
+    Perception(const Perception & p);
+    ~Perception();
+    Perception & operator=(const Perception & p);
+    bool jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestiole) const;
     void addYeux(const Yeux& y);
     void addOreille(const Oreilles& o);
+    const std::vector<Yeux> &getYeuxVect() const;
+
+    const std::vector<Oreilles> &getOreilleVect() const;
 };
 
 #endif

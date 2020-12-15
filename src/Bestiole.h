@@ -8,6 +8,7 @@
 #include <vector>
 #include <array>
 #include "Comportement/Comportement.h"
+#include "Perception/Perception.h"
 
 
 #define KAMIKAZE_IND 0
@@ -45,7 +46,7 @@ private :
    int               comportement;
    int               scareCount;
    double            prevSpeed;
-
+   Perception        percep;
    T               * couleur;
 
 private :
@@ -94,23 +95,20 @@ public :                                           // Forme canonique :
     void setVitessePolaire(double vitesse);
     void setVitesseCartesien(double x, double y);
     std::array<double, 2> getVitesseCartesien() const;
-
-
-    // Methodes accessoires
-   
-    void collide();
-
     int getScareCount() const;
-
     void setScareCount(int scareCount);
-
     double getPrevSpeed() const;
-
     void setPrevSpeed(double prevSpeed);
 
-    // Methodes perception
-    
+    // Methodes accessoires
 
+    void collide();
+
+    // Methodes perception
+    void addYeux(const Yeux &y);
+    void addOreilles(const Oreilles &o);
+
+    const Perception &getPercep() const;
 };
 
 
