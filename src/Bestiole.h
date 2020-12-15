@@ -98,10 +98,7 @@ public :                                           // Forme canonique :
     void setVitesseCartesien(double x, double y);
     std::array<double, 2> getVitesseCartesien() const;
     std::array<double, 2> getVitesseCartesienPondere() const;
-    int getScareCount() const;
-    void setScareCount(int scareCount);
-    double getPrevSpeed() const;
-    void setPrevSpeed(double prevSpeed);
+
 
     // Methodes accessoires
     void addAccessoire(Accessoire * acc);
@@ -109,6 +106,13 @@ public :                                           // Forme canonique :
     void collide();
 
 
+    int getScareCount() const;
+
+    void setScareCount(int scareCount);
+
+    double getPrevSpeed() const;
+
+    void setPrevSpeed(double prevSpeed);
 
     // Methodes perception
     

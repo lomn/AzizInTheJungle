@@ -7,6 +7,7 @@
 
 using namespace std;
 
+int Fabrique::nb_naiss[4]={0,0,0,0};
 
 int main()
 {
@@ -19,7 +20,7 @@ int main()
 
    double pCara = 1/3;
    double pCamou = 0; // Pas encore implémenté
-   double pNage = 1/3
+   double pNage = 1/3;
 
    Aquarium       ecosysteme( width, height, 30 );
    Fabrique * createur = new Fabrique(width, height, 
@@ -34,7 +35,7 @@ int main()
    delete Bestiole::comportementArray[1];
    delete Bestiole::comportementArray[2];
    delete Bestiole::comportementArray[3];
-
+   delete createur;
    return 0;
 
 }

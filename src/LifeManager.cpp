@@ -1,6 +1,7 @@
 #include "LifeManager.h"
 #include "Bestiole.h"
 #include "BestioleUtil.h"
+#include <iomanip>
 
 void quickDelete( int idx , std::vector<Bestiole> & list)
 {
@@ -19,7 +20,7 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
             {
                 std::cout << "[L] Mort de vieillesse, id : "<<  besti->getIdentite() << " life span : " << besti->getLifeSpan() <<std::endl;
                 lst.erase(lst.begin()+i);
-                nb_mort++;
+                nb_mort[besti->getComportement()] = nb_mort[besti->getComportement()]+1;
             }
             else
             {
@@ -36,7 +37,7 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                         {
                             std::cout << "[L] Mort par colision 2 : " << bestj->getIdentite() << std::endl;
                             lst.erase(lst.begin()+j);
-                            nb_mort++;
+                            nb_mort[bestj->getComportement()] = nb_mort[bestj->getComportement()]+1;
                         }
                         else{bestj->collide();}
 
@@ -44,7 +45,7 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                         {
                             std::cout << "[L] Mort par colision 1 : " << besti->getIdentite() << std::endl;
                             lst.erase(lst.begin()+i);
-                            nb_mort++;
+                            nb_mort[besti->getComportement()] = nb_mort[besti->getComportement()]+1;
                         }
                         else{besti->collide();} //et bestj?
                     }
@@ -56,7 +57,7 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                     Bestiole * bc = new Bestiole(lst[i]);
                     bc->initCoords(xLim, yLim);
                     lst.push_back(*bc);
-                    nb_clon++;
+                    nb_clon[lst[i].getComportement()]=nb_clon[lst[i].getComportement()]+1;
                     std::cout << "End clone" << std::endl;
                 }
             }
@@ -68,7 +69,6 @@ bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
     if (not (b1==b2)){
         double dist1 =  distanceBestiole(b1, b2);
         double v2 =  b1.getSize() + b2.getSize();
-//        std::cout << "intersect :: " << dist1 << " < " << v2 << std::endl;
         return (dist1 < v2);
     }
     else {
@@ -77,5 +77,19 @@ bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
 }
 
 void LifeManager::getStat() {
-    std::cout << "Nombre de morts : " << nb_mort << " Nombre de clonages : " << nb_clon << std::endl;
+    std::cout<< "********************   Statistiques morts  ********************" << std::endl;
+    std::cout << std::fixed << std::setprecision(2) << std::setfill('0');;
+    int sum_mort=0;
+    int sum_clon=0;
+    for(size_t k = 0; k <4; k++){
+        if (k==KAMIKAZE_IND)  std::cout<< "Kamikaze  ::Nombre de morts " << std::setw(3) << nb_mort[k] << " Nombre de clonages " << std::setw(3) << nb_clon[k] << std::endl;
+        if (k==GREGAIRE_IND)  std::cout<< "Gregaire  ::Nombre de morts " << std::setw(3) << nb_mort[k] << " Nombre de clonages " << std::setw(3) << nb_clon[k] << std::endl;
+        if (k==PEUREUX_IND)   std::cout<< "Peureux   ::Nombre de morts " << std::setw(3) << nb_mort[k] << " Nombre de clonages " << std::setw(3) << nb_clon[k] << std::endl;
+        if (k==PREVOYANT_IND) std::cout<< "Prevoyant ::Nombre de morts " << std::setw(3) << nb_mort[k] << " Nombre de clonages " << std::setw(3) << nb_clon[k] << std::endl;
+        sum_mort+=nb_mort[k];
+        sum_clon+=nb_clon[k];
+    }
+    std::cout<< "Stats     ::Nombre de morts " << std::setw(3) << sum_mort << " Nombre de clonages " << std::setw(3) << sum_clon << std::endl;
+    std::cout<< "***************************************************************" << std::endl;
+
 }

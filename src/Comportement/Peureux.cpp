@@ -31,7 +31,7 @@ std::array<double,2> Peureux::calculVitesse(Bestiole &b, std::vector<Bestiole> &
     if (b.getScareCount()<=10){
         vitessePolaire[0] = MAX_VITESSE;
     }
-    //else it has a normal speed
+        //else it has a normal speed
     else {
         vitessePolaire[0] = b.getPrevSpeed();
     }
