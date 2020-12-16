@@ -61,7 +61,7 @@ Bestiole & Fabrique::addMember(){
         int nage = static_cast<int>(100*probaAccessoires[NAGEOIRE_IND]);
         std::cout << "[+] Accessoires \r\n";
 
-
+  
         double coefCaraMax = 1;
         double coefNageMax = 1;
         p = rand() % 101;
