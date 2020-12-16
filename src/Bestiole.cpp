@@ -295,11 +295,13 @@ void Bestiole::setPrevSpeed(double ps) {Bestiole::prevSpeed = ps;}
 double Bestiole::getCapaCamo() const {
     double c = 0;
     for(size_t i = 0; i != accessoireArray.size(); i++){
-    if(accessoireArray[i]->getCoefCamouflage() > 0){
-        c += accessoireArray[i]->getCoefCamouflage();
+        if(accessoireArray[i]->getCoefCamouflage() > 0){
+            c += accessoireArray[i]->getCoefCamouflage();
+        }
     }
+
     return c;
-    }
+}
 T* Bestiole::getCouleur() const{
     return this->couleur;
 }
