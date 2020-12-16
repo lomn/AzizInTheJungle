@@ -4,12 +4,18 @@
 #include "Accessoire/Nageoire.h"
 #include <iomanip>
 
-const int YEUX_IND=0;
-const int OREILLES_IND=0;
 const double MIN_DETEC_VISION = 0.2;
 const double MAX_DETEC_VISION = 0.8;
 const double MIN_DETEC_AUD = 0.2;
 const double MAX_DETEC_AUD = 0.8;
+
+const double MIN_DIST_VISION = 15.;
+const double MAX_DIST_VISION = 100.;
+const double MIN_DIST_AUD = 15.;
+const double MAX_DIST_AUD = 85.;
+
+const double MIN_ANGLE_VISION = 3.14/4;
+const double MAX_ANGLE_VISION = 3.14/2;
 
 Fabrique::Fabrique(int width, int height, int nbBestiolesGene,
         float kamikaze, float prevoyant, float gregaire, float peureux, 
@@ -90,30 +96,46 @@ Bestiole & Fabrique::addMember(){
         }
 
     // Assignation de la personnalité ici :
-    std::cout << "[+] Personalité \r\n";
-    if(nb_naiss[PREVOYANT_IND] < nb_naiss_totale[PREVOYANT_IND]){
-        std::cout << "[+] Set prevoyant \r\n";
-        b->setComportement(PREVOYANT_IND);
-        nb_naiss[PREVOYANT_IND]= nb_naiss[PREVOYANT_IND]+1;
+        std::cout << "[+] Personalité \r\n";
+        if(nb_naiss[PREVOYANT_IND] < nb_naiss_totale[PREVOYANT_IND]){
+            std::cout << "[+] Set prevoyant \r\n";
+            b->setComportement(PREVOYANT_IND);
+            nb_naiss[PREVOYANT_IND]= nb_naiss[PREVOYANT_IND]+1;
+        }
+        else if(nb_naiss[PEUREUX_IND] < nb_naiss_totale[PEUREUX_IND]){
+            std::cout << "[+] Set peureux \r\n";
+            b->setComportement(PEUREUX_IND);
+            nb_naiss[PEUREUX_IND]= nb_naiss[PEUREUX_IND]+1;
+        }
+        else if(nb_naiss[GREGAIRE_IND] < nb_naiss_totale[GREGAIRE_IND]){
+            std::cout << "[+] Set gregaire \r\n";
+            b->setComportement(GREGAIRE_IND);
+            nb_naiss[GREGAIRE_IND]= nb_naiss[GREGAIRE_IND]+1;
+        }
+        else{
+            std::cout << "[+] Set kamikaze\r\n";
+            b->setComportement(KAMIKAZE_IND);
+            nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
+        }
+        b->addYeux(Yeux(1.57/2, 50.,1 ));
+
+    // Ajout des attributs de perception ici
+    p = rand() % 101;
+    if(p < probaCapteurs[OREILLES_IND]){
+        double d = MIN_DIST_AUD+(MAX_DIST_AUD-MIN_DIST_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
+        double m = MIN_DETEC_AUD+(MAX_DETEC_AUD-MIN_DETEC_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
+        std::cout << "[+] Creation oreilles range : " << d << ", Capa detec " << m << std::endl;
+        b->addOreilles(Oreilles(d,m));
     }
-    else if(nb_naiss[PEUREUX_IND] < nb_naiss_totale[PEUREUX_IND]){
-        std::cout << "[+] Set peureux \r\n";
-        b->setComportement(PEUREUX_IND);
-        nb_naiss[PEUREUX_IND]= nb_naiss[PEUREUX_IND]+1;
+
+    p = rand() % 101;
+    if(p < probaCapteurs[YEUX_IND]){
+        double d = MIN_DIST_VISION+(MAX_DIST_VISION-MIN_DIST_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
+        double a = MIN_ANGLE_VISION+(MAX_ANGLE_VISION-MIN_ANGLE_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
+        double m = MIN_DETEC_VISION+(MAX_DETEC_VISION-MIN_DETEC_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
+        std::cout << "[+] Creation yeux range : " << d << ", Capa detec " << m << std::endl;
+        b->addYeux(Yeux(d,a,m));
     }
-    else if(nb_naiss[GREGAIRE_IND] < nb_naiss_totale[GREGAIRE_IND]){
-        std::cout << "[+] Set gregaire \r\n";
-        b->setComportement(GREGAIRE_IND);
-        nb_naiss[GREGAIRE_IND]= nb_naiss[GREGAIRE_IND]+1;
-    }
-    else{
-        std::cout << "[+] Set kamikaze\r\n";
-        b->setComportement(KAMIKAZE_IND);
-        nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
-    }
-    b->addYeux(Yeux(1.57/2, 50.,1 ));
-//    std::cout << "[+] Set oreilles \r\n";
-//    b->addOreilles(Oreilles(100.,1));
 
     return *b;
 }

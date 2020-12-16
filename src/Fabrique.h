@@ -19,6 +19,9 @@
 #define CAMOUFLAGE_IND 1
 #define NAGEOIRE_IND 2
 
+#define YEUX_IND 0
+#define OREILLES_IND 1
+
 class Comportement;
 
 class Fabrique {
