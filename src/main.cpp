@@ -77,12 +77,10 @@ Aquarium parser(int argc, char * argv[], Fabrique* & createur){
       }
    }
 
-   printf("crateur : %x\r\n", createur);
    createur = new Fabrique(width, height, nbBestiolesGene,
       pKami, pPrev, pGreg, pPeur, //Personalités
       pCara, pCamou, pNage,
       pYeux, pOreilles); // Accessoires
-   printf("crateur : %x\r\n", createur);
 
    return Aquarium( width, height, 30 );
 }
@@ -93,8 +91,6 @@ int main(int argc, char * argv[])
    Fabrique * createur = nullptr;
 
    Aquarium ecosysteme = parser(argc, argv, createur);
-
-   printf("$ Fabrique : %p\r\n$ aquarium %p\r\n", createur, &ecosysteme);
 
    for ( int i = 1; i <= nbBestiolesGene; ++i )
       ecosysteme.getMilieu().addMember(createur->addMember());

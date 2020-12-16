@@ -292,7 +292,14 @@ int Bestiole::getScareCount() const {return scareCount;}
 void Bestiole::setScareCount(int sc) {Bestiole::scareCount = sc;}
 double Bestiole::getPrevSpeed() const {return prevSpeed;}
 void Bestiole::setPrevSpeed(double ps) {Bestiole::prevSpeed = ps;}
-double Bestiole::getCapaCamo() const {return 0;}
+double Bestiole::getCapaCamo() const {
+    double c = 0;
+    for(size_t i = 0; i != accessoireArray.size(); i++){
+    if(accessoireArray[i]->getCoefCamouflage() > 0){
+        c += accessoireArray[i]->getCoefCamouflage();
+    }
+    return c;
+    }
 T* Bestiole::getCouleur() const{
     return this->couleur;
 }
