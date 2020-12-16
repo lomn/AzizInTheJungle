@@ -3,7 +3,9 @@
 
 #include "Accessoire.h"
 
-
+/**
+ * @brief Accessoire nageoire: rend la bestiole plus rapide
+ */
 class Nageoire : public Accessoire
 {
 private:
