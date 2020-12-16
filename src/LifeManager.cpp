@@ -36,16 +36,16 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                         if(pj < bestj->getPDeath())
                         {
                             //std::cout << "[L] Mort par colision 2 : " << bestj->getIdentite() << std::endl;
-                            lst.erase(lst.begin()+j);
                             nb_mort[bestj->getComportement()] = nb_mort[bestj->getComportement()]+1;
+                            lst.erase(lst.begin()+j);
                         }
                         else{bestj->collide();}
 
                         if(pi < besti->getPDeath())
                         {
                             //std::cout << "[L] Mort par colision 1 : " << besti->getIdentite() << std::endl;
-                            lst.erase(lst.begin()+i);
                             nb_mort[besti->getComportement()] = nb_mort[besti->getComportement()]+1;
+                            lst.erase(lst.begin()+i);
                         }
                         else{besti->collide();}
                     }
