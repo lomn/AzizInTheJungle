@@ -56,9 +56,9 @@ bool Perception::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestio
 //        std::cout << "not empty" << std::endl;
         for (std::vector<Oreilles>::size_type i=0;i<oreilleVect.size();i++){
 //            std::cout << "inloop" << std::endl;
-            std::cout << oreilleVect[i].jeTeVois(thisBestiole, bestiole) << std::endl;
+            //std::cout << oreilleVect[i].jeTeVois(thisBestiole, bestiole) << std::endl;
             if (oreilleVect[i].jeTeVois(thisBestiole, bestiole)){
-                std::cout << "Perception par oreilles" << std::endl;
+                //std::cout << "Perception par oreilles" << std::endl;
                 return true;
             }
         }
