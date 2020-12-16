@@ -1,6 +1,8 @@
-//
-// Created by sella on 04/12/2020.
-//
+/**
+* @file Kamikaze.h
+* @brief Il s'agit d'un comportement de bestiole:  une bestiole dite kamikaze est attirée par la bestiole la plus proche et
+* tente de l’attaquer en cherchant à provoquer une collision
+ */
 
 #ifndef AZIZINTHEJUNGLE_KAMIKAZE_H
 #define AZIZINTHEJUNGLE_KAMIKAZE_H
@@ -8,7 +10,9 @@
 #include <array>
 
 class Bestiole;
-
+/**
+ * @brief comportement: cherche la collision avec la bestiole la plus proche
+ */
 class Kamikaze : public Comportement {
 public:
     Kamikaze();

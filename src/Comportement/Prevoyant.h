@@ -1,6 +1,10 @@
-//
-// Created by sella on 04/12/2020.
-//
+
+/**
+* @file Prevoyant.h
+* @brief Il s'agit d'un comportement possible de la bestiole, elle est sensée permettre à la bestiole de prévoir le
+ * mouvement des bestioles environnantes et d'éviter la collision en accord avec sa prévision
+ * Elle n'a pas été implémentée
+ */
 
 #ifndef AZIZINTHEJUNGLE_PREVOYANT_H
 #define AZIZINTHEJUNGLE_PREVOYANT_H
