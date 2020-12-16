@@ -4,9 +4,17 @@
 #include "Accessoire/Nageoire.h"
 #include <iomanip>
 
+const int YEUX_IND=0;
+const int OREILLES_IND=0;
+const double MIN_DETEC_VISION = 0.2;
+const double MAX_DETEC_VISION = 0.8;
+const double MIN_DETEC_AUD = 0.2;
+const double MAX_DETEC_AUD = 0.8;
+
 Fabrique::Fabrique(int width, int height, int nbBestiolesGene,
         float kamikaze, float prevoyant, float gregaire, float peureux, 
-        float carapace, float camouflage, float nageoire)
+        float carapace, float camouflage, float nageoire,
+        float yeux, float oreilles)
 {
     this->m_height = height;
     this->m_width  = width;
@@ -26,6 +34,10 @@ Fabrique::Fabrique(int width, int height, int nbBestiolesGene,
     this->probaAccessoires[CARAPACE_IND]   = carapace*normalize;
     this->probaAccessoires[CAMOUFLAGE_IND] = camouflage*normalize;
     this->probaAccessoires[NAGEOIRE_IND]   = nageoire*normalize;
+
+    float normalizec = 1/(yeux + oreilles);
+    this->probaCapteurs[YEUX_IND] = yeux*normalizec;
+    this->probaCapteurs[OREILLES_IND]   = oreilles*normalizec;
 
     this->nb_naiss[KAMIKAZE_IND]  = 0;
     this->nb_naiss[PREVOYANT_IND] = 0;
@@ -99,6 +111,9 @@ Bestiole & Fabrique::addMember(){
         b->setComportement(KAMIKAZE_IND);
         nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
     }
+    b->addYeux(Yeux(1.57/2, 50.,1 ));
+//    std::cout << "[+] Set oreilles \r\n";
+//    b->addOreilles(Oreilles(100.,1));
 
     return *b;
 }
