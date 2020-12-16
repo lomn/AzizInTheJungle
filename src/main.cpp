@@ -30,11 +30,14 @@ int main()
    double pCamou = 0; // Pas encore implémenté
    double pNage = 1./3.;
 
+   double pOreilles = 1./1.3;
+   double pYeux = 1./1.3;
+
    Aquarium       ecosysteme( width, height, 30 );
    Fabrique * createur = new Fabrique(width, height, nbBestiolesGene,
       pKami, pPrev, pGreg, pPeur, //Personalités
       pCara, pCamou, pNage,
-      0,0); // Accessoires
+      pYeux, pOreilles); // Accessoires
 
    for ( int i = 1; i <= nbBestiolesGene; ++i )
       ecosysteme.getMilieu().addMember(createur->addMember());

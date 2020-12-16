@@ -121,7 +121,7 @@ Bestiole & Fabrique::addMember(){
 
     // Ajout des attributs de perception ici
     p = rand() % 101;
-    if(p < probaCapteurs[OREILLES_IND]){
+    if(p < static_cast<int>(probaCapteurs[OREILLES_IND])){
         double d = MIN_DIST_AUD+(MAX_DIST_AUD-MIN_DIST_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
         double m = MIN_DETEC_AUD+(MAX_DETEC_AUD-MIN_DETEC_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
         std::cout << "[+] Creation oreilles range : " << d << ", Capa detec " << m << std::endl;
@@ -129,7 +129,7 @@ Bestiole & Fabrique::addMember(){
     }
 
     p = rand() % 101;
-    if(p < probaCapteurs[YEUX_IND]){
+    if(p < static_cast<int>(100.*probaCapteurs[YEUX_IND])){
         double d = MIN_DIST_VISION+(MAX_DIST_VISION-MIN_DIST_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
         double a = MIN_ANGLE_VISION+(MAX_ANGLE_VISION-MIN_ANGLE_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
         double m = MIN_DETEC_VISION+(MAX_DETEC_VISION-MIN_DETEC_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
