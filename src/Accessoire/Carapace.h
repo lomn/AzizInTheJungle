@@ -3,7 +3,9 @@
 
 #include "Accessoire.h"
 
-
+/**
+ * @brief Accessoire carapace: baisse la probabilité de mort par collision
+ */
 class Carapace : public Accessoire
 {
 private:

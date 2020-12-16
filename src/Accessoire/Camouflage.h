@@ -1,3 +1,4 @@
+
 #ifndef _CAMOUFLAGE_H_
 #define _CAMOUFLAGE_H_
 
@@ -5,7 +6,9 @@
 #include <iostream>
 #include <vector>
 
-
+/**
+ * @brief Accessoire camouflage: rend la bestiole moins visible
+ */
 class Camouflage : public Accessoire
 {
 private:
