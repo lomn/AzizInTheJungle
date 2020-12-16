@@ -120,9 +120,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     vitesse = b.getVitessePolaire();
     delete[] couleur;
     couleur = new T[ 3 ];
-    printf("T (const) : %p      \n", couleur);
     memcpy( couleur, b.couleur, 3*sizeof(T) );
-
     size=b.getSize(); // taille
     lifeSpan=b.getLifeSpan(); // duree de vie
     pDeath=b.getPDeath(); // Proba de mort par collision
