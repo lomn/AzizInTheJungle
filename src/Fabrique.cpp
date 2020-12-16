@@ -2,6 +2,7 @@
 #include "Accessoire/Accessoire.h"
 #include "Accessoire/Carapace.h"
 #include "Accessoire/Nageoire.h"
+#include "Accessoire/Camouflage.h"
 #include <iomanip>
 
 const double MIN_DETEC_VISION = 0.2;
@@ -72,28 +73,6 @@ Bestiole & Fabrique::addMember(){
     int p;
     Bestiole * b = new Bestiole();
     b->initCoords(m_width,m_height);
-    
-    // Ajout d'accessoirres ici :
-        
-        int cara = static_cast<int>(100*probaAccessoires[CARAPACE_IND]);
-        int nage = static_cast<int>(100*probaAccessoires[NAGEOIRE_IND]);
-        std::cout << "[+] Accessoires \r\n";
-
-  
-        double coefCaraMax = 1;
-        double coefNageMax = 1;
-        p = rand() % 100;
-        if(p < cara){
-                double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
-                std::cout << "ajout carapace coef : " << coef << std::endl;
-                b->addAccessoire(new Carapace(coef));
-        }
-        p = rand() % 100;
-        if(p < nage){
-                double coef = 1+coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
-                std::cout << "ajout nageoire coef : " << coef << std::endl;
-                b->addAccessoire(new Nageoire(coef));
-        }
 
     // Assignation de la personnalité ici :
         std::cout << "[+] Personalité \r\n";
@@ -118,6 +97,35 @@ Bestiole & Fabrique::addMember(){
             nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
         }
         b->addYeux(Yeux(1.57/2, 50.,1 ));
+    
+    // Ajout d'accessoirres ici :
+        
+        int cara  = static_cast<int>(100*probaAccessoires[CARAPACE_IND]);
+        int nage  = static_cast<int>(100*probaAccessoires[NAGEOIRE_IND]);
+        int camou = static_cast<int>(100*probaAccessoires[CAMOUFLAGE_IND]);
+        std::cout << "[+] Accessoires \r\n";
+
+  
+        double coefCaraMax = 1;
+        double coefNageMax = 1;
+        p = rand() % 100;
+        if(p < cara){
+                double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
+                std::cout << "ajout carapace coef : " << coef << std::endl;
+                b->addAccessoire(new Carapace(coef));
+        }
+        p = rand() % 100;
+        if(p < nage){
+                double coef = 1+coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
+                std::cout << "ajout nageoire coef : " << coef << std::endl;
+                b->addAccessoire(new Nageoire(coef));
+        }
+        p = rand() % 100;
+        if(p < camou){
+                double coef = 1+coefCamouMax*static_cast<double>(rand())/((double)RAND_MAX);
+                std::cout << "ajout camou coef : " << coef << std::endl;
+                b->addAccessoire(new Camouflage(coef));
+        }
 
     // Ajout des attributs de perception ici
         p = rand() % 100;
