@@ -3,12 +3,13 @@
 * @brief Il s'agit d'un des capteurs qu'un bestiole peut posséder, elle possède une distance et un angle de vision,
  * ainsi qu'une capacité de détection
  */
-
 #ifndef _YEUX_H_
 #define _YEUX_H_
 
 class Bestiole;
-
+/**
+ * @brief capteur: detection sur un angle, une distance et une direction définie
+ */
 class Yeux{
 private:
     double m_angle;

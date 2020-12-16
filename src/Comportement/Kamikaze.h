@@ -10,7 +10,9 @@
 #include <array>
 
 class Bestiole;
-
+/**
+ * @brief comportement: cherche la collision avec la bestiole la plus proche
+ */
 class Kamikaze : public Comportement {
 public:
     Kamikaze();

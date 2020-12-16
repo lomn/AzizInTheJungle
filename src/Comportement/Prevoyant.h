@@ -10,7 +10,9 @@
 #include "Comportement.h"
 
 class Bestiole;
-
+/**
+ * @brief comportement: évite les collisions en anticipant les mouvements des autres bestioles
+ */
 class Prevoyant: public Comportement {
 public:
     Prevoyant();

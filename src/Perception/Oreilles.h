@@ -3,13 +3,14 @@
 * @brief Il s'agit d'un des capteurs qu'un bestiole peut posséder, elle possède une distance d'audition,
  * ainsi qu'une capacité de détection
  */
-
 #ifndef _OREILLES_H_
 #define _OREILLES_H_
 
 
 class Bestiole;
-
+/**
+ * @brief capteur: detection à 360°
+ */
 class Oreilles{
 private:
     double m_distance;

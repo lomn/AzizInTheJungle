@@ -1,13 +1,16 @@
-//
-// Created by sella on 28/11/2020.
-//
+/**
+ * @file LifeManager.h
+ * @brief Classe faisant la gestion de la vie/mort des bestioles à chaque tour
+ */
 
 #ifndef AZIZINTHEJUNGLE_LIFEMANAGER_H
 #define AZIZINTHEJUNGLE_LIFEMANAGER_H
 #include <vector>
 #include "Bestiole.h"
 
-
+/**
+ * @brief Classe faisant la gestion de la vie/mort des bestioles à chaque tour
+ */
 class LifeManager {
 private:
     static int nb_mort[4];

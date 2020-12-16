@@ -10,13 +10,12 @@
 #include "Comportement.h"
 
 class Bestiole;
-
+/**
+ * @brief comportement : fuit à vive allure quand elle est entourée de trop de bestioles
+ */
 class Peureux: public Comportement {
-
 private:
-    int scare_count;
-    double vitesse_calme;
-
+    //noparam
 public:
     Peureux();
     virtual std::array<double,2> calculVitesse(Bestiole &b, std::vector<Bestiole> & list) override;

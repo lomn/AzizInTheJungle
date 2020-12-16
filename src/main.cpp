@@ -1,11 +1,8 @@
 /**
  * @file main.cpp
- *
  * @brief Il s'agit d'une extension de fonctionnalités d'une simulation d'écosystème
- *
  * @author authors
  * Contact: contact@contact.org
- *
  */
 
 
