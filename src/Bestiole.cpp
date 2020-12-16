@@ -11,6 +11,8 @@
 #include "Accessoire/Accessoire.h"
 #include "Accessoire/Carapace.h"
 #include "Accessoire/Nageoire.h"
+#include "Perception/Yeux.h"
+#include "Perception/Oreilles.h"
 
 const double INIT_SIZE = 4;
 const int INIT_LIFESPAN = 150;
@@ -59,6 +61,7 @@ Bestiole::Bestiole()
     scareCount=0;
     prevSpeed=0.;
     accessoireArray.clear();
+    percep=Perception();
 }
 
 
@@ -86,6 +89,7 @@ Bestiole::Bestiole( const Bestiole & b )
     scareCount=b.getScareCount();
     prevSpeed=b.getPrevSpeed();
     accessoireArray.clear();
+    percep=Perception(b.getPercep());
 
     //Copie des accessoires
     std::vector<Accessoire*> acc = b.getAccessoire();
@@ -129,6 +133,7 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     comportement=b.getComportement();
     scareCount=b.getScareCount();
     prevSpeed=b.getPrevSpeed();
+    percep=Perception(b.getPercep());
 
     for(size_t i = accessoireArray.size()-1; ((int)i) >= 0; i--) {
         delete accessoireArray[i];
@@ -219,10 +224,12 @@ void Bestiole::draw( UImg & support )
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
-    double         dist;
-
-    dist = std::sqrt( (x-b.getX())*(x-b.getY()) + (y-b.getY())*(y-b.getY()) );
-    return ( dist <= LIMITE_VUE );
+//    double         dist;
+//
+//    dist = std::sqrt( (x-b.getX())*(x-b.getY()) + (y-b.getY())*(y-b.getY()) );
+//    return ( dist <= LIMITE_VUE );
+    if(b!=*this) return percep.jeTeVois(*this, b);
+    return false;
 }
 
 std::array<double, 2> Bestiole::getVitesseCartesienPondere() const {
@@ -300,7 +307,16 @@ int Bestiole::getScareCount() const {return scareCount;}
 void Bestiole::setScareCount(int sc) {Bestiole::scareCount = sc;}
 double Bestiole::getPrevSpeed() const {return prevSpeed;}
 void Bestiole::setPrevSpeed(double ps) {Bestiole::prevSpeed = ps;}
+double Bestiole::getCapaCamo() const {return 0;}
 T* Bestiole::getCouleur() const{
     return this->couleur;
+}
+const Perception &Bestiole::getPercep() const {return percep;}
+void Bestiole::addYeux(const Yeux &y) {
+    percep.addYeux(y);
+}
+
+void Bestiole::addOreilles(const Oreilles &o) {
+    percep.addOreille(o);
 }
 
