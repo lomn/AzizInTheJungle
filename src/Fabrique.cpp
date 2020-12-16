@@ -65,7 +65,7 @@ Bestiole & Fabrique::addMember(){
     std::cout << "[+] add member" <<std::endl;
     int p;
     Bestiole * b = new Bestiole();
-    b->initCoords(rand()%m_width,rand()%m_height);
+    b->initCoords(m_width,m_height);
     
     // Ajout d'accessoirres ici :
         
