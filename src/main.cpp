@@ -33,7 +33,8 @@ int main()
    Aquarium       ecosysteme( width, height, 30 );
    Fabrique * createur = new Fabrique(width, height, nbBestiolesGene,
       pKami, pPrev, pGreg, pPeur, //Personalités
-      pCara, pCamou, pNage); // Accessoires
+      pCara, pCamou, pNage,
+      0,0); // Accessoires
 
    for ( int i = 1; i <= nbBestiolesGene; ++i )
       ecosysteme.getMilieu().addMember(createur->addMember());

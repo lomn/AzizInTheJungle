@@ -36,7 +36,7 @@ public:
     // Les paramètres en floatindique les proportions de chaques comportement/accessoires etc dans la population.
     Fabrique(int width, int height, int nbBestiolesGene,
         float kamikaze, float prevoyant, float gregaire, float peureux, 
-        float carapace, float camouflage, float nageoire
+        float carapace, float camouflage, float nageoire,
         float yeux, float oreilles);
     ~Fabrique();
     Bestiole & addMember();

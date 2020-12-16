@@ -176,8 +176,8 @@ void Bestiole::bouge( int xLim, int yLim, std::vector<Bestiole> & list )
     this->setVitessePolaire(update_vitesse[0]);
     this->setOrientation(update_vitesse[1]);
    double         nx, ny;
-   double         dx = cos( orientation )*vitesse;
-   double         dy = -sin( orientation )*vitesse;
+   double         dx = cos( orientation )*getVitessePolaire();
+   double         dy = -sin( orientation )*getVitessePolaire();
    int            cx, cy;
 
 
