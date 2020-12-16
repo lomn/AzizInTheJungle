@@ -108,6 +108,7 @@ Bestiole & Fabrique::addMember(){
   
         double coefCaraMax = 1;
         double coefNageMax = 1;
+        double coefCamouMax = 1;
         p = rand() % 100;
         if(p < cara){
                 double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
