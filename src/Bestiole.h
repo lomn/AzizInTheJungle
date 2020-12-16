@@ -105,7 +105,6 @@ public :
     ///@{
     int getLifeSpan() const;               ///< getter de la durée de vie
     double getPDeath() const;              ///< getter de la probbilité de mort
-    double getPDeathPondere() const;
     void setPDeath(double pDeath);         ///< setter de la probabilité de mort                        
     double getPClone() const;              ///< getter de la probabilité de clonage                     
     void setPClone(double pClone);         ///< setter de la probabilité de clonage                     
@@ -125,11 +124,9 @@ public :
     double getOrientation() const;                                   ///< getter de l'orientation de la bestiole
     void setOrientation(double orientation);                         ///< setter de l'orientation
     double getVitessePolaire() const;                                ///< getter de la vitesse polaire de la Bestiole
-    double getVitessePolairePondere() const;
     void setVitessePolaire(double vitesse);                          ///< setter de la vitesse en polaire   
     void setVitesseCartesien(double x, double y);                    ///< setter de la vitesse en cartésien 
     std::array<double, 2> getVitesseCartesien() const;               ///< getter de la vitesse en cartésien 
-    std::array<double, 2> getVitesseCartesienPondere() const;
     ///@}
 
     // Methodes accessoires

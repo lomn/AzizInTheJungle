@@ -232,12 +232,6 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
     return false;
 }
 
-std::array<double, 2> Bestiole::getVitesseCartesienPondere() const {
-    std::array<double,2> coord{};
-    coord[0] = this->getVitessePolairePondere()*cos(orientation);
-    coord[1] = this->getVitessePolairePondere()*sin(orientation);
-    return coord;
-}
 
 std::array<double, 2> Bestiole::getVitesseCartesien() const {
     std::array<double,2> coord{};
@@ -262,14 +256,6 @@ void Bestiole::collide() {
 }
 
 
-double Bestiole::getPDeathPondere() const {
-    double c = 0;
-    for(size_t i = 0; i != accessoireArray.size(); i++){
-        c += accessoireArray[i]->getCoefCarapace();
-    }
-    if(c > 1){c=1;}
-    return pDeath*(1-c);
-}
 
 
 //Getters and Setters
@@ -295,7 +281,6 @@ void Bestiole::setVitesseCartesien(double nx, double ny) {this->setVitessePolair
 int Bestiole::getComportement() const {return this->comportement;}
 std::vector<Accessoire*> Bestiole::getAccessoire() const {return this->accessoireArray;}
 void Bestiole::addAccessoire(Accessoire* acc){this->accessoireArray.push_back(acc);}
-double Bestiole::getVitessePolairePondere() const {return vitesse;}
 void Bestiole::setComportement(int c){
     this->comportement = c;
     if (c==KAMIKAZE_IND)  couleur[ 0 ]=255, couleur[ 1 ]=000, couleur[ 2 ]=000;
