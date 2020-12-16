@@ -135,7 +135,6 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
     }
     accessoireArray.clear();
 
-    std::cout << "0 " << this->accessoireArray.size() << std::endl;
     std::vector<Accessoire*> acc = b.getAccessoire();
     for(size_t i = acc.size()-1; ((int)i) >= 0; i--) {
         if(acc[i]->getCoefCarapace() > 0){
@@ -145,7 +144,6 @@ Bestiole & Bestiole::operator=(const Bestiole & b){
             this->addAccessoire(new Nageoire(acc[i]->getCoefNageoire()));
         }
     }
-    std::cout << "0 " << this->accessoireArray.size() << std::endl;
 
     return *this;
 }
