@@ -40,7 +40,7 @@ Bestiole::Bestiole()
 {
    identite = ++next;
 
-   std::cout << "const Bestiole (" << identite << ") par defaut" << std::endl;
+   //std::cout << "const Bestiole (" << identite << ") par defaut" << std::endl;
 
    x = y = 0;
    cumulX = cumulY = 0.;
@@ -70,7 +70,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
     identite = ++next;
 
-    std::cout << "const Bestiole (" << identite << ") par copie " << accessoireArray.size() << std::endl;
+    //std::cout << "const Bestiole (" << identite << ") par copie " << accessoireArray.size() << std::endl;
 
     x = b.getX();
     y = b.getY();
@@ -106,8 +106,8 @@ Bestiole::Bestiole( const Bestiole & b )
 Bestiole::~Bestiole()
 {
 
-    std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
-    std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
+    //std::cout << "Deleteing bestiole (" << identite << ")" << std::endl;
+    //std::cout << "Couleur : " << std::hex << &couleur << std::oct <<std::endl;
     delete[] couleur;
 
 }

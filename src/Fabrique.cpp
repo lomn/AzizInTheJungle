@@ -51,14 +51,14 @@ Fabrique::Fabrique(int width, int height, int nbBestiolesGene,
     this->nb_naiss[GREGAIRE_IND]  = 0;
     this->nb_naiss[PEUREUX_IND]   = 0;
 
-    std::cout << "(-) kami proba : " << this->probaComportement[KAMIKAZE_IND] << std::endl;
-    std::cout << "(-) kami : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[KAMIKAZE_IND]) << std::endl;
+    //std::cout << "(-) kami proba : " << this->probaComportement[KAMIKAZE_IND] << std::endl;
+    //std::cout << "(-) kami : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[KAMIKAZE_IND]) << std::endl;
 
-    std::cout << "(-) prev proba : " << this->probaComportement[PREVOYANT_IND] << std::endl;
-    std::cout << "(-) prev : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[PREVOYANT_IND]) << std::endl;
+    //std::cout << "(-) prev proba : " << this->probaComportement[PREVOYANT_IND] << std::endl;
+    //std::cout << "(-) prev : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[PREVOYANT_IND]) << std::endl;
 
-    std::cout << "(-) greg proba : " << this->probaComportement[GREGAIRE_IND] << std::endl;
-    std::cout << "(-) greg : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[GREGAIRE_IND]) << std::endl;
+    //std::cout << "(-) greg proba : " << this->probaComportement[GREGAIRE_IND] << std::endl;
+    //std::cout << "(-) greg : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[GREGAIRE_IND]) << std::endl;
 
     this->nb_naiss_totale[KAMIKAZE_IND]  = static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[KAMIKAZE_IND]);
     this->nb_naiss_totale[PREVOYANT_IND] = static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[PREVOYANT_IND]);
@@ -69,30 +69,30 @@ Fabrique::Fabrique(int width, int height, int nbBestiolesGene,
 Fabrique::~Fabrique(){this->getStats();}
 
 Bestiole & Fabrique::addMember(){
-    std::cout << "[+] add member" <<std::endl;
+    //std::cout << "[+] add member" <<std::endl;
     int p;
     Bestiole * b = new Bestiole();
     b->initCoords(m_width,m_height);
 
     // Assignation de la personnalité ici :
-        std::cout << "[+] Personalité \r\n";
+        //std::cout << "[+] Personalité \r\n";
         if(nb_naiss[PREVOYANT_IND] < nb_naiss_totale[PREVOYANT_IND]){
-            std::cout << "[+] Set prevoyant \r\n";
+            //std::cout << "[+] Set prevoyant \r\n";
             b->setComportement(PREVOYANT_IND);
             nb_naiss[PREVOYANT_IND]= nb_naiss[PREVOYANT_IND]+1;
         }
         else if(nb_naiss[PEUREUX_IND] < nb_naiss_totale[PEUREUX_IND]){
-            std::cout << "[+] Set peureux \r\n";
+            //std::cout << "[+] Set peureux \r\n";
             b->setComportement(PEUREUX_IND);
             nb_naiss[PEUREUX_IND]= nb_naiss[PEUREUX_IND]+1;
         }
         else if(nb_naiss[GREGAIRE_IND] < nb_naiss_totale[GREGAIRE_IND]){
-            std::cout << "[+] Set gregaire \r\n";
+            //std::cout << "[+] Set gregaire \r\n";
             b->setComportement(GREGAIRE_IND);
             nb_naiss[GREGAIRE_IND]= nb_naiss[GREGAIRE_IND]+1;
         }
         else{
-            std::cout << "[+] Set kamikaze\r\n";
+            //std::cout << "[+] Set kamikaze\r\n";
             b->setComportement(KAMIKAZE_IND);
             nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
         }
@@ -103,7 +103,7 @@ Bestiole & Fabrique::addMember(){
         int cara  = static_cast<int>(100*probaAccessoires[CARAPACE_IND]);
         int nage  = static_cast<int>(100*probaAccessoires[NAGEOIRE_IND]);
         int camou = static_cast<int>(100*probaAccessoires[CAMOUFLAGE_IND]);
-        std::cout << "[+] Accessoires \r\n";
+        //std::cout << "[+] Accessoires \r\n";
 
   
         double coefCaraMax = 1;
@@ -112,19 +112,19 @@ Bestiole & Fabrique::addMember(){
         p = rand() % 100;
         if(p < cara){
                 double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
-                std::cout << "ajout carapace coef : " << coef << std::endl;
+                //std::cout << "ajout carapace coef : " << coef << std::endl;
                 b->addAccessoire(new Carapace(coef));
         }
         p = rand() % 100;
         if(p < nage){
                 double coef = 1+coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
-                std::cout << "ajout nageoire coef : " << coef << std::endl;
+                //std::cout << "ajout nageoire coef : " << coef << std::endl;
                 b->addAccessoire(new Nageoire(coef));
         }
         p = rand() % 100;
         if(p < camou){
                 double coef = 1+coefCamouMax*static_cast<double>(rand())/((double)RAND_MAX);
-                std::cout << "ajout camou coef : " << coef << std::endl;
+                //std::cout << "ajout camou coef : " << coef << std::endl;
                 b->addAccessoire(new Camouflage(coef));
         }
 
@@ -133,7 +133,7 @@ Bestiole & Fabrique::addMember(){
         if(p < static_cast<int>(100.*probaCapteurs[OREILLES_IND])){
             double d = MIN_DIST_AUD+(MAX_DIST_AUD-MIN_DIST_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
             double m = MIN_DETEC_AUD+(MAX_DETEC_AUD-MIN_DETEC_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
-            std::cout << "[+] Creation oreilles range : " << d << ", Capa detec " << m << std::endl;
+            //std::cout << "[+] Creation oreilles range : " << d << ", Capa detec " << m << std::endl;
             b->addOreilles(Oreilles(d,m));
         }
 
@@ -142,7 +142,7 @@ Bestiole & Fabrique::addMember(){
             double d = MIN_DIST_VISION+(MAX_DIST_VISION-MIN_DIST_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
             double a = MIN_ANGLE_VISION+(MAX_ANGLE_VISION-MIN_ANGLE_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
             double m = MIN_DETEC_VISION+(MAX_DETEC_VISION-MIN_DETEC_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
-            std::cout << "[+] Creation yeux range : " << d << ", Capa detec " << m << std::endl;
+            //std::cout << "[+] Creation yeux range : " << d << ", Capa detec " << m << std::endl;
             b->addYeux(Yeux(d,a,m));
         }
 

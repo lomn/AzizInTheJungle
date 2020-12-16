@@ -7,13 +7,13 @@
 
 
 Perception::Perception(){
-    std::cout << "Percep init" << std::endl;
+    //std::cout << "Percep init" << std::endl;
     yeuxVect = std::vector<Yeux>();
     oreilleVect = std::vector<Oreilles>();
 }
 
 Perception::Perception(const Perception &p) {
-    std::cout << "Percep copie prof" << std::endl;
+    //std::cout << "Percep copie prof" << std::endl;
     yeuxVect = std::vector<Yeux>();
     oreilleVect = std::vector<Oreilles>();
 
@@ -33,7 +33,7 @@ Perception::Perception(const Perception &p) {
 Perception &Perception::operator=(const Perception &p) {
     yeuxVect = std::vector<Yeux>();
     oreilleVect = std::vector<Oreilles>();
-    std::cout << "Percep copie affec" << std::endl;
+    //std::cout << "Percep copie affec" << std::endl;
     if (!p.getOreilleVect().empty()){
         for (std::vector<Oreilles>::size_type i=0;i<p.getOreilleVect().size();i++){
             oreilleVect.push_back(p.getOreilleVect()[i]);
@@ -69,7 +69,7 @@ bool Perception::jeTeVois(const Bestiole & thisBestiole, const Bestiole & bestio
     if (yeuxVect.size()>0){
         for (std::vector<Oreilles>::size_type i=0;i<yeuxVect.size();i++){
             if (yeuxVect[i].jeTeVois(thisBestiole, bestiole)){
-                std::cout << "Perception par yeux" << std::endl;
+                //std::cout << "Perception par yeux" << std::endl;
                 return true;
             }
         }

@@ -10,15 +10,15 @@ void quickDelete( int idx , std::vector<Bestiole> & list)
 }
 
 void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
-    std::cout << "[L] Entering" << std::endl;
+    //std::cout << "[L] Entering" << std::endl;
     for(size_t i = lst.size()-1; ((int)i) >= 0; i--) 
     {
         Bestiole * besti = & lst[i];
-        std::cout << "[L] " << besti->getIdentite() << "\n";
+        //std::cout << "[L] " << besti->getIdentite() << "\n";
 
             if (besti->getLifeSpan() <= 0) 
             {
-                std::cout << "[L] Mort de vieillesse, id : "<<  besti->getIdentite() << " life span : " << besti->getLifeSpan() <<std::endl;
+                //std::cout << "[L] Mort de vieillesse, id : "<<  besti->getIdentite() << " life span : " << besti->getLifeSpan() <<std::endl;
                 lst.erase(lst.begin()+i);
                 nb_mort[besti->getComportement()] = nb_mort[besti->getComportement()]+1;
             }
@@ -29,13 +29,13 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
                     Bestiole * bestj = & lst[j];
                     if(intersect(*besti, *bestj))
                     {
-                        std::cout << "[L] Colision entre " <<  besti->getIdentite() << " et " << bestj->getIdentite() << std::endl;
+                        //std::cout << "[L] Colision entre " <<  besti->getIdentite() << " et " << bestj->getIdentite() << std::endl;
                         double pi = ((double) rand()) / ((double) RAND_MAX);
                         double pj = ((double) rand()) / ((double) RAND_MAX);
 
                         if(pj < bestj->getPDeath())
                         {
-                            std::cout << "[L] Mort par colision 2 : " << bestj->getIdentite() << std::endl;
+                            //std::cout << "[L] Mort par colision 2 : " << bestj->getIdentite() << std::endl;
                             lst.erase(lst.begin()+j);
                             nb_mort[bestj->getComportement()] = nb_mort[bestj->getComportement()]+1;
                         }
@@ -43,26 +43,26 @@ void LifeManager::step(std::vector<Bestiole> & lst, int xLim, int yLim) {
 
                         if(pi < besti->getPDeath())
                         {
-                            std::cout << "[L] Mort par colision 1 : " << besti->getIdentite() << std::endl;
+                            //std::cout << "[L] Mort par colision 1 : " << besti->getIdentite() << std::endl;
                             lst.erase(lst.begin()+i);
                             nb_mort[besti->getComportement()] = nb_mort[besti->getComportement()]+1;
                         }
-                        else{besti->collide();} //et bestj?
+                        else{besti->collide();}
                     }
                 }
             
                 double p_c=((double) rand() / (RAND_MAX));
                 if (p_c < lst[i].getPClone()){
-                    std::cout << "Clonning : "  << lst[i].getIdentite() << std::endl;
+                    //std::cout << "Clonning : "  << lst[i].getIdentite() << std::endl;
                     Bestiole * bc = new Bestiole(lst[i]);
                     bc->initCoords(xLim, yLim);
                     lst.push_back(*bc);
                     nb_clon[lst[i].getComportement()]=nb_clon[lst[i].getComportement()]+1;
-                    std::cout << "End clone" << std::endl;
+                    //std::cout << "End clone" << std::endl;
                 }
             }
     }
-    std::cout << "[L] Exiting" << std::endl;
+    //std::cout << "[L] Exiting" << std::endl;
 }
 
 bool LifeManager::intersect(const Bestiole &b1, const Bestiole &b2) {
