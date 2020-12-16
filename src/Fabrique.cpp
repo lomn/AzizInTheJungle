@@ -82,13 +82,13 @@ Bestiole & Fabrique::addMember(){
   
         double coefCaraMax = 1;
         double coefNageMax = 1;
-        p = rand() % 101;
+        p = rand() % 100;
         if(p < cara){
                 double coef = coefCaraMax*static_cast<double>(rand())/((double)RAND_MAX);
                 std::cout << "ajout carapace coef : " << coef << std::endl;
                 b->addAccessoire(new Carapace(coef));
         }
-        p = rand() % 101;
+        p = rand() % 100;
         if(p < nage){
                 double coef = 1+coefNageMax*static_cast<double>(rand())/((double)RAND_MAX);
                 std::cout << "ajout nageoire coef : " << coef << std::endl;
@@ -120,22 +120,22 @@ Bestiole & Fabrique::addMember(){
         b->addYeux(Yeux(1.57/2, 50.,1 ));
 
     // Ajout des attributs de perception ici
-    p = rand() % 101;
-    if(p < static_cast<int>(probaCapteurs[OREILLES_IND])){
-        double d = MIN_DIST_AUD+(MAX_DIST_AUD-MIN_DIST_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
-        double m = MIN_DETEC_AUD+(MAX_DETEC_AUD-MIN_DETEC_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
-        std::cout << "[+] Creation oreilles range : " << d << ", Capa detec " << m << std::endl;
-        b->addOreilles(Oreilles(d,m));
-    }
+        p = rand() % 100;
+        if(p < static_cast<int>(100.*probaCapteurs[OREILLES_IND])){
+            double d = MIN_DIST_AUD+(MAX_DIST_AUD-MIN_DIST_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
+            double m = MIN_DETEC_AUD+(MAX_DETEC_AUD-MIN_DETEC_AUD)*static_cast<double>(rand())/((double)RAND_MAX);
+            std::cout << "[+] Creation oreilles range : " << d << ", Capa detec " << m << std::endl;
+            b->addOreilles(Oreilles(d,m));
+        }
 
-    p = rand() % 101;
-    if(p < static_cast<int>(100.*probaCapteurs[YEUX_IND])){
-        double d = MIN_DIST_VISION+(MAX_DIST_VISION-MIN_DIST_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
-        double a = MIN_ANGLE_VISION+(MAX_ANGLE_VISION-MIN_ANGLE_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
-        double m = MIN_DETEC_VISION+(MAX_DETEC_VISION-MIN_DETEC_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
-        std::cout << "[+] Creation yeux range : " << d << ", Capa detec " << m << std::endl;
-        b->addYeux(Yeux(d,a,m));
-    }
+        p = rand() % 100;
+        if(p < static_cast<int>(100.*probaCapteurs[YEUX_IND])){
+            double d = MIN_DIST_VISION+(MAX_DIST_VISION-MIN_DIST_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
+            double a = MIN_ANGLE_VISION+(MAX_ANGLE_VISION-MIN_ANGLE_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
+            double m = MIN_DETEC_VISION+(MAX_DETEC_VISION-MIN_DETEC_VISION)*static_cast<double>(rand())/((double)RAND_MAX);
+            std::cout << "[+] Creation yeux range : " << d << ", Capa detec " << m << std::endl;
+            b->addYeux(Yeux(d,a,m));
+        }
 
     return *b;
 }
