@@ -7,27 +7,29 @@
 
 using namespace std;
 
-int Fabrique::nb_naiss[4]={0,0,0,0};
+//int Fabrique::nb_naiss[4]={0,0,0,0};
 
 int main()
 {
    int width = 640;
    int height = 480;
-   double pGreg = 1/3;
-   double pPeur = 1/3;
-   double pPrev = 0; // Pas encore implémenté
-   double pKami = 1/3;
+   int nbBestiolesGene = 20;
 
-   double pCara = 1/3;
+   double pGreg = 1./3.;
+   double pPeur = 1./3.;
+   double pPrev = 0; // Pas encore implémenté
+   double pKami = 1./3.;
+
+   double pCara = 1./3.;
    double pCamou = 0; // Pas encore implémenté
-   double pNage = 1/3;
+   double pNage = 1./3.;
 
    Aquarium       ecosysteme( width, height, 30 );
-   Fabrique * createur = new Fabrique(width, height, 
+   Fabrique * createur = new Fabrique(width, height, nbBestiolesGene,
       pKami, pPrev, pGreg, pPeur, //Personalités
       pCara, pCamou, pNage); // Accessoires
 
-   for ( int i = 1; i <= 20; ++i )
+   for ( int i = 1; i <= nbBestiolesGene; ++i )
       ecosysteme.getMilieu().addMember(createur->addMember());
    ecosysteme.run();
 

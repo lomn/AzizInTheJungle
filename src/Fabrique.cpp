@@ -4,7 +4,7 @@
 #include "Accessoire/Nageoire.h"
 #include <iomanip>
 
-Fabrique::Fabrique(int width, int height, 
+Fabrique::Fabrique(int width, int height, int nbBestiolesGene,
         float kamikaze, float prevoyant, float gregaire, float peureux, 
         float carapace, float camouflage, float nageoire)
 {
@@ -14,7 +14,7 @@ Fabrique::Fabrique(int width, int height,
     //this->probaAccessoires  = {0., 0., 0.};
 
     // Proba pour le comportement.
-    float normalize = 1/(kamikaze + prevoyant + gregaire + peureux);
+    float normalize = 1./(kamikaze + prevoyant + gregaire + peureux);
     //On s'assure que la somme des probas est égale a 1
     this->probaComportement[KAMIKAZE_IND]  = kamikaze*normalize;
     this->probaComportement[PREVOYANT_IND] = prevoyant*normalize;
@@ -26,11 +26,31 @@ Fabrique::Fabrique(int width, int height,
     this->probaAccessoires[CARAPACE_IND]   = carapace*normalize;
     this->probaAccessoires[CAMOUFLAGE_IND] = camouflage*normalize;
     this->probaAccessoires[NAGEOIRE_IND]   = nageoire*normalize;
+
+    this->nb_naiss[KAMIKAZE_IND]  = 0;
+    this->nb_naiss[PREVOYANT_IND] = 0;
+    this->nb_naiss[GREGAIRE_IND]  = 0;
+    this->nb_naiss[PEUREUX_IND]   = 0;
+
+    std::cout << "(-) kami proba : " << this->probaComportement[KAMIKAZE_IND] << std::endl;
+    std::cout << "(-) kami : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[KAMIKAZE_IND]) << std::endl;
+
+    std::cout << "(-) prev proba : " << this->probaComportement[PREVOYANT_IND] << std::endl;
+    std::cout << "(-) prev : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[PREVOYANT_IND]) << std::endl;
+
+    std::cout << "(-) greg proba : " << this->probaComportement[GREGAIRE_IND] << std::endl;
+    std::cout << "(-) greg : " << static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[GREGAIRE_IND]) << std::endl;
+
+    this->nb_naiss_totale[KAMIKAZE_IND]  = static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[KAMIKAZE_IND]);
+    this->nb_naiss_totale[PREVOYANT_IND] = static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[PREVOYANT_IND]);
+    this->nb_naiss_totale[GREGAIRE_IND]  = static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[GREGAIRE_IND]);
+    this->nb_naiss_totale[PEUREUX_IND]   = static_cast<int>(static_cast<double>(nbBestiolesGene)*this->probaComportement[PEUREUX_IND]);
 }
 
 Fabrique::~Fabrique(){this->getStats();}
 
 Bestiole & Fabrique::addMember(){
+    std::cout << "[+] add member" <<std::endl;
     int p;
     Bestiole * b = new Bestiole();
     b->initCoords(rand()%m_width,rand()%m_height);
@@ -58,29 +78,24 @@ Bestiole & Fabrique::addMember(){
         }
 
     // Assignation de la personnalité ici :
-    p = rand() % 101;
-    int prev = static_cast<int>(100*probaComportement[PREVOYANT_IND]);
-    int peur = static_cast<int>(100*probaComportement[PEUREUX_IND  ]);
-    int greg = static_cast<int>(100*probaComportement[GREGAIRE_IND ]);
-    int kami = static_cast<int>(100*probaComportement[KAMIKAZE_IND ]);
     std::cout << "[+] Personalité \r\n";
-    if(p < prev){
+    if(nb_naiss[PREVOYANT_IND] < nb_naiss_totale[PREVOYANT_IND]){
         std::cout << "[+] Set prevoyant \r\n";
         b->setComportement(PREVOYANT_IND);
         nb_naiss[PREVOYANT_IND]= nb_naiss[PREVOYANT_IND]+1;
     }
-    else if((p-=prev) < peur){
+    else if(nb_naiss[PEUREUX_IND] < nb_naiss_totale[PEUREUX_IND]){
         std::cout << "[+] Set peureux \r\n";
         b->setComportement(PEUREUX_IND);
         nb_naiss[PEUREUX_IND]= nb_naiss[PEUREUX_IND]+1;
     }
-    else if((p-=peur) < greg){
+    else if(nb_naiss[GREGAIRE_IND] < nb_naiss_totale[GREGAIRE_IND]){
         std::cout << "[+] Set gregaire \r\n";
         b->setComportement(GREGAIRE_IND);
         nb_naiss[GREGAIRE_IND]= nb_naiss[GREGAIRE_IND]+1;
     }
     else{
-        std::cout << "[+] Set kamikaze \r\n";
+        std::cout << "[+] Set kamikaze\r\n";
         b->setComportement(KAMIKAZE_IND);
         nb_naiss[KAMIKAZE_IND]= nb_naiss[KAMIKAZE_IND]+1;
     }

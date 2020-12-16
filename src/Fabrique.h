@@ -9,9 +9,12 @@
 #define CAMOUFLAGE_IND 1
 #define NAGEOIRE_IND 2
 
-class Comportement;class Fabrique {
+class Comportement;
+
+class Fabrique {
 private:
-    static int nb_naiss[4];
+    int nb_naiss[4];
+    int nb_naiss_totale[4];
 private: 
     float probaComportement[4];
     float probaAccessoires[3];
@@ -20,7 +23,7 @@ private:
 
 public:
     // Les paramètres en floatindique les proportions de chaques comportement/accessoires etc dans la population.
-    Fabrique(int width, int height, 
+    Fabrique(int width, int height, int nbBestiolesGene,
         float kamikaze, float prevoyant, float gregaire, float peureux, 
         float carapace, float camouflage, float nageoire); 
     ~Fabrique();
