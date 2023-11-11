@@ -1,4 +1,4 @@
 #!/bin/bash
 
-make
-rm *.o
+cmake .
+make -j 12

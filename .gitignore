@@ -1,8 +1,9 @@
 *.o
-/src/CMakeLists.txt
-/src/cmake-build-debug/
-/src/Accessoire/CMakeLists.txt
-/src/Perception/CMakeLists.txt
-/src/Comportement/CMakeLists.txt
+src/CMakeFiles
+src/CMakeCache.txt
+src/cmake_install.cmake
+src/libbugsim_lib.a
+src/bugsim
+src/Makefile
 main
 *.json
